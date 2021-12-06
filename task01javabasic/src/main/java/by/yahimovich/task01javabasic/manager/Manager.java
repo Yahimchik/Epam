@@ -1,16 +1,45 @@
 package by.yahimovich.task01javabasic.manager;
 
 import by.yahimovich.task01javabasic.controller.Command;
-import by.yahimovich.task01javabasic.entity.Data;
+import by.yahimovich.task01javabasic.controller.Runner;
+import by.yahimovich.task01javabasic.controller.impl.arithmetic.*;
+import by.yahimovich.task01javabasic.controller.impl.arithmetic.cycle.*;
+import by.yahimovich.task01javabasic.controller.impl.arithmetic.exerscise1.FirstWay;
+import by.yahimovich.task01javabasic.controller.impl.arithmetic.exerscise1.SecondWay;
+import by.yahimovich.task01javabasic.controller.impl.arithmetic.exerscise1.ThirdWay;
+import by.yahimovich.task01javabasic.controller.impl.geometry.MaxTriangle;
+import by.yahimovich.task01javabasic.controller.impl.geometry.RightTriangle;
+import by.yahimovich.task01javabasic.controller.impl.geometry.TriangleByPoint;
+import by.yahimovich.task01javabasic.controller.impl.sensor.FireSensor;
 import by.yahimovich.task01javabasic.entity.Point;
+import by.yahimovich.task01javabasic.service.ArithmeticService;
+import by.yahimovich.task01javabasic.service.GeometryService;
+import by.yahimovich.task01javabasic.service.SensorService;
 import by.yahimovich.task01javabasic.view.IoData;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ */
+
 public class Manager {
-    Data data = new Data();
+
+    public static final Logger LOGGER = LogManager.getLogger(Runner.class);
     IoData ioData = new IoData();
+
+    /**
+     * This method gives opportunity for user to chose function that hi want to calculate
+     *
+     * @see Command
+     * @see CommandManager
+     * @see IoData
+     */
 
     public void test() {
 
@@ -32,8 +61,19 @@ public class Manager {
                    «Пожароопасная ситуация », если температура в комнате превысила 60° С.
                 9. Найти max{min(a, b), min(c, d)}.
                 10. Вычислить значение функции.
+                11. Составить программу нахождения разности кубов первых двухсот чисел.
+                12. Составить таблицу значений функции y = 5 - x2/2 на отрезке [-5; 5] с шагом 0.5.
+                13. Требуется определить факториал числа, которое ввел пользователь.
+                14. Для каждого натурального числа в промежутке от m до n вывести все делители, кроме единицы и
+                    самого числа. m и n вводятся с клавиатуры.
+                15. В трехзначном числе зачеркнули старшую цифру. Когда полученное число умножили на 7, то
+                    получили исходное число. Найти это число.
+                16. Change numbers this using supplemented variable.
+                17. Change numbers this using arithmetic methods.
+                18. Change numbers this using logical methods.
                 ------------------------------------------------------------------------------------------
                 """);
+
 
         while (true) {
 
@@ -41,134 +81,121 @@ public class Manager {
             int choice = ioData.intInput();
 
             if (choice == 0) {
-                ioData.output("Exit...");
                 break;
             }
 
-            Command command;
+            LOGGER.log(Level.TRACE, "Your choice: " + choice);
+
             switch (choice) {
                 case 1 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter a & b: ");
-                    pushData(2);
-                    ioData.output("Perimeter -> Square: ", (command.execution(data)));
-                    data.removeAll();
+                    ioData.output("Perimeter and Square of right triangle:\n");
+                    commandManager.executeOperation(new RightTriangle(new GeometryService(),
+                            inputValues(2)));
                 }
                 case 2 -> {
-                    command = commandManager.getCommand(choice);
-                    addPointToData(createPoint(3));
-                    ioData.output("Perimeter -> Square: ", command.execution(data));
-                    data.removeAll();
+                    ioData.output("Perimeter and Square of triangle by points:\n");
+                    commandManager.executeOperation(new TriangleByPoint(new GeometryService(),
+                            createPoint(3)));
                 }
                 case 3 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter values a -> b -> c: ");
-                    pushData(3);
-                    ioData.output("Roots = ", command.execution(data));
-                    data.removeAll();
+                    ioData.output("Roots of quadratic equation:\n");
+                    commandManager.executeOperation(new Root(new ArithmeticService(),
+                            inputValues(3)));
                 }
                 case 4 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter value of a: ");
-                    pushData(1);
-                    ioData.output("Result = ", command.execution(data));
-                    data.removeAll();
+                    ioData.output("Enter value to raise it to the power 8th & 10th: ");
+                    double value = ioData.input();
+                    commandManager.executeOperation(new NumberDegree(value));
                 }
                 case 5 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter value x: ");
-                    pushData(1);
-                    ioData.output("Result = ", command.exec(data));
-                    data.removeAll();
+                    ioData.output("Enter value x to calculate result of equation: ");
+                    double value = ioData.input();
+                    commandManager.executeOperation(new EquationValue(value));
                 }
                 case 6 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter value of sides: ");
-                    pushData(6);
-                    ioData.output("Max square: ", command.exec(data));
-                    data.removeAll();
+                    ioData.output("Which area of the triangle is greater:\n");
+                    commandManager.executeOperation(new MaxTriangle(new ArithmeticService(),
+                            new GeometryService(), inputValues(6)));
                 }
                 case 7 -> {
-                    command = commandManager.getCommand(choice);
-                    addPointToData(createPoint(2));
-                    ioData.output(command.execute(data));
-                    data.removeAll();
+                    ioData.output("Which point is closer to (0,0):\n");
+                    commandManager.executeOperation(new NearestPoint(new GeometryService(),
+                            new ArithmeticService(), createPoint(2)));
                 }
                 case 8 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter temperature in °С: ");
-                    pushData(1);
-                    ioData.output("Fire sensor work result: " + command.execute(data));
-                    data.removeAll();
+                    ioData.output("Emulator if fire-sensor. Enter temperature in °С: ");
+                    double temperature = ioData.input();
+                    commandManager.executeOperation(new FireSensor(new SensorService(), temperature));
                 }
                 case 9 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter a -> b -> c -> d: ");
-                    pushData(4);
-                    ioData.output("Max from min: ", command.exec(data));
-                    data.removeAll();
+                    ioData.output("Max from min:\n");
+                    commandManager.executeOperation(new MaxFromMin(inputValues(4)));
                 }
                 case 10 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter x: ");
-                    pushData(1);
-                    ioData.output("Function value: ", command.exec(data));
-                    data.removeAll();
+                    ioData.output("Calculate result of the function when x >= 8 & x < 8: ");
+                    double value = ioData.input();
+                    commandManager.executeOperation(new RangeOfValues(new ArithmeticService(), value));
                 }
                 case 11 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Difference of cubes of the first 200 numbers: ", command.exec(data));
+                    ioData.output("Differences of cubes of the first 200 numbers:\n");
+                    commandManager.executeOperation(new DifferenceOfCubes(new ArithmeticService()));
                 }
                 case 12 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output(command.execute(data));
+                    ioData.output("Table of values of function:\n");
+                    commandManager.executeOperation(new ValueTable());
                 }
                 case 13 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter number: ");
-                    data.push(ioData.input());
-                    ioData.output("Factorial: ", command.exec(data));
-                    data.removeAll();
+                    ioData.output("Enter the factorial number you want to calculate: ");
+                    double value = ioData.input();
+                    commandManager.executeOperation(new Factorial(new ArithmeticService(), value));
                 }
                 case 14 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter a gap: ");
-                    pushData(2);
-                    ioData.output(command.execute(data));
-                    data.removeAll();
+                    ioData.output("Dividers from gap:\n");
+                    commandManager.executeOperation(new Divider(inputValues(2)));
                 }
                 case 15 -> {
-                    command = commandManager.getCommand(choice);
-                    ioData.output("Enter number: ");
-                    pushData(1);
-                    ioData.output("Result: ", command.exec(data));
-                    data.removeAll();
+                    ioData.output("Enter three-digit number: ");
+                    double value = ioData.input();
+                    commandManager.executeOperation(new ThreeDigitNumber(value));
+                }
+                case 16 -> {
+                    ioData.output("Change numbers this using supplemented variable:\n");
+                    commandManager.executeOperation(new FirstWay(new ArithmeticService(), inputValues(2)));
+                }
+                case 17 -> {
+                    ioData.output("Change numbers this using arithmetic methods:\n");
+                    commandManager.executeOperation(new SecondWay(new ArithmeticService(), inputValues(2)));
+                }
+                case 18 -> {
+                    ioData.output("Change numbers this using logical methods:\n");
+                    commandManager.executeOperation(new ThirdWay(new ArithmeticService(), inputValues(2)));
                 }
                 default -> ioData.output("Try again: ");
             }
         }
     }
 
-    public void addPointToData(List<Point> list) {
-        for (Point value : list) {
-            data.push(value.getX());
-            data.push(value.getY());
-        }
-    }
+    /**
+     * This method create points in quantity of count
+     *
+     * @param count - Add points in quantity of count
+     * @return List<Point>. Returns list of points
+     */
 
-    public void pushData(int index) {
-        for (int i = 0; i < index; i++) {
-            data.push(ioData.input());
-        }
-    }
-
-    public List<Point> createPoint(int index) {
-        Point point;
+    public List<Point> createPoint(int count) {
         List<Point> list = new ArrayList<>();
-        for (int i = 0; i < index; i++) {
-            ioData.output("Enter " + (i + 1) + " point: ");
-            point = new Point(ioData.input(), ioData.input());
-            list.add(point);
+        for (int i = 0; i < count; i++) {
+            ioData.output("Enter" + " point " + (i + 1) + ": ");
+            list.add(new Point(ioData.input(), ioData.input()));
+        }
+        return list;
+    }
+
+    public List<Double> inputValues(int count) {
+        List<Double> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            ioData.output("Enter value " + (i + 1) + ": ");
+            list.add(ioData.input());
         }
         return list;
     }

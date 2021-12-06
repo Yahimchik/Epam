@@ -1,26 +1,28 @@
 package by.yahimovich.task01javabasic.controller.impl.arithmetic;
 
 import by.yahimovich.task01javabasic.controller.Command;
-import by.yahimovich.task01javabasic.entity.Data;
 import by.yahimovich.task01javabasic.service.ArithmeticService;
 
 import java.util.List;
 
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Command
+ */
+
 public class MaxFromMin implements Command {
+
+    private List<Double> list;
+
+    public MaxFromMin(List<Double> list) {
+        this.list = list;
+    }
+
     @Override
-    public double exec(Data newData) {
+    public void execute() {
         ArithmeticService service = new ArithmeticService();
-        return service.max(service.min(newData.getData(0), newData.getData(1)),
-                service.min(newData.getData(2), newData.getData(3)));
-    }
-
-    @Override
-    public List<Double> execution(Data newData) {
-        return null;
-    }
-
-    @Override
-    public String execute(Data newData) {
-        return null;
+        System.out.println("Max value from min: " + (service.max(service.min(list.get(0), list.get(1)),
+                service.min(list.get(2), list.get(2)))));
     }
 }

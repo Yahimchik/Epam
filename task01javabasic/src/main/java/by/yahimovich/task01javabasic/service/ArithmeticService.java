@@ -3,22 +3,52 @@ package by.yahimovich.task01javabasic.service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ */
+
 public class ArithmeticService {
+
+    /**
+     * @param x - First value
+     * @param y - Second value
+     * @return sum of first and second values
+     */
+
     public double sum(double x, double y) {
         return x + y;
     }
+
+    /**
+     * @param x - First value
+     * @param y - Second value
+     * @return sub of first and second values
+     */
 
     public double sub(double x, double y) {
         return x - y;
     }
 
+    /**
+     * @param x - First value
+     * @param y - Second value
+     * @return product of first and second values
+     */
+
     public double multiplication(double x, double y) {
         return x * y;
     }
 
+    /**
+     * @param x - First value
+     * @param y - Second value
+     * @return quotient of first and second values
+     */
+
     public double division(double x, double y) {
         double result;
-        if (y > 0) {
+        if (y != 0) {
             result = x / y;
         } else {
             result = 0;
@@ -26,17 +56,46 @@ public class ArithmeticService {
         return result;
     }
 
-    public double degree(double value, double degree) {
+    /**
+     * @param value  - Value which well be raised to the power
+     * @param degree - The degree to which the value will be raised
+     * @return result of calculating
+     * @see Math
+     */
+
+    public double power(double value, double degree) {
         return Math.pow(value, degree);
     }
+
+    /**
+     * @param value - The value from which the square root will be calculated
+     * @return result of calculating
+     * @see Math
+     */
 
     public double sqrt(double value) {
         return Math.sqrt(value);
     }
 
+    /**
+     * @param a - first coefficient
+     * @param b - second coefficient
+     * @param c - third coefficient
+     * @return result of calculating
+     */
+
     public double discriminant(double a, double b, double c) {
         return b * b - 4 * a * c;
     }
+
+    /**
+     * This method calculate roots of the equation using discriminant
+     *
+     * @param a - first coefficient
+     * @param b - second coefficient
+     * @param c - third coefficient
+     * @return list this roots values
+     */
 
     public List<Double> root(double a, double b, double c) {
         ArithmeticService service = new ArithmeticService();
@@ -66,6 +125,12 @@ public class ArithmeticService {
         return null;
     }
 
+    /**
+     * @param a - First value
+     * @param b - Second value
+     * @return max from a & b
+     */
+
     public double max(double a, double b) {
         double result;
         if (a > b) {
@@ -76,6 +141,12 @@ public class ArithmeticService {
         }
         return result;
     }
+
+    /**
+     * @param a - First value
+     * @param b - Second value
+     * @return min from a & b
+     */
 
     public double min(double a, double b) {
         double result;
@@ -88,11 +159,74 @@ public class ArithmeticService {
         return result;
     }
 
+    /**
+     * @param value - number
+     * @return factorial of input value
+     */
+
     public double factorial(double value) {
         double res = value;
         for (int i = 1; i < res; i++) {
             value *= i;
         }
         return value;
+    }
+
+    /**
+     * @param a - first number
+     * @param b - second number
+     * @return List<Double> with changed positions using supplemented variable
+     */
+
+    public List<Double> changeNumbersFirst(double a, double b) {
+        double tmp;
+        List<Double> list = new ArrayList<>();
+
+        tmp = a;
+        a = b;
+        b = tmp;
+
+        list.add(a);
+        list.add(b);
+
+        return list;
+    }
+
+    /**
+     * @param a - first number
+     * @param b - second number
+     * @return List<Double> with changed positions using arithmetic methods
+     */
+
+    public List<Double> changeNumbersSecond(double a, double b) {
+        List<Double> list = new ArrayList<>();
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        list.add(a);
+        list.add(b);
+
+        return list;
+    }
+
+    /**
+     * @param a - first number
+     * @param b - second number
+     * @return List<Double> with changed positions using logical methods
+     */
+
+    public List<Double> changeNumbersThird(double a, double b) {
+        List<Double> list = new ArrayList<>();
+
+        a = (int) a ^ (int) b;
+        b = (int) b ^ (int) a;
+        a = (int) a ^ (int) b;
+
+        list.add(a);
+        list.add(b);
+
+        return list;
     }
 }

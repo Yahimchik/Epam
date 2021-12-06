@@ -1,31 +1,30 @@
 package by.yahimovich.task01javabasic.controller.impl.arithmetic;
 
 import by.yahimovich.task01javabasic.controller.Command;
-import by.yahimovich.task01javabasic.entity.Data;
 import by.yahimovich.task01javabasic.service.ArithmeticService;
 
-import java.util.List;
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Command
+ */
 
 public class RangeOfValues implements Command {
+
+    private final ArithmeticService service;
+    private final double value;
+
+    public RangeOfValues(ArithmeticService service, double value) {
+        this.service = service;
+        this.value = value;
+    }
+
     @Override
-    public double exec(Data newData) {
-        ArithmeticService service = new ArithmeticService();
-        double result;
-        if (newData.getData(0) >= 8) {
-            result = (-1) * (service.degree(newData.getData(0), 2)) + newData.getData(0) - 9;
+    public void execute() {
+        if (value >= 8) {
+            System.out.println("Result: " + ((-1) * (service.power(value, 2)) + value - 9));
         } else {
-            result = service.division(1, service.degree(newData.getData(0), 4) - 6);
+            System.out.println("Result: " + (service.division(1, (service.power(value, 4) - 6))));
         }
-        return result;
-    }
-
-    @Override
-    public List<Double> execution(Data newData) {
-        return null;
-    }
-
-    @Override
-    public String execute(Data newData) {
-        return null;
     }
 }

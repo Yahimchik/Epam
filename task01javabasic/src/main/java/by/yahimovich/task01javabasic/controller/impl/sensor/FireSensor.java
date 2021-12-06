@@ -1,25 +1,26 @@
 package by.yahimovich.task01javabasic.controller.impl.sensor;
 
 import by.yahimovich.task01javabasic.controller.Command;
-import by.yahimovich.task01javabasic.entity.Data;
 import by.yahimovich.task01javabasic.service.SensorService;
 
-import java.util.List;
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Command
+ */
 
 public class FireSensor implements Command {
-    @Override
-    public double exec(Data newData) {
-        return 0;
+
+    private final SensorService service;
+    private final double temperature;
+
+    public FireSensor(SensorService service, double temperature) {
+        this.service = service;
+        this.temperature = temperature;
     }
 
     @Override
-    public List<Double> execution(Data newData) {
-        return null;
-    }
-
-    @Override
-    public String execute(Data newData) {
-        SensorService service = new SensorService();
-        return service.fireSensor(newData.getData(0));
+    public void execute() {
+        System.out.print(service.fireSensor(temperature));
     }
 }

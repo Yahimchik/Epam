@@ -1,10 +1,22 @@
 package by.yahimovich.task01javabasic.view;
 
-import java.util.List;
 import java.util.Scanner;
+
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Scanner
+ */
 
 public class IoData {
     Scanner scanner = new Scanner(System.in);
+
+    /**
+     * Method which give opportunity to input integer value
+     *
+     * @return integer value
+     * @see Scanner
+     */
 
     public int intInput() {
         while (!scanner.hasNextInt()) {
@@ -14,6 +26,13 @@ public class IoData {
         return scanner.nextInt();
     }
 
+    /**
+     * Method which give opportunity to input double value
+     *
+     * @return double value
+     * @see Scanner
+     */
+
     public double input() {
         while (!scanner.hasNextDouble()) {
             System.out.print("That not a number! Try again: ");
@@ -22,15 +41,25 @@ public class IoData {
         return scanner.nextDouble();
     }
 
+    /**
+     * Method which give opportunity to output value
+     *
+     * @param arg - argument which can accept values
+     * @see Scanner
+     */
+
     public void output(String arg) {
         System.out.print(arg);
     }
 
-    public void output(String arg, double result) {
-        System.out.println(arg + result);
-    }
+    /**
+     * Method which give opportunity to output value
+     *
+     * @param arg - argument which can accept values
+     * @see Scanner
+     */
 
-    public void output(String arg, List<Double> result) {
+    public void output(String arg, double result) {
         System.out.println(arg + result);
     }
 }

@@ -1,26 +1,25 @@
 package by.yahimovich.task01javabasic.controller.impl.arithmetic.cycle;
 
 import by.yahimovich.task01javabasic.controller.Command;
-import by.yahimovich.task01javabasic.entity.Data;
 
-import java.util.List;
+/**
+ * @author Egor yahimovich
+ * @version 1.0
+ * @see Command
+ */
 
 public class ThreeDigitNumber implements Command {
-    @Override
-    public double exec(Data newData) {
-        double x = newData.getData(0) % 10;
-        double y = (newData.getData(0) / 10) % 10;
 
-        return (10 * y + x) * 7;
+    private final double value;
+
+    public ThreeDigitNumber(double value) {
+        this.value = value;
     }
 
     @Override
-    public List<Double> execution(Data newData) {
-        return null;
-    }
-
-    @Override
-    public String execute(Data newData) {
-        return null;
+    public void execute() {
+        double x = value % 10;
+        double y = (value / 10) % 10;
+        System.out.println("Your number: " + ((10 * y + x) * 7));
     }
 }

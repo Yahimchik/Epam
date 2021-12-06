@@ -145,7 +145,7 @@ public class ArithmeticTest {
     @Test(description = "Positive test degree method",
             dataProvider = "positiveDataForDegree")
     public void testDegree(int[] ab, double c) {
-        double actual = service.degree(ab[0], ab[1]);
+        double actual = service.power(ab[0], ab[1]);
         assertEquals(actual, c);
     }
 
