@@ -89,8 +89,8 @@ public class Manager {
             switch (choice) {
                 case 1 -> {
                     ioData.output("Perimeter and Square of right triangle:\n");
-                    commandManager.executeOperation(new RightTriangle(new GeometryService(),
-                            inputValues(2)));
+                    List<Double> list = inputValues(2);
+                    commandManager.executeOperation(new RightTriangle(new GeometryService(), list));
                 }
                 case 2 -> {
                     ioData.output("Perimeter and Square of triangle by points:\n");
@@ -99,8 +99,8 @@ public class Manager {
                 }
                 case 3 -> {
                     ioData.output("Roots of quadratic equation:\n");
-                    commandManager.executeOperation(new Root(new ArithmeticService(),
-                            inputValues(3)));
+                    List<Double> list = inputValues(3);
+                    commandManager.executeOperation(new Root(new ArithmeticService(), list));
                 }
                 case 4 -> {
                     ioData.output("Enter value to raise it to the power 8th & 10th: ");
@@ -114,8 +114,9 @@ public class Manager {
                 }
                 case 6 -> {
                     ioData.output("Which area of the triangle is greater:\n");
+                    List<Double> list = inputValues(6);
                     commandManager.executeOperation(new MaxTriangle(new ArithmeticService(),
-                            new GeometryService(), inputValues(6)));
+                            new GeometryService(), list));
                 }
                 case 7 -> {
                     ioData.output("Which point is closer to (0,0):\n");
@@ -129,7 +130,8 @@ public class Manager {
                 }
                 case 9 -> {
                     ioData.output("Max from min:\n");
-                    commandManager.executeOperation(new MaxFromMin(inputValues(4)));
+                    List<Double> list = inputValues(4);
+                    commandManager.executeOperation(new MaxFromMin(list));
                 }
                 case 10 -> {
                     ioData.output("Calculate result of the function when x >= 8 & x < 8: ");
@@ -151,7 +153,8 @@ public class Manager {
                 }
                 case 14 -> {
                     ioData.output("Dividers from gap:\n");
-                    commandManager.executeOperation(new Divider(inputValues(2)));
+                    List<Double> list = inputValues(2);
+                    commandManager.executeOperation(new Divider(list));
                 }
                 case 15 -> {
                     ioData.output("Enter three-digit number: ");
@@ -160,15 +163,18 @@ public class Manager {
                 }
                 case 16 -> {
                     ioData.output("Change numbers this using supplemented variable:\n");
-                    commandManager.executeOperation(new FirstWay(new ArithmeticService(), inputValues(2)));
+                    List<Double> list = inputValues(2);
+                    commandManager.executeOperation(new FirstWay(new ArithmeticService(), list));
                 }
                 case 17 -> {
                     ioData.output("Change numbers this using arithmetic methods:\n");
-                    commandManager.executeOperation(new SecondWay(new ArithmeticService(), inputValues(2)));
+                    List<Double> list = inputValues(2);
+                    commandManager.executeOperation(new SecondWay(new ArithmeticService(), list));
                 }
                 case 18 -> {
                     ioData.output("Change numbers this using logical methods:\n");
-                    commandManager.executeOperation(new ThirdWay(new ArithmeticService(), inputValues(2)));
+                    List<Double> list = inputValues(2);
+                    commandManager.executeOperation(new ThirdWay(new ArithmeticService(), list));
                 }
                 default -> ioData.output("Try again: ");
             }
