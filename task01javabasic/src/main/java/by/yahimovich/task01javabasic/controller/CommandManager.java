@@ -1,6 +1,6 @@
-package by.yahimovich.task01javabasic.manager;
+package by.yahimovich.task01javabasic.controller;
 
-import by.yahimovich.task01javabasic.controller.Command;
+import by.yahimovich.task01javabasic.view.Manager;
 
 import java.util.ArrayList;
 import java.util.List;

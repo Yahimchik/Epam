@@ -10,18 +10,16 @@ import by.yahimovich.task01javabasic.service.ArithmeticService;
  */
 
 public class DifferenceOfCubes implements Command {
-    ArithmeticService service;
+    private final ArithmeticService service;
+    private final double value;
 
-    public DifferenceOfCubes(ArithmeticService service) {
+    public DifferenceOfCubes(ArithmeticService service, double value) {
         this.service = service;
+        this.value = value;
     }
 
     @Override
     public void execute() {
-        double result = 0;
-        for (int i = 200; i >= 0; i--) {
-            result -= service.power(i, 3);
-        }
-        System.out.println("Result: " + result);
+        System.out.println(service.differenceOfCubes(value));
     }
 }

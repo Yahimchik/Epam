@@ -1,8 +1,5 @@
 package by.yahimovich.task01javabasic.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Egor Yahimovich
  * @version 1.0
@@ -12,6 +9,8 @@ public class Point {
 
     private double x;
     private double y;
+
+
 
     public Point(double x, double y) {
         this.x = x;
@@ -49,7 +48,7 @@ public class Point {
     public void setX(double x) {
         this.x = x;
     }
-
+    //TODO equals, hashcode
     @Override
     public String toString() {
         return "x " + getX() + " y " + getY();

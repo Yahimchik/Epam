@@ -1,6 +1,7 @@
-package by.yahimovich.task01javabasic.manager;
+package by.yahimovich.task01javabasic.view;
 
 import by.yahimovich.task01javabasic.controller.Command;
+import by.yahimovich.task01javabasic.controller.CommandManager;
 import by.yahimovich.task01javabasic.controller.Runner;
 import by.yahimovich.task01javabasic.controller.impl.arithmetic.*;
 import by.yahimovich.task01javabasic.controller.impl.arithmetic.cycle.*;
@@ -15,7 +16,6 @@ import by.yahimovich.task01javabasic.entity.Point;
 import by.yahimovich.task01javabasic.service.ArithmeticService;
 import by.yahimovich.task01javabasic.service.GeometryService;
 import by.yahimovich.task01javabasic.service.SensorService;
-import by.yahimovich.task01javabasic.view.IoData;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -139,12 +139,14 @@ public class Manager {
                     commandManager.executeOperation(new RangeOfValues(new ArithmeticService(), value));
                 }
                 case 11 -> {
-                    ioData.output("Differences of cubes of the first 200 numbers:\n");
-                    commandManager.executeOperation(new DifferenceOfCubes(new ArithmeticService()));
+                    ioData.output("Differences of cubes of the first N numbers:\n");
+                    double n = ioData.input();
+                    commandManager.executeOperation(new DifferenceOfCubes(new ArithmeticService(), n));
                 }
                 case 12 -> {
-                    ioData.output("Table of values of function:\n");
-                    commandManager.executeOperation(new ValueTable());
+                    ioData.output("Table of values of function in gap:\n");
+                    List<Double> list = inputValues(2);
+                    commandManager.executeOperation(new ValueTable(new ArithmeticService(), list));
                 }
                 case 13 -> {
                     ioData.output("Enter the factorial number you want to calculate: ");
@@ -154,12 +156,12 @@ public class Manager {
                 case 14 -> {
                     ioData.output("Dividers from gap:\n");
                     List<Double> list = inputValues(2);
-                    commandManager.executeOperation(new Divider(list));
+                    commandManager.executeOperation(new Divider(new ArithmeticService(), list));
                 }
                 case 15 -> {
                     ioData.output("Enter three-digit number: ");
                     double value = ioData.input();
-                    commandManager.executeOperation(new ThreeDigitNumber(value));
+                    commandManager.executeOperation(new ThreeDigitNumber(new ArithmeticService(), value));
                 }
                 case 16 -> {
                     ioData.output("Change numbers this using supplemented variable:\n");

@@ -113,6 +113,14 @@ public class ArithmeticTest {
         assertEquals(actual, c);
     }
 
+//    @Test(description = "Negative test sqrt method",
+//            dataProvider = "negativeDataForSum",
+//            expectedExceptions = Exception.class)
+//    public void negativeTestSum(int a[], double c) {
+//        double actual = service.sum(a[0], a[1]);
+//        assertThrows(Exception.class, () -> service.sum(a[0], a[1]));
+//    }
+
     //Test for sub method
 
     @Test(description = "Test sub method",

@@ -1,6 +1,7 @@
 package by.yahimovich.task01javabasic.controller.impl.arithmetic.cycle;
 
 import by.yahimovich.task01javabasic.controller.Command;
+import by.yahimovich.task01javabasic.service.ArithmeticService;
 
 import java.util.List;
 
@@ -12,22 +13,16 @@ import java.util.List;
 
 public class Divider implements Command {
 
+    private ArithmeticService service;
     private List<Double> list;
 
-    public Divider(List<Double> list) {
+    public Divider(ArithmeticService service, List<Double> list) {
+        this.service = service;
         this.list = list;
     }
 
     @Override
     public void execute() {
-        for (double i = list.get(0); i < list.get(1); i++) {
-            System.out.print("Number " + i + ": ");
-            for (double j = 2; j < i - 1; j++) {
-                if (i % j == 0) {
-                    System.out.print(j + " ");
-                }
-            }
-            System.out.println();
-        }
+        service.divider(list.get(0), list.get(1));
     }
 }

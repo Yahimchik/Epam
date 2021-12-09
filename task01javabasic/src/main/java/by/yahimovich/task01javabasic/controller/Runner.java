@@ -1,6 +1,6 @@
 package by.yahimovich.task01javabasic.controller;
 
-import by.yahimovich.task01javabasic.manager.Manager;
+import by.yahimovich.task01javabasic.view.Manager;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

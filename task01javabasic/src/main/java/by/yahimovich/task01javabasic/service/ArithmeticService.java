@@ -51,6 +51,7 @@ public class ArithmeticService {
         if (y != 0) {
             result = x / y;
         } else {
+            //TODO throw exception, div on zero
             result = 0;
         }
         return result;
@@ -84,7 +85,7 @@ public class ArithmeticService {
      * @return result of calculating
      */
 
-    public double discriminant(double a, double b, double c) {
+    private double discriminant(double a, double b, double c) {
         return b * b - 4 * a * c;
     }
 
@@ -111,18 +112,15 @@ public class ArithmeticService {
             list.add(x1);
             list.add(x2);
 
-            return list;
-
         } else if (D == 0) {
             double x;
 
             x = -b / (2 * a);
 
             list.add(x);
-            return list;
         }
 
-        return null;
+        return list;
     }
 
     /**
@@ -132,14 +130,7 @@ public class ArithmeticService {
      */
 
     public double max(double a, double b) {
-        double result;
-        if (a > b) {
-            result = a;
-            return result;
-        } else {
-            result = b;
-        }
-        return result;
+        return a > b ? a : b;
     }
 
     /**
@@ -149,14 +140,7 @@ public class ArithmeticService {
      */
 
     public double min(double a, double b) {
-        double result;
-        if (a < b) {
-            result = a;
-            return result;
-        } else {
-            result = b;
-        }
-        return result;
+        return a < b ? a : b;
     }
 
     /**
@@ -166,7 +150,7 @@ public class ArithmeticService {
 
     public double factorial(double value) {
         double res = value;
-        for (int i = 1; i < res; i++) {
+        for (int i = 2; i < res; ++i) {
             value *= i;
         }
         return value;
@@ -228,5 +212,32 @@ public class ArithmeticService {
         list.add(b);
 
         return list;
+    }
+
+    public double differenceOfCubes(double value) {
+        double result = 0;
+        for (double i = value; i >= 0; i--) {
+            result -= Math.pow(i, 3);
+        }
+        return result;
+    }
+
+    public void divider(double m, double n) {
+        for (double i = m; i < n; i++) {
+            System.out.print("Number " + i + ": ");
+            for (double j = 2; j < i - 1; j++) {
+                if (i % j == 0) {
+                    System.out.print(j + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public double threeDigitNumber(double value) {
+        double x = value % 10;
+        double y = (value / 10) % 10;
+
+        return (10 * y + x) * 7;
     }
 }
