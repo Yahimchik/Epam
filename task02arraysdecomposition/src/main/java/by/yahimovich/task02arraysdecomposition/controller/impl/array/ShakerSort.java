@@ -6,8 +6,8 @@ import by.yahimovich.task02arraysdecomposition.service.ArrayService;
 
 public class ShakerSort implements Command {
 
-    private ArrayService service;
-    private Array array;
+    private final ArrayService service;
+    private final Array array;
 
     public ShakerSort(ArrayService service, Array array) {
         this.service = service;

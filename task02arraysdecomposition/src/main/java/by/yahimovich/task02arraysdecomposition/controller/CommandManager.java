@@ -1,7 +1,6 @@
 package by.yahimovich.task02arraysdecomposition.controller;
 
-import by.yahimovich.task02arraysdecomposition.exception.ArrayException;
-import by.yahimovich.task02arraysdecomposition.exception.MatrixException;
+import by.yahimovich.task02arraysdecomposition.exception.*;
 
 import java.util.ArrayList;
 import java.util.List;

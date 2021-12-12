@@ -37,24 +37,32 @@ public class ArrayService {
     }
 
     public Array selectionSort(Array array) {
-        for (int i = 0; i < array.length(); i++) {
-            int pos = i;
-            double min = array.getElement(i);
-            for (int j = i + 1; j < array.length(); j++) {
-                if (array.getElement(j) < min) {
-                    pos = j;
-                    min = array.getElement(j);
+        for (int left = 0; left < array.length(); left++) {
+            int minInd = left;
+            for (int i = left; i < array.length(); i++) {
+                if (array.getElement(i) < array.getElement(minInd)) {
+                    minInd = i;
                 }
             }
-            array.setElement(pos, array.getElement(i));
-            array.setElement(i, min);
+            swap(array, left, minInd);
         }
         return array;
     }
 
     public Array insertionSort(Array array) {
 
+        int gap = array.length() / 2;
 
+        while (gap >= 1) {
+            for (int right = 0; right < array.length(); right++) {
+                for (int index = right - gap; index >= 0; index -= gap) {
+                    if (array.getElement(index) > array.getElement(index + gap)) {
+                        swap(array, index, index + gap);
+                    }
+                }
+            }
+            gap = gap / 2;
+        }
         return array;
     }
 
