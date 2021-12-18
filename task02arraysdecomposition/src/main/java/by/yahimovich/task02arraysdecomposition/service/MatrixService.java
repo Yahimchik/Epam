@@ -1,155 +1,170 @@
 package by.yahimovich.task02arraysdecomposition.service;
 
-import by.yahimovich.task02arraysdecomposition.entity.Matrix;
-import by.yahimovich.task02arraysdecomposition.exception.MatrixException;
+import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
+import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
+import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceException;
 
 public class MatrixService {
 
-    public Matrix multiplyMatrix(Matrix first, Matrix second) throws MatrixException {
-        if (first.getHorizontalSize() != second.getVerticalSize()) {
-            throw new MatrixException("count of rows != count of columns");
-        }
-        Matrix result = new Matrix(first.getVerticalSize(), second.getHorizontalSize());
+
+    public GenericMatrix<Number> multiplyMatrix(GenericMatrix<Number> first, GenericMatrix<Number> second)
+            throws MatrixServiceException {
         try {
+            if (first.getHorizontalSize() != second.getVerticalSize()) {
+                throw new MatrixException("count of rows != count of columns");
+            }
+            GenericMatrix<Number> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
             for (int i = 0; i < first.getVerticalSize(); ++i) {
                 for (int j = 0; j < second.getHorizontalSize(); ++j) {
                     double value = 0;
                     for (int k = 0; k < first.getHorizontalSize(); ++k) {
-                        value += first.getElement(i, k) * second.getElement(k, j);
+                        value += (first.getElement(i, k).doubleValue() * second.getElement(k, j).doubleValue());
                     }
                     result.setElement(i, j, value);
                 }
             }
+            return result;
         } catch (MatrixException e) {
-            throw new MatrixException();
+            throw new MatrixServiceException();
         }
-        return result;
     }
 
-    public Matrix matrixSum(Matrix first, Matrix second) throws MatrixException {
-        if (first.getVerticalSize() != second.getVerticalSize() &&
-                first.getHorizontalSize() != second.getHorizontalSize()) {
-            throw new MatrixException();
-        } else {
-
-            Matrix result = new Matrix(first.getVerticalSize(), second.getHorizontalSize());
-
-            for (int i = 0; i < first.getHorizontalSize(); ++i) {
-                for (int j = 0; j < second.getVerticalSize(); ++j) {
-                    result.setElement(i, j, first.getElement(i, j) + second.getElement(i, j));
+    public GenericMatrix<?> matrixSum(GenericMatrix<?> first, GenericMatrix<?> second) throws MatrixServiceException {
+        try {
+            if (first.getVerticalSize() != second.getVerticalSize() &&
+                    first.getHorizontalSize() != second.getHorizontalSize()) {
+                throw new MatrixException();
+            }
+            GenericMatrix<?> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
+            for (int i = 0; i < first.getVerticalSize(); ++i) {
+                for (int j = 0; j < second.getHorizontalSize(); ++j) {
+                    result.setElement(i, j, first.getElement(i, j).doubleValue() +
+                            second.getElement(i, j).doubleValue());
                 }
             }
             return result;
+        } catch (MatrixException e) {
+            throw new MatrixServiceException();
         }
     }
 
-    public Matrix matrixSub(Matrix first, Matrix second) throws MatrixException {
-        if (first.getVerticalSize() != second.getVerticalSize() &&
-                first.getHorizontalSize() != second.getHorizontalSize()) {
-            throw new MatrixException();
-        } else {
+    public GenericMatrix<?> matrixSub(GenericMatrix<?> first, GenericMatrix<?> second) throws MatrixServiceException {
+        try {
+            if (first.getVerticalSize() != second.getVerticalSize() &&
+                    first.getHorizontalSize() != second.getHorizontalSize()) {
+                throw new MatrixException();
+            }
+            GenericMatrix<?> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
 
-            Matrix result = new Matrix(first.getVerticalSize(), second.getHorizontalSize());
-            for (int i = 0; i < first.getHorizontalSize(); ++i) {
-                for (int j = 0; j < second.getVerticalSize(); ++j) {
-                    result.setElement(i, j, first.getElement(i, j) - second.getElement(i, j));
+            for (int i = 0; i < first.getVerticalSize(); ++i) {
+                for (int j = 0; j < second.getHorizontalSize(); ++j) {
+                    result.setElement(i, j, first.getElement(i, j).doubleValue() -
+                            second.getElement(i, j).doubleValue());
                 }
             }
             return result;
+        } catch (MatrixException e) {
+            throw new MatrixServiceException();
         }
     }
 
-    public Matrix transposeMatrix(Matrix first) throws MatrixException {
-        Matrix result = new Matrix(first.getVerticalSize(), first.getHorizontalSize());
-        for (int i = 0; i < first.getVerticalSize(); ++i) {
-            for (int j = 0; j < first.getHorizontalSize(); ++j) {
-                result.setElement(i, j, first.getElement(j, i));
+    public GenericMatrix<?> transposeMatrix(GenericMatrix<?> first) throws MatrixServiceException {
+        try {
+            GenericMatrix<?> result = new GenericMatrix<>(first.getHorizontalSize(), first.getVerticalSize());
+
+            for (int i = 0; i < first.getHorizontalSize(); ++i) {
+                for (int j = 0; j < first.getVerticalSize(); ++j) {
+                    result.setElement(i, j, first.getElement(j, i));
+                }
             }
+            return result;
+        } catch (MatrixException e) {
+            throw new MatrixServiceException();
         }
-        return result;
     }
 
-    public static Matrix inverseMatrix(Matrix firstMatrix) throws MatrixException {
-        Matrix x = new Matrix(firstMatrix.getVerticalSize(), firstMatrix.getVerticalSize());
-        Matrix b = new Matrix(firstMatrix.getVerticalSize(), firstMatrix.getVerticalSize());
-        int[] index = new int[firstMatrix.getVerticalSize()];
+    public GenericMatrix<Number> inverseMatrix(GenericMatrix<Number> matrix) throws MatrixServiceException {
+        try {
 
-        for (int i = 0; i < firstMatrix.getVerticalSize(); i++) {
-            b.setElement(i, i, 1);
-        }
+            if (matrix.getVerticalSize() != matrix.getHorizontalSize()) {
+                throw new MatrixException();
+            }
 
-        gauss(firstMatrix, index);
+            double tmp;
+            Number[][] A = new Number[matrix.getVerticalSize()][matrix.getVerticalSize()];
 
-        for (int i = 0; i < firstMatrix.getVerticalSize() - 1; i++) {
-            for (int j = i + 1; j < firstMatrix.getVerticalSize(); j++) {
-                for (int k = 0; k < firstMatrix.getVerticalSize(); k++) {
-                    b.setElement(index[j], k, (firstMatrix.getElement(index[j], (int) (i * b.getElement(index[i], k)))));
+            copyMatrix(A, matrix);
+            float[][] E = new float[A.length][A.length];
+
+            createIdentityMatrix(A, E);
+
+            for (int k = 0; k < A.length; k++) {
+                tmp = A[k][k].doubleValue();
+
+                for (int j = 0; j < A.length; j++) {
+                    A[k][j] = A[k][j].doubleValue() / tmp;
+                    E[k][j] /= tmp;
+                }
+
+                for (int i = k + 1; i < A.length; i++) {
+                    calculation(A, E, i, k);
                 }
             }
-        }
 
-        for (int i = 0; i < firstMatrix.getVerticalSize(); ++i) {
-            x.setElement(firstMatrix.getVerticalSize() - 1,
-                    i, b.getElement(index[firstMatrix.getVerticalSize() - 1], (int) (i /
-                            firstMatrix.getElement(index[firstMatrix.getVerticalSize() - 1], firstMatrix.getVerticalSize() - 1))));
-            for (int j = firstMatrix.getVerticalSize() - 2; j >= 0; --j) {
-                x[j][i] = b[index[j]][i];
-                for (int k = j + 1; k < firstMatrix.getVerticalSize(); ++k) {
-                    x[j][i] -= firstMatrix[index[j]][k] * x[k][i];
+            for (int k = A.length - 1; k > 0; k--) {
+                for (int i = k - 1; i >= 0; i--) {
+                    calculation(A, E, i, k);
                 }
-                x[j][i] /= firstMatrix[index[j]][j];
             }
-        }
 
-        return x;
+            for (int i = 0; i < A.length; i++) {
+                for (int j = 0; j < A.length; j++) {
+                    A[i][j] = (double) E[i][j];
+                }
+            }
+
+            GenericMatrix<Number> result = new GenericMatrix<>(matrix.getMatrix());
+            result.setMatrix(A);
+
+            return result;
+        } catch (MatrixException e) {
+            throw new MatrixServiceException();
+        }
     }
 
-    /*
-     *
-     *  Реализация самого метода Гаусса
-     *
-     */
-
-    public static void gauss(Matrix firstMatrix, int[] index) throws MatrixException {
-        double[] result = new double[firstMatrix.getVerticalSize()];
-        for (int i = 0; i < firstMatrix.getVerticalSize(); i++) {
-            index[i] = i;
+    private void calculation(Number[][] A, float[][] E, int i, int k) {
+        double tmp = A[i][k].doubleValue();
+        for (int j = 0; j < A.length; j++) {
+            A[i][j] = A[i][j].doubleValue() - (A[k][j].doubleValue() * tmp);
+            E[i][j] -= E[k][j] * tmp;
         }
+    }
 
-        for (int i = 0; i < firstMatrix.getVerticalSize(); i++) {
-            double temp = 0;
-            for (int j = 0; j < firstMatrix.getVerticalSize(); j++) {
-                double temp1 = Math.abs(firstMatrix.getElement(i, j));
-                if (temp1 > temp) {
-                    temp = temp1;
-                }
-            }
-            result[i] = temp;
-        }
+    private void createIdentityMatrix(Number[][] A, float[][] E) {
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A.length; j++) {
+                E[i][j] = 0f;
 
-        int k = 0;
-        for (int j = 0; j < firstMatrix.getVerticalSize() - 1; j++) {
-            double pi1 = 0;
-            for (int i = j; i < firstMatrix.getVerticalSize(); i++) {
-                double pi0 = Math.abs(firstMatrix.getElement(index[i], i));
-                pi0 /= result[index[i]];
-                if (pi0 > pi1) {
-                    pi1 = pi0;
-                    k = i;
-                }
-            }
-
-            int itmp = index[j];
-            index[j] = index[k];
-            index[k] = itmp;
-            for (int i = j + 1; i < firstMatrix.getVerticalSize(); i++) {
-                double pj = firstMatrix.getElement(index[i], j)) /firstMatrix.getElement(index[j], j));
-                firstMatrix.setElement(index[i], j, pj);
-                for (int l = j + 1; l < firstMatrix.getVerticalSize(); l++) {
-                    firstMatrix.setElement(index[i], l, pj * firstMatrix.getElement(index[j], l));
+                if (i == j) {
+                    E[i][j] = 1f;
                 }
             }
         }
     }
 
+    private void copyMatrix(Number[][] A, GenericMatrix<Number> matrix) throws MatrixException {
+        for (int i = 0; i < matrix.getVerticalSize(); ++i) {
+            for (int j = 0; j < matrix.getHorizontalSize(); ++j) {
+                A[i][j] = matrix.getElement(i, j).doubleValue();
+            }
+        }
+    }
+
+    public void fillMatrix(GenericMatrix<Number> matrix, int diapason) throws MatrixException {
+        for (int i = 0; i < matrix.getVerticalSize(); ++i) {
+            for (int j = 0; j < matrix.getHorizontalSize(); ++j) {
+                matrix.setElement(i, j, (int) (Math.random() * (2 * diapason)) - diapason);
+            }
+        }
+    }
 }

@@ -7,7 +7,7 @@ import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceEx
 import by.yahimovich.task02arraysdecomposition.service.MatrixService;
 
 /**
- * Transpose matrix.
+ * Inverse matrix
  *
  * @author Egor Yahimovich
  * @version 1.0
@@ -16,22 +16,22 @@ import by.yahimovich.task02arraysdecomposition.service.MatrixService;
  * @see GenericMatrix
  */
 
-public class MatrixTransposes implements Command {
+public class MatrixInverse implements Command {
 
     private final MatrixService service;
-    private final GenericMatrix<?> matrix;
+    private final GenericMatrix<Number> matrix;
 
     /**
      * Constructor these parameters.
      *
      * @param service 1st parameter provides access to the methods of the MatrixService class.
      * @param matrix  2nd parameter takes matrix.
-     *                Result - transpose matrix.
+     *                Result - inverse matrix.
      * @see MatrixService
      * @see GenericMatrix
      */
 
-    public MatrixTransposes(MatrixService service, GenericMatrix<?> matrix) {
+    public MatrixInverse(MatrixService service, GenericMatrix<Number> matrix) {
         this.service = service;
         this.matrix = matrix;
     }
@@ -45,7 +45,7 @@ public class MatrixTransposes implements Command {
     @Override
     public void execute() throws ControllerException {
         try {
-            System.out.print(service.transposeMatrix(matrix));
+            System.out.print(service.inverseMatrix(matrix));
         } catch (MatrixServiceException e) {
             throw new ControllerException();
         }

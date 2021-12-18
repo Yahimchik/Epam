@@ -1,16 +1,42 @@
 package by.yahimovich.task02arraysdecomposition.controller;
 
-import by.yahimovich.task02arraysdecomposition.exception.*;
+import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
+import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
+import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
+import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Command manager
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Command
+ * @see List
+ * @see ArrayList
+ * @see MatrixException
+ * @see ArrayException
+ */
 
 public class CommandManager {
 
     private final List<Command> commands = new ArrayList<>();
 
-    public void executeOperation(Command command) throws MatrixException, ArrayException {
-        commands.add(command);
-        command.execute();
+    /**
+     * Execute command
+     *
+     * @param command 1st parameter lets to know the command.
+     * @throws ControllerException see exception class.
+     */
+
+    public void executeOperation(Command command) throws ControllerException, ArrayException {
+        try {
+            commands.add(command);
+            command.execute();
+        } catch (MatrixServiceException e) {
+            throw new ControllerException();
+        }
     }
 }

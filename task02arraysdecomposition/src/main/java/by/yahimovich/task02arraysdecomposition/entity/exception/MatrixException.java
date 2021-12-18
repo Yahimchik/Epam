@@ -1,4 +1,4 @@
-package by.yahimovich.task02arraysdecomposition.exception;
+package by.yahimovich.task02arraysdecomposition.entity.exception;
 
 public class MatrixException extends Exception {
 
