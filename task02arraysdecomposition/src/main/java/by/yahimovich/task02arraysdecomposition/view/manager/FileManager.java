@@ -7,12 +7,9 @@ import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
 import by.yahimovich.task02arraysdecomposition.service.MatrixService;
 import by.yahimovich.task02arraysdecomposition.view.exception.ViewException;
 import by.yahimovich.task02arraysdecomposition.view.inputinfo.IoInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class FileManager extends Manager {
 
-    public static final Logger LOGGER = LogManager.getLogger(FileManager.class);
     IoInfo in = new IoInfo();
     CommandManager manager = new CommandManager();
 

@@ -1,5 +1,11 @@
 package by.yahimovich.task02arraysdecomposition.entity;
 
+/**
+ * Generic class matrix.
+ *
+ * @author Egor Yahimovich
+ */
+
 public class GenericMatrix<Type extends Number> {
 
     private Type[][] matrix;

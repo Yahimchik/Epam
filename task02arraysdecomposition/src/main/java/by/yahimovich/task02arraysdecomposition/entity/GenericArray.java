@@ -1,12 +1,33 @@
 package by.yahimovich.task02arraysdecomposition.entity;
 
+/**
+ * Generic class array.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Number
+ */
+
 public class GenericArray<Type extends Number> {
 
     private final Type[] array;
 
+    /**
+     * Constructor this one parameter.
+     *
+     * @param array create class object this values of array.
+     */
+
     public GenericArray(Type[] array) {
         this.array = array;
     }
+
+    /**
+     * Constructor this one parameter.
+     *
+     * @param N array length.
+     * @throws ArithmeticException Throw new exception when N < 1.
+     */
 
     public GenericArray(int N) throws ArithmeticException {
         if (N < 1) {
@@ -15,18 +36,44 @@ public class GenericArray<Type extends Number> {
         array = (Type[]) new Number[N];
     }
 
+    /**
+     * Method length.
+     *
+     * @return length of the array.
+     */
+
     public int length() {
         return array.length;
     }
+
+    /**
+     * Method getElement.
+     *
+     * @return value of array on index position.
+     */
 
     public Number getElement(int index) {
         return array[index];
     }
 
+    /**
+     * Method setElement.
+     *
+     * @param index index of array.
+     * @param value new value.
+     *              This method set value of array on index position.
+     */
+
     public void setElement(int index, Number value) {
         array[index] = (Type) value;
     }
 
+    /**
+     * Method toString.
+     * Give opportunity to output array in correct form.
+     *
+     * @return str String
+     */
 
     @Override
     public String toString() {
@@ -38,6 +85,12 @@ public class GenericArray<Type extends Number> {
         str.append("\n");
         return str.toString();
     }
+
+    /**
+     * Calculate individual hashCode for class object.
+     *
+     * @return int value.
+     */
 
     @Override
     public int hashCode() {
@@ -52,6 +105,13 @@ public class GenericArray<Type extends Number> {
         }
         return result;
     }
+
+    /**
+     * Method equals.
+     * Compares to object of the class.
+     *
+     * @return boolean. If o1 == o2 -> true else -> false.
+     */
 
     @Override
     public boolean equals(Object object) {
