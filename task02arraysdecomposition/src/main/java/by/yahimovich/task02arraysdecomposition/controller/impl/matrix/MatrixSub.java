@@ -3,7 +3,6 @@ package by.yahimovich.task02arraysdecomposition.controller.impl.matrix;
 import by.yahimovich.task02arraysdecomposition.controller.Command;
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
 import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
-import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceException;
 import by.yahimovich.task02arraysdecomposition.service.MatrixService;
 
 /**
@@ -49,7 +48,7 @@ public class MatrixSub implements Command {
     public void execute() throws ControllerException {
         try {
             System.out.print(service.matrixSub(first, second));
-        } catch (MatrixServiceException e) {
+        } catch (SecurityException e) {
             throw new ControllerException();
         }
     }

@@ -1,7 +1,6 @@
 package by.yahimovich.task02arraysdecomposition.view.inputinfo;
 
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,8 +8,8 @@ import java.util.Scanner;
 
 public class InputMatrixFromFile extends IoInfo {
 
-    public GenericMatrix<Number> inputMatrix() throws FileNotFoundException, MatrixException {
-        scanner = new Scanner(new File("matrix.txt"));
+    public GenericMatrix<Number> input(String fileName) throws FileNotFoundException, ArithmeticException {
+        scanner = new Scanner(new File(fileName));
         int rows = scanner.nextInt();
         int columns = scanner.nextInt();
         GenericMatrix<Number> matrix = new GenericMatrix<>(rows, columns);

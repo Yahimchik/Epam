@@ -1,18 +1,22 @@
 package by.yahimovich.task02arraysdecomposition.view.manager;
 
 import by.yahimovich.task02arraysdecomposition.controller.CommandManager;
+import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
 import by.yahimovich.task02arraysdecomposition.controller.impl.array.*;
 import by.yahimovich.task02arraysdecomposition.entity.GenericArray;
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
 import by.yahimovich.task02arraysdecomposition.service.ArrayService;
+import by.yahimovich.task02arraysdecomposition.view.exception.ViewException;
 import by.yahimovich.task02arraysdecomposition.view.inputinfo.IoInfo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ArrayManager {
+
+    public static final Logger LOGGER = LogManager.getLogger(FileManager.class);
     IoInfo in = new IoInfo();
     CommandManager manager = new CommandManager();
 
-    public void arrayManager(GenericArray<Number> array) throws MatrixException, ArrayException {
+    public void arrayManager(GenericArray<Number> array) throws ViewException {
 
         in.output("""
                 Menu:
@@ -32,24 +36,28 @@ public class ArrayManager {
                 break;
             }
 
-            switch ((int) choice) {
-                case 1:
-                    manager.executeOperation(new BubbleSort(new ArrayService(), array));
-                    break;
-                case 2:
-                    manager.executeOperation(new InsertionSort(new ArrayService(), array));
-                    break;
-                case 3:
-                    manager.executeOperation(new SelectionSort(new ArrayService(), array));
-                    break;
-                case 4:
-                    manager.executeOperation(new ShakerSort(new ArrayService(), array));
-                    break;
-                case 5:
-                    manager.executeOperation(new ShellSort(new ArrayService(), array));
-                    break;
-                default:
-                    break;
+            try {
+                switch ((int) choice) {
+                    case 1:
+                        manager.executeOperation(new BubbleSort(new ArrayService(), array));
+                        break;
+                    case 2:
+                        manager.executeOperation(new InsertionSort(new ArrayService(), array));
+                        break;
+                    case 3:
+                        manager.executeOperation(new SelectionSort(new ArrayService(), array));
+                        break;
+                    case 4:
+                        manager.executeOperation(new ShakerSort(new ArrayService(), array));
+                        break;
+                    case 5:
+                        manager.executeOperation(new ShellSort(new ArrayService(), array));
+                        break;
+                    default:
+                        break;
+                }
+            } catch (ControllerException e) {
+                throw new ViewException("Incorrect array!");
             }
         }
     }

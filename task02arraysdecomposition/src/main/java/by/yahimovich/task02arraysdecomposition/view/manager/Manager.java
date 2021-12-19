@@ -1,11 +1,11 @@
 package by.yahimovich.task02arraysdecomposition.view.manager;
 
+import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
 import by.yahimovich.task02arraysdecomposition.entity.GenericArray;
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
 import by.yahimovich.task02arraysdecomposition.service.ArrayService;
 import by.yahimovich.task02arraysdecomposition.service.MatrixService;
+import by.yahimovich.task02arraysdecomposition.view.exception.ViewException;
 import by.yahimovich.task02arraysdecomposition.view.inputinfo.InputArrayFromFile;
 import by.yahimovich.task02arraysdecomposition.view.inputinfo.InputMatrixFromFile;
 import by.yahimovich.task02arraysdecomposition.view.inputinfo.IoInfo;
@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 public class Manager {
     public static final Logger LOGGER = LogManager.getLogger(FileManager.class);
 
-    public void run() throws ArrayException, FileNotFoundException {
+    public void run() throws FileNotFoundException {
 
         IoInfo in = new IoInfo();
 
@@ -42,34 +42,32 @@ public class Manager {
                 switch ((int) choice) {
                     case 1:
                         in.output("\nFill matrix from file.\n");
-                        new FileManager().matrixManager(new InputMatrixFromFile().inputMatrix());
+                        new FileManager()
+                                .matrixManager(new InputMatrixFromFile()
+                                        .input("matrix.txt"));
                         break;
                     case 2:
                         in.output("\nFill array from file.");
-                        new ArrayManager().arrayManager(new InputArrayFromFile().inputArray());
+                        new ArrayManager()
+                                .arrayManager(new InputArrayFromFile()
+                                        .input("array.txt"));
                         break;
                     case 3:
                         in.output("\nFill matrix by random values.\n");
-                        GenericMatrix<Number> matrix = new GenericMatrix<>(2, 2);
-                        MatrixService service = new MatrixService();
-                        service.fillMatrix(matrix, 10);
-                        System.out.println(matrix);
-                        new FileManager().matrixManager(matrix);
+                        new FileManager()
+                                .matrixManager(new MatrixService()
+                                        .fillMatrix(new GenericMatrix<>(2, 2), 10));
                         break;
                     case 4:
                         in.output("\nFill array by random values.\n");
-                        GenericArray<Number> array = new GenericArray<>(5);
-                        ArrayService service1 = new ArrayService();
-                        service1.fillArray(array, 10);
-                        System.out.println(array);
-                        new ArrayManager().arrayManager(array);
+                        new ArrayManager()
+                                .arrayManager(new ArrayService()
+                                        .fillArray(new GenericArray<>(0), 10));
                     default:
                         break;
                 }
-            } catch (MatrixException e) {
-                LOGGER.error("Incorrect matrix!");
-            } catch (ArrayException r) {
-                LOGGER.error("Incorrect array!");
+            } catch (ArithmeticException e) {
+                LOGGER.error("Incorrect values!");
             }
         }
     }

@@ -1,21 +1,13 @@
 package by.yahimovich.task02arraysdecomposition.controller.exception;
 
-import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceException;
+import by.yahimovich.task02arraysdecomposition.service.exception.ServiceException;
 
-public class ControllerException extends MatrixServiceException {
+public class ControllerException extends ServiceException {
 
     public ControllerException() {
     }
 
-    public ControllerException(String message) {
-        super(message);
-    }
-
-    public ControllerException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public ControllerException(Throwable cause) {
-        super(cause);
+    public ControllerException(String s) {
+        super(s);
     }
 }

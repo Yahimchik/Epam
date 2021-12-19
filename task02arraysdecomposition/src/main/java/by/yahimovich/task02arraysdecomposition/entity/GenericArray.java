@@ -1,7 +1,5 @@
 package by.yahimovich.task02arraysdecomposition.entity;
 
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
-
 public class GenericArray<Type extends Number> {
 
     private final Type[] array;
@@ -10,9 +8,9 @@ public class GenericArray<Type extends Number> {
         this.array = array;
     }
 
-    public GenericArray(int N) throws ArrayException {
+    public GenericArray(int N) throws ArithmeticException {
         if (N < 1) {
-            throw new ArrayException();
+            throw new ArithmeticException("N < 1");
         }
         array = (Type[]) new Number[N];
     }

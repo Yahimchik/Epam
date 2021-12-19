@@ -1,17 +1,16 @@
 package by.yahimovich.task02arraysdecomposition.service;
 
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
-import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceException;
+import by.yahimovich.task02arraysdecomposition.service.exception.ServiceException;
 
 public class MatrixService {
 
 
     public GenericMatrix<Number> multiplyMatrix(GenericMatrix<Number> first, GenericMatrix<Number> second)
-            throws MatrixServiceException {
+            throws ServiceException {
         try {
             if (first.getHorizontalSize() != second.getVerticalSize()) {
-                throw new MatrixException("count of rows != count of columns");
+                throw new ArithmeticException("count of rows != count of columns");
             }
             GenericMatrix<Number> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
             for (int i = 0; i < first.getVerticalSize(); ++i) {
@@ -24,16 +23,16 @@ public class MatrixService {
                 }
             }
             return result;
-        } catch (MatrixException e) {
-            throw new MatrixServiceException();
+        } catch (ArithmeticException e) {
+            throw new ServiceException();
         }
     }
 
-    public GenericMatrix<?> matrixSum(GenericMatrix<?> first, GenericMatrix<?> second) throws MatrixServiceException {
+    public GenericMatrix<?> matrixSum(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
         try {
             if (first.getVerticalSize() != second.getVerticalSize() &&
                     first.getHorizontalSize() != second.getHorizontalSize()) {
-                throw new MatrixException();
+                throw new ArithmeticException();
             }
             GenericMatrix<?> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
             for (int i = 0; i < first.getVerticalSize(); ++i) {
@@ -43,16 +42,16 @@ public class MatrixService {
                 }
             }
             return result;
-        } catch (MatrixException e) {
-            throw new MatrixServiceException();
+        } catch (ArithmeticException e) {
+            throw new ServiceException();
         }
     }
 
-    public GenericMatrix<?> matrixSub(GenericMatrix<?> first, GenericMatrix<?> second) throws MatrixServiceException {
+    public GenericMatrix<?> matrixSub(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
         try {
             if (first.getVerticalSize() != second.getVerticalSize() &&
                     first.getHorizontalSize() != second.getHorizontalSize()) {
-                throw new MatrixException();
+                throw new ArithmeticException();
             }
             GenericMatrix<?> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
 
@@ -63,12 +62,12 @@ public class MatrixService {
                 }
             }
             return result;
-        } catch (MatrixException e) {
-            throw new MatrixServiceException();
+        } catch (ArithmeticException e) {
+            throw new ServiceException();
         }
     }
 
-    public GenericMatrix<?> transposeMatrix(GenericMatrix<?> first) throws MatrixServiceException {
+    public GenericMatrix<?> transposeMatrix(GenericMatrix<?> first) throws ServiceException {
         try {
             GenericMatrix<?> result = new GenericMatrix<>(first.getHorizontalSize(), first.getVerticalSize());
 
@@ -78,16 +77,16 @@ public class MatrixService {
                 }
             }
             return result;
-        } catch (MatrixException e) {
-            throw new MatrixServiceException();
+        } catch (ArithmeticException e) {
+            throw new ServiceException();
         }
     }
 
-    public GenericMatrix<Number> inverseMatrix(GenericMatrix<Number> matrix) throws MatrixServiceException {
+    public GenericMatrix<Number> inverseMatrix(GenericMatrix<Number> matrix) throws ServiceException {
         try {
 
             if (matrix.getVerticalSize() != matrix.getHorizontalSize()) {
-                throw new MatrixException();
+                throw new ArithmeticException();
             }
 
             double tmp;
@@ -127,8 +126,8 @@ public class MatrixService {
             result.setMatrix(A);
 
             return result;
-        } catch (MatrixException e) {
-            throw new MatrixServiceException();
+        } catch (ArithmeticException e) {
+            throw new ServiceException();
         }
     }
 
@@ -152,7 +151,7 @@ public class MatrixService {
         }
     }
 
-    private void copyMatrix(Number[][] A, GenericMatrix<Number> matrix) throws MatrixException {
+    private void copyMatrix(Number[][] A, GenericMatrix<Number> matrix) throws ArithmeticException {
         for (int i = 0; i < matrix.getVerticalSize(); ++i) {
             for (int j = 0; j < matrix.getHorizontalSize(); ++j) {
                 A[i][j] = matrix.getElement(i, j).doubleValue();
@@ -160,11 +159,12 @@ public class MatrixService {
         }
     }
 
-    public void fillMatrix(GenericMatrix<Number> matrix, int diapason) throws MatrixException {
+    public GenericMatrix<Number> fillMatrix(GenericMatrix<Number> matrix, int diapason) throws ArithmeticException {
         for (int i = 0; i < matrix.getVerticalSize(); ++i) {
             for (int j = 0; j < matrix.getHorizontalSize(); ++j) {
                 matrix.setElement(i, j, (int) (Math.random() * (2 * diapason)) - diapason);
             }
         }
+        return matrix;
     }
 }

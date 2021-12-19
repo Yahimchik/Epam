@@ -1,8 +1,8 @@
 package by.yahimovich.task02arraysdecomposition.controller.impl.array;
 
 import by.yahimovich.task02arraysdecomposition.controller.Command;
+import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
 import by.yahimovich.task02arraysdecomposition.entity.GenericArray;
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
 import by.yahimovich.task02arraysdecomposition.service.ArrayService;
 
 /**
@@ -38,11 +38,15 @@ public class InsertionSort implements Command {
     /**
      * Method execute give opportunity to calculate and show result of it  work.
      *
-     * @throws ArrayException This exception throws at the moment when the passed array is not created correctly.
+     * @throws ControllerException This exception throws at the moment when the passed array is not created correctly.
      */
 
     @Override
-    public void execute() throws ArrayException {
-        System.out.println(service.insertionSort(genericArray));
+    public void execute() throws ControllerException {
+        try {
+            System.out.println(service.insertionSort(genericArray));
+        } catch (SecurityException e) {
+            throw new ControllerException();
+        }
     }
 }

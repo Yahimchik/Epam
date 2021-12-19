@@ -1,7 +1,5 @@
 package by.yahimovich.task02arraysdecomposition.controller;
 
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
 import by.yahimovich.task02arraysdecomposition.view.manager.Manager;
 
 import java.io.FileNotFoundException;
@@ -23,7 +21,7 @@ public class Runner {
      * Runs the run method.
      */
 
-    public static void main(String[] args) throws MatrixException, ArrayException, FileNotFoundException {
+    public static void main(String[] args) throws ArithmeticException, FileNotFoundException {
         Manager manager = new Manager();
         manager.run();
     }

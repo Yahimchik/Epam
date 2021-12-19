@@ -1,9 +1,7 @@
 package by.yahimovich.task02arraysdecomposition.controller;
 
 import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
-import by.yahimovich.task02arraysdecomposition.service.exception.MatrixServiceException;
+import by.yahimovich.task02arraysdecomposition.service.exception.ServiceException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +14,6 @@ import java.util.List;
  * @see Command
  * @see List
  * @see ArrayList
- * @see MatrixException
- * @see ArrayException
  */
 
 public class CommandManager {
@@ -31,11 +27,11 @@ public class CommandManager {
      * @throws ControllerException see exception class.
      */
 
-    public void executeOperation(Command command) throws ControllerException, ArrayException {
+    public void executeOperation(Command command) throws ControllerException {
         try {
             commands.add(command);
             command.execute();
-        } catch (MatrixServiceException e) {
+        } catch (ServiceException e) {
             throw new ControllerException();
         }
     }

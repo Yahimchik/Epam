@@ -1,12 +1,11 @@
 package by.yahimovich.task02arraysdecomposition.view.manager;
 
 import by.yahimovich.task02arraysdecomposition.controller.CommandManager;
+import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
 import by.yahimovich.task02arraysdecomposition.controller.impl.matrix.*;
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
-import by.yahimovich.task02arraysdecomposition.entity.exception.ArrayException;
-import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
 import by.yahimovich.task02arraysdecomposition.service.MatrixService;
+import by.yahimovich.task02arraysdecomposition.view.exception.ViewException;
 import by.yahimovich.task02arraysdecomposition.view.inputinfo.IoInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +16,7 @@ public class FileManager extends Manager {
     IoInfo in = new IoInfo();
     CommandManager manager = new CommandManager();
 
-    public void matrixManager(GenericMatrix<Number> matrix) throws MatrixException, ArrayException {
+    public void matrixManager(GenericMatrix<Number> matrix) throws ViewException {
 
         in.output("""
                 Menu:
@@ -58,7 +57,7 @@ public class FileManager extends Manager {
                         break;
                 }
             } catch (ControllerException e) {
-                LOGGER.error("Incorrect matrix!");
+                throw new ViewException("Incorrect matrix!");
             }
         }
     }

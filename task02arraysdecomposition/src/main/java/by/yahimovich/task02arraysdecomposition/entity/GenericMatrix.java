@@ -1,7 +1,5 @@
 package by.yahimovich.task02arraysdecomposition.entity;
 
-import by.yahimovich.task02arraysdecomposition.entity.exception.MatrixException;
-
 public class GenericMatrix<Type extends Number> {
 
     private Type[][] matrix;
@@ -10,9 +8,9 @@ public class GenericMatrix<Type extends Number> {
         this.matrix = matrix;
     }
 
-    public GenericMatrix(int rows, int columns) throws MatrixException {
+    public GenericMatrix(int rows, int columns) throws ArithmeticException {
         if (rows < 1 || columns < 1) {
-            throw new MatrixException();
+            throw new ArithmeticException("rows < 1 || columns < 1");
         }
 
         this.matrix = (Type[][]) new Number[rows][columns];
@@ -34,19 +32,19 @@ public class GenericMatrix<Type extends Number> {
         return matrix[0].length;
     }
 
-    public Number getElement(int i, int j) throws MatrixException {
+    public Number getElement(int i, int j) throws ArithmeticException {
         if (checkRange(i, j)) {
             return matrix[i][j];
         } else {
-            throw new MatrixException();
+            throw new ArithmeticException();
         }
     }
 
-    public void setElement(int i, int j, Number object) throws MatrixException {
+    public void setElement(int i, int j, Number object) throws ArithmeticException {
         if (checkRange(i, j)) {
             matrix[i][j] = (Type) object;
         } else {
-            throw new MatrixException();
+            throw new ArithmeticException();
         }
     }
 
