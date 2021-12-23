@@ -3,8 +3,25 @@ package by.yahimovich.task02arraysdecomposition.service;
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
 import by.yahimovich.task02arraysdecomposition.service.exception.ServiceException;
 
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Number
+ * @see ServiceException
+ */
+
 public class MatrixService {
 
+    /**
+     * Multiply matrix.
+     *
+     * @param first  1st parameter is first matrix.
+     * @param second 2nd parameter is second matrix.
+     *               Result - matrix multiplication.
+     * @return GenericMatrix
+     * @throws ServiceException    if try -> catch block takes ArithmeticException -> throws ServiceException
+     * @throws ArithmeticException if count of roes != count of columns -> throws ArithmeticException.
+     */
 
     public GenericMatrix<Number> multiplyMatrix(GenericMatrix<Number> first, GenericMatrix<Number> second)
             throws ServiceException {
@@ -28,6 +45,17 @@ public class MatrixService {
         }
     }
 
+    /**
+     * Sum matrix.
+     *
+     * @param first  1st parameter is first matrix.
+     * @param second 2nd parameter is second matrix.
+     *               Result - matrix sum.
+     * @return GenericMatrix
+     * @throws ServiceException    if try -> catch block takes ArithmeticException -> throws ServiceException
+     * @throws ArithmeticException if rows and columns of matrix not equal -> throws ArithmeticException.
+     */
+
     public GenericMatrix<?> matrixSum(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
         try {
             if (first.getVerticalSize() != second.getVerticalSize() &&
@@ -46,6 +74,17 @@ public class MatrixService {
             throw new ServiceException();
         }
     }
+
+    /**
+     * Subtract matrix.
+     *
+     * @param first  1st parameter is first matrix.
+     * @param second 2nd parameter is second matrix.
+     *               Result - matrix subtract.
+     * @return GenericMatrix
+     * @throws ServiceException    if try -> catch block takes ArithmeticException -> throws ServiceException
+     * @throws ArithmeticException if count of roes != count of columns -> throws ArithmeticException.
+     */
 
     public GenericMatrix<?> matrixSub(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
         try {
@@ -67,6 +106,15 @@ public class MatrixService {
         }
     }
 
+    /**
+     * Transpose matrix.
+     *
+     * @param first 1st parameter is matrix.
+     *              Result - matrix transpose.
+     * @return GenericMatrix
+     */
+
+
     public GenericMatrix<?> transposeMatrix(GenericMatrix<?> first) throws ServiceException {
         try {
             GenericMatrix<?> result = new GenericMatrix<>(first.getHorizontalSize(), first.getVerticalSize());
@@ -81,6 +129,17 @@ public class MatrixService {
             throw new ServiceException();
         }
     }
+
+    /**
+     * Inverse matrix.
+     *
+     * @param matrix parameter is take matrix.
+     *               Result - matrix inverse.
+     * @return GenericMatrix
+     * @throws ServiceException    if try -> catch block takes ArithmeticException -> throws ServiceException
+     * @throws ArithmeticException if the matrix is not square -> throws ArithmeticException.
+     */
+
 
     public GenericMatrix<Number> inverseMatrix(GenericMatrix<Number> matrix) throws ServiceException {
         try {
@@ -131,6 +190,15 @@ public class MatrixService {
         }
     }
 
+    /**
+     * Matrix transformation.
+     *
+     * @param A matrix.
+     * @param E identity matrix.
+     * @param i first index of matrix element.
+     * @param k second index of matrix element.
+     */
+
     private void calculation(Number[][] A, float[][] E, int i, int k) {
         double tmp = A[i][k].doubleValue();
         for (int j = 0; j < A.length; j++) {
@@ -138,6 +206,13 @@ public class MatrixService {
             E[i][j] -= E[k][j] * tmp;
         }
     }
+
+    /**
+     * Create identity matrix.
+     *
+     * @param A start matrix.
+     * @param E identity matrix.
+     */
 
     private void createIdentityMatrix(Number[][] A, float[][] E) {
         for (int i = 0; i < A.length; i++) {
@@ -151,6 +226,14 @@ public class MatrixService {
         }
     }
 
+    /**
+     * Copy matrix.
+     *
+     * @param A      matrix to change.
+     * @param matrix original matrix.
+     * @throws ArithmeticException If the creation of the matrix is incorrect -> throws ArithmeticException.
+     */
+
     private void copyMatrix(Number[][] A, GenericMatrix<Number> matrix) throws ArithmeticException {
         for (int i = 0; i < matrix.getVerticalSize(); ++i) {
             for (int j = 0; j < matrix.getHorizontalSize(); ++j) {
@@ -158,6 +241,15 @@ public class MatrixService {
             }
         }
     }
+
+    /**
+     * Method fillMatrix.
+     *
+     * @param matrix   Takes matrix as parameter.
+     * @param diapason Range ov values (example: from -10 to 10).
+     * @return matrix with random values.
+     * @throws ArithmeticException If the creation of the matrix is incorrect -> throws ArithmeticException.
+     */
 
     public GenericMatrix<Number> fillMatrix(GenericMatrix<Number> matrix, int diapason) throws ArithmeticException {
         for (int i = 0; i < matrix.getVerticalSize(); ++i) {

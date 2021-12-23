@@ -8,6 +8,15 @@ import java.util.Scanner;
 
 public class InputMatrixFromFile extends IoInfo {
 
+    /**
+     * Method input.
+     *
+     * @param fileName Takes file name as parameter.
+     * @return Matrix with input values from file.
+     * @throws FileNotFoundException If file not found.
+     * @throws ArithmeticException   If the creation of the matrix is incorrect -> throws ArithmeticException.
+     */
+
     public GenericMatrix<Number> input(String fileName) throws FileNotFoundException, ArithmeticException {
         scanner = new Scanner(new File(fileName));
         int rows = scanner.nextInt();

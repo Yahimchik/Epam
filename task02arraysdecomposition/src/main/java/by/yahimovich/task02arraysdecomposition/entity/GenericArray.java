@@ -10,7 +10,7 @@ package by.yahimovich.task02arraysdecomposition.entity;
 
 public class GenericArray<Type extends Number> {
 
-    private final Type[] array;
+    private Type[] array;
 
     /**
      * Constructor this one parameter.
@@ -66,6 +66,10 @@ public class GenericArray<Type extends Number> {
 
     public void setElement(int index, Number value) {
         array[index] = (Type) value;
+    }
+
+    public void setArray(Number[] array) {
+        this.array = (Type[]) array;
     }
 
     /**

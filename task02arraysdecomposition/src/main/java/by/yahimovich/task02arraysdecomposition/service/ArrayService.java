@@ -3,7 +3,22 @@ package by.yahimovich.task02arraysdecomposition.service;
 import by.yahimovich.task02arraysdecomposition.entity.GenericArray;
 import by.yahimovich.task02arraysdecomposition.service.exception.ServiceException;
 
+/**
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see ServiceException
+ * @see Number
+ */
+
 public class ArrayService {
+
+    /**
+     * Bubble sort.
+     *
+     * @param genericArray Takes array as parameter and sort it.
+     * @return sorted array.
+     * @throws ServiceException throws new exception if try -> catch block takes ArithmeticException.
+     */
 
     public GenericArray<Number> bubbleSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
@@ -20,6 +35,14 @@ public class ArrayService {
             throw new ServiceException();
         }
     }
+
+    /**
+     * Shaker sort.
+     *
+     * @param genericArray Takes array as parameter and sort it.
+     * @return sorted array.
+     * @throws ServiceException throws new exception if try -> catch block takes ArithmeticException.
+     */
 
     public GenericArray<Number> shakerSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
@@ -49,6 +72,14 @@ public class ArrayService {
         }
     }
 
+    /**
+     * Selection sort.
+     *
+     * @param genericArray Takes array as parameter and sort it.
+     * @return sorted array.
+     * @throws ServiceException throws new exception if try -> catch block takes ArithmeticException.
+     */
+
     public GenericArray<Number> selectionSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
             chek(genericArray);
@@ -66,6 +97,14 @@ public class ArrayService {
             throw new ServiceException();
         }
     }
+
+    /**
+     * Insertion sort.
+     *
+     * @param genericArray Takes array as parameter and sort it.
+     * @return sorted array.
+     * @throws ServiceException throws new exception if try -> catch block takes ArithmeticException.
+     */
 
     public GenericArray<Number> insertionSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
@@ -89,6 +128,14 @@ public class ArrayService {
         }
     }
 
+    /**
+     * Shell sort.
+     *
+     * @param genericArray Takes array as parameter and sort it.
+     * @return sorted array.
+     * @throws ServiceException throws new exception if try -> catch block takes ArithmeticException.
+     */
+
     public GenericArray<Number> shellSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
             chek(genericArray);
@@ -108,6 +155,14 @@ public class ArrayService {
         }
     }
 
+    /**
+     * Method fillArray.
+     *
+     * @param array    Takes array as parameter
+     * @param diapason Range ov values (example: from -10 to 10).
+     * @return array with random values.
+     */
+
     public GenericArray<Number> fillArray(GenericArray<Number> array, int diapason) {
         for (int i = 0; i < array.length(); ++i) {
             array.setElement(i, (int) (Math.random() * (2 * diapason) - diapason));
@@ -115,11 +170,27 @@ public class ArrayService {
         return array;
     }
 
+    /**
+     * Method swap.
+     *
+     * @param genericArray Takes array as parameter.
+     * @param i            index of array element.
+     * @param j            index of array element.
+     *                     Result - Swaps the element at position i and the element at position j.
+     */
+
     private void swap(GenericArray<Number> genericArray, int i, int j) {
         double tmp = genericArray.getElement(i).doubleValue();
         genericArray.setElement(i, genericArray.getElement(j));
         genericArray.setElement(j, tmp);
     }
+
+    /**
+     * Method check.
+     *
+     * @param genericArray Takes array as parameter.
+     * @throws ArithmeticException if array length < 1 - throws new exception.
+     */
 
     private void chek(GenericArray<Number> genericArray) throws ArithmeticException {
         if (genericArray.length() < 1) {
