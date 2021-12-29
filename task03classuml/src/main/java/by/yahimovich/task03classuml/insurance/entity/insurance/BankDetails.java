@@ -1,4 +1,4 @@
-package by.yahimovich.task03classuml.entity.insurance;
+package by.yahimovich.task03classuml.insurance.entity.insurance;
 
 /**
  * Class bank details.

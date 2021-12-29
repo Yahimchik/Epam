@@ -9,17 +9,17 @@ import java.util.Scanner;
 /**
  * @author Egor Yahimovich
  * @version 1.0
- * @see IoInfo
+ * @see IOInfo
  */
 
-public class InputArrayFromFile extends IoInfo {
+public class InputArrayFromFile extends IOInfo {
 
     /**
      * Method input.
      *
      * @param fileName Takes file name.
      * @return array with input values from file.
-     * @throws FileNotFoundException if file not found.
+     * @throws FileNotFoundException If file not found.
      * @throws ArithmeticException   If the creation of the array is incorrect -> throws ArithmeticException.
      */
 
@@ -29,7 +29,7 @@ public class InputArrayFromFile extends IoInfo {
         GenericArray<Number> array = new GenericArray<>(N);
 
         for (int i = 0; i < N; ++i) {
-            array.setElement(i, scanner.nextDouble());
+            array.setElement(i, scanner.nextInt());
         }
         return array;
     }

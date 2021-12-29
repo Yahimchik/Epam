@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class InputMatrixFromFile extends IoInfo {
+public class InputMatrixFromFile extends IOInfo {
 
     /**
      * Method input.
@@ -25,7 +25,7 @@ public class InputMatrixFromFile extends IoInfo {
 
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < columns; ++j) {
-                matrix.setElement(i, j, scanner.nextDouble());
+                matrix.setElement(i, j, scanner.nextInt());
             }
         }
         return matrix;

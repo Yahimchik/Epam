@@ -38,27 +38,6 @@ public class GenericMatrix<Type extends Number> {
     }
 
     /**
-     * Method getMatrix.
-     *
-     * @return matrix (Number)
-     */
-
-    public Type[][] getMatrix() {
-        return matrix;
-    }
-
-    /**
-     * Method setMatrix
-     *
-     * @param matrix new matrix.
-     *               Result - set new values for matrix.
-     */
-
-    public void setMatrix(Number[][] matrix) {
-        this.matrix = (Type[][]) matrix;
-    }
-
-    /**
      * Method getVerticalSize
      *
      * @return count of rows.

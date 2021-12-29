@@ -1,4 +1,4 @@
-package by.yahimovich.task03classuml.entity.insurance.person;
+package by.yahimovich.task03classuml.insurance.entity.person;
 
 /**
  * Class initials.

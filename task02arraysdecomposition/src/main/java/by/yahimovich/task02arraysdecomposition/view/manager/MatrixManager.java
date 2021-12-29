@@ -6,11 +6,8 @@ import by.yahimovich.task02arraysdecomposition.controller.impl.matrix.*;
 import by.yahimovich.task02arraysdecomposition.entity.GenericMatrix;
 import by.yahimovich.task02arraysdecomposition.service.MatrixService;
 import by.yahimovich.task02arraysdecomposition.view.exception.ViewException;
-import by.yahimovich.task02arraysdecomposition.view.inputinfo.IoInfo;
 
-public class FileManager extends Manager {
-
-    IoInfo in = new IoInfo();
+public class MatrixManager extends Manager {
     CommandManager manager = new CommandManager();
 
     public void matrixManager(GenericMatrix<Number> matrix) throws ViewException {
@@ -32,7 +29,6 @@ public class FileManager extends Manager {
             if (choice == 6) {
                 break;
             }
-
             try {
                 switch ((int) choice) {
                     case 1:

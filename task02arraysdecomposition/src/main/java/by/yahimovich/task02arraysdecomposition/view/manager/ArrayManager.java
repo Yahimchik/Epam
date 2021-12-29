@@ -6,14 +6,8 @@ import by.yahimovich.task02arraysdecomposition.controller.impl.array.*;
 import by.yahimovich.task02arraysdecomposition.entity.GenericArray;
 import by.yahimovich.task02arraysdecomposition.service.ArrayService;
 import by.yahimovich.task02arraysdecomposition.view.exception.ViewException;
-import by.yahimovich.task02arraysdecomposition.view.inputinfo.IoInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-public class ArrayManager {
-
-    public static final Logger LOGGER = LogManager.getLogger(FileManager.class);
-    IoInfo in = new IoInfo();
+public class ArrayManager extends Manager {
     CommandManager manager = new CommandManager();
 
     public void arrayManager(GenericArray<Number> array) throws ViewException {
@@ -27,17 +21,18 @@ public class ArrayManager {
                 5. Shell sort.
                 6. Go back to main menu.""");
 
+
         while (true) {
 
             in.output("\nEnter function number: ");
-            double choice = in.input();
+            int choice = in.input();
 
             if (choice == 6) {
                 break;
             }
 
             try {
-                switch ((int) choice) {
+                switch (choice) {
                     case 1:
                         manager.executeOperation(new BubbleSort(new ArrayService(), array));
                         break;

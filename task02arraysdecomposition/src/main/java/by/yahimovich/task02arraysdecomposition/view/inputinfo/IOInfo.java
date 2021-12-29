@@ -2,16 +2,16 @@ package by.yahimovich.task02arraysdecomposition.view.inputinfo;
 
 import java.util.Scanner;
 
-public class IoInfo {
+public class IOInfo {
 
     public Scanner scanner = new Scanner(System.in);
 
-    public double input() {
+    public int input() {
         while (!scanner.hasNextInt()) {
             System.out.print("Try again: ");
             scanner.next();
         }
-        return scanner.nextDouble();
+        return scanner.nextInt();
     }
 
     public void output(String str) {

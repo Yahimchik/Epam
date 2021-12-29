@@ -1,7 +1,6 @@
 package by.yahimovich.task02arraysdecomposition.view.exception;
 
 import by.yahimovich.task02arraysdecomposition.controller.exception.ControllerException;
-import by.yahimovich.task02arraysdecomposition.service.exception.ServiceException;
 
 /**
  * Throw exception for view part.

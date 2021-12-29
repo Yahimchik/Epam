@@ -115,9 +115,9 @@ public class MatrixService {
      */
 
 
-    public GenericMatrix<?> transposeMatrix(GenericMatrix<?> first) throws ServiceException {
+    public GenericMatrix<Number> transposeMatrix(GenericMatrix<Number> first) throws ServiceException {
         try {
-            GenericMatrix<?> result = new GenericMatrix<>(first.getHorizontalSize(), first.getVerticalSize());
+            GenericMatrix<Number> result = new GenericMatrix<>(first.getHorizontalSize(), first.getVerticalSize());
 
             for (int i = 0; i < first.getHorizontalSize(); ++i) {
                 for (int j = 0; j < first.getVerticalSize(); ++j) {
@@ -151,7 +151,7 @@ public class MatrixService {
             double tmp;
             Number[][] A = new Number[matrix.getVerticalSize()][matrix.getVerticalSize()];
 
-            copyMatrix(A, matrix);
+            copyMatrixForInverseMethod(A, matrix);
             float[][] E = new float[A.length][A.length];
 
             createIdentityMatrix(A, E);
@@ -181,10 +181,7 @@ public class MatrixService {
                 }
             }
 
-            GenericMatrix<Number> result = new GenericMatrix<>(matrix.getMatrix());
-            result.setMatrix(A);
-
-            return result;
+            return copyMatrix(A);
         } catch (ArithmeticException e) {
             throw new ServiceException();
         }
@@ -234,7 +231,7 @@ public class MatrixService {
      * @throws ArithmeticException If the creation of the matrix is incorrect -> throws ArithmeticException.
      */
 
-    private void copyMatrix(Number[][] A, GenericMatrix<Number> matrix) throws ArithmeticException {
+    private void copyMatrixForInverseMethod(Number[][] A, GenericMatrix<Number> matrix) throws ArithmeticException {
         for (int i = 0; i < matrix.getVerticalSize(); ++i) {
             for (int j = 0; j < matrix.getHorizontalSize(); ++j) {
                 A[i][j] = matrix.getElement(i, j).doubleValue();
@@ -258,5 +255,15 @@ public class MatrixService {
             }
         }
         return matrix;
+    }
+
+    private GenericMatrix<Number> copyMatrix(Number[][] matrix) {
+        GenericMatrix<Number> copyMatrix = new GenericMatrix<>(matrix.length, matrix[0].length);
+        for (int i = 0; i < copyMatrix.getHorizontalSize(); ++i) {
+            for (int j = 0; j < copyMatrix.getVerticalSize(); ++j) {
+                copyMatrix.setElement(i, j, matrix[i][j]);
+            }
+        }
+        return copyMatrix;
     }
 }

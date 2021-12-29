@@ -18,7 +18,7 @@ import by.yahimovich.task02arraysdecomposition.service.MatrixService;
 public class MatrixTransposes implements Command {
 
     private final MatrixService service;
-    private final GenericMatrix<?> matrix;
+    private final GenericMatrix<Number> matrix;
 
     /**
      * Constructor these parameters.
@@ -30,7 +30,7 @@ public class MatrixTransposes implements Command {
      * @see GenericMatrix
      */
 
-    public MatrixTransposes(MatrixService service, GenericMatrix<?> matrix) {
+    public MatrixTransposes(MatrixService service, GenericMatrix<Number> matrix) {
         this.service = service;
         this.matrix = matrix;
     }

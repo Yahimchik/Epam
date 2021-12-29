@@ -1,4 +1,6 @@
-package by.yahimovich.task03classuml.entity.insurance;
+package by.yahimovich.task03classuml.insurance.entity.insurance;
+
+import java.util.List;
 
 /**
  * Class Address.

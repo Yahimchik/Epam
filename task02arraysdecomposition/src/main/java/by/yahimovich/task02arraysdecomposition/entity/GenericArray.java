@@ -1,5 +1,7 @@
 package by.yahimovich.task02arraysdecomposition.entity;
 
+import java.util.Objects;
+
 /**
  * Generic class array.
  *
@@ -129,14 +131,14 @@ public class GenericArray<Type extends Number> {
             return false;
         }
 
-        GenericArray<?> other = (GenericArray<?>) object;
+        GenericArray<Number> other = (GenericArray<Number>) object;
 
         if (array.length != other.array.length) {
             return false;
         }
 
         for (int i = 0; i < array.length; ++i) {
-            if (array[i] != other.array[i]) {
+            if (!Objects.equals(array[i], other.array[i])) {
                 return false;
             }
         }
