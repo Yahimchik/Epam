@@ -26,8 +26,8 @@ public class ArrayService {
             chek(genericArray);
             for (int i = 0; i < genericArray.length() - 1; ++i) {
                 for (int j = i + 1; j < genericArray.length(); ++j) {
-                    if (new CompareNumberObject().compare(genericArray.getElement(i).intValue(),
-                            genericArray.getElement(j).intValue()) > 0) {
+                    if (new CompareNumberObject().compare(genericArray.getElement(i),
+                            genericArray.getElement(j)) > 0) {
                         swap(genericArray, i, j);
                     }
                 }
@@ -140,8 +140,8 @@ public class ArrayService {
             for (int step = genericArray.length() / 2; step > 0; step /= 2) {
                 for (int i = step; i < genericArray.length(); ++i) {
                     for (int j = i - step; j >= 0; j -= step) {
-                        if (new CompareNumberObject().compare(genericArray.getElement(j).intValue(),
-                                genericArray.getElement(j + step).intValue()) > 0) {
+                        if (new CompareNumberObject().compare(genericArray.getElement(j),
+                                genericArray.getElement(j + step)) > 0) {
                             swap(genericArray, j, j + step);
                         }
                     }
@@ -178,7 +178,7 @@ public class ArrayService {
      */
 
     private void swap(GenericArray<Number> genericArray, int i, int j) {
-        Number tmp = genericArray.getElement(i).intValue();
+        Number tmp = genericArray.getElement(i);
         genericArray.setElement(i, genericArray.getElement(j));
         genericArray.setElement(j, tmp);
     }
