@@ -114,18 +114,11 @@ public class ArrayService {
     public GenericArray<Number> insertionSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
             chek(genericArray);
-            int gap = genericArray.length() / 2;
-
-            while (gap >= 1) {
-                for (int right = 0; right < genericArray.length(); right++) {
-                    for (int index = right - gap; index >= 0; index -= gap) {
-                        if (new CompareNumberObject().compare(genericArray.getElement(index).intValue(),
-                                genericArray.getElement(index + gap).intValue()) > 0) {
-                            swap(genericArray, index, index + gap);
-                        }
-                    }
+            for (int i = 1; i < genericArray.length(); ++i) {
+                for (int j = i; j > 0 && new CompareNumberObject().compare(genericArray.getElement(j - 1),
+                        genericArray.getElement(j)) > 0; --j) {
+                    swap(genericArray, j - 1, j);
                 }
-                gap = gap / 2;
             }
             return genericArray;
         } catch (ArithmeticException e) {
