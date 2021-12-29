@@ -26,7 +26,8 @@ public class ArrayService {
             chek(genericArray);
             for (int i = 0; i < genericArray.length() - 1; ++i) {
                 for (int j = i + 1; j < genericArray.length(); ++j) {
-                    if (genericArray.getElement(i).intValue() > genericArray.getElement(j).intValue()) {
+                    if (new CompareNumberObject().compare(genericArray.getElement(i).intValue(),
+                            genericArray.getElement(j).intValue()) > 0) {
                         swap(genericArray, i, j);
                     }
                 }
@@ -53,8 +54,8 @@ public class ArrayService {
 
             while (leftMark <= rightMark) {
                 for (int i = rightMark; i >= leftMark; i--) {
-                    if (new CompareNumberObject().compare(genericArray.getElement(i - 1).intValue(),
-                            genericArray.getElement(i).intValue()) > 0) {
+                    if (new CompareNumberObject().compare(genericArray.getElement(i - 1),
+                            genericArray.getElement(i)) > 0) {
                         swap(genericArray, i - 1, i);
                     }
                 }
@@ -62,7 +63,8 @@ public class ArrayService {
                 leftMark++;
 
                 for (int i = leftMark; i <= rightMark; i++) {
-                    if (genericArray.getElement(i - 1).intValue() > genericArray.getElement(i).intValue()) {
+                    if (new CompareNumberObject().compare(genericArray.getElement(i - 1),
+                            genericArray.getElement(i)) > 0) {
                         swap(genericArray, i - 1, i);
                     }
                 }
@@ -88,7 +90,8 @@ public class ArrayService {
             for (int left = 0; left < genericArray.length(); left++) {
                 int minInd = left;
                 for (int i = left; i < genericArray.length(); i++) {
-                    if (new CompareNumberObject().compare(genericArray.getElement(i), genericArray.getElement(minInd)) < 0) {
+                    if (new CompareNumberObject().compare(genericArray.getElement(i),
+                            genericArray.getElement(minInd)) < 0) {
                         minInd = i;
                     }
                 }
@@ -116,8 +119,8 @@ public class ArrayService {
             while (gap >= 1) {
                 for (int right = 0; right < genericArray.length(); right++) {
                     for (int index = right - gap; index >= 0; index -= gap) {
-                        if (genericArray.getElement(index).intValue() >
-                                genericArray.getElement(index + gap).intValue()) {
+                        if (new CompareNumberObject().compare(genericArray.getElement(index).intValue(),
+                                genericArray.getElement(index + gap).intValue()) > 0) {
                             swap(genericArray, index, index + gap);
                         }
                     }
