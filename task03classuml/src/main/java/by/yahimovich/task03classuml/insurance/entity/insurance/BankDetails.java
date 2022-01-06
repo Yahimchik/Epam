@@ -9,12 +9,16 @@ package by.yahimovich.task03classuml.insurance.entity.insurance;
 
 public class BankDetails {
 
-    private final String recipientIBAN;
+    private String recipientIBAN;
     private String appointment;
+    private String recipientPAN;
+    private String payerPAN;
 
-    private final int bankRecipientBIC;
-    private final int recipientPAN;
-    private final int payerPAN;
+    private String bankRecipientBIC;
+
+    public BankDetails() {
+        super();
+    }
 
     /**
      * Constructor these parameters. Bank details.
@@ -26,7 +30,7 @@ public class BankDetails {
      * @param appointment      Appointment.
      */
 
-    public BankDetails(int payerPAN, int recipientPAN, String recipientIBAN, int bankRecipientBIC, String appointment) {
+    public BankDetails(String payerPAN, String recipientPAN, String recipientIBAN, String bankRecipientBIC, String appointment) {
         this.payerPAN = payerPAN;
         this.recipientPAN = recipientPAN;
         this.recipientIBAN = recipientIBAN;
@@ -70,7 +74,7 @@ public class BankDetails {
      * @return Bank Identification Code.
      */
 
-    public int getBankRecipientBIC() {
+    public String getBankRecipientBIC() {
         return bankRecipientBIC;
     }
 
@@ -80,7 +84,7 @@ public class BankDetails {
      * @return Payer Account Number.
      */
 
-    public int getRecipientPAN() {
+    public String getRecipientPAN() {
         return recipientPAN;
     }
 
@@ -90,7 +94,7 @@ public class BankDetails {
      * @return Payer Account Number.
      */
 
-    public int getPayerPAN() {
+    public String getPayerPAN() {
         return payerPAN;
     }
 

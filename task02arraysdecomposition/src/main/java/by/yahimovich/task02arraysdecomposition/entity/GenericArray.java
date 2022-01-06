@@ -27,15 +27,15 @@ public class GenericArray<Type extends Number> {
     /**
      * Constructor this one parameter.
      *
-     * @param N array length.
+     * @param n array length.
      * @throws ArithmeticException Throw new exception when N < 1.
      */
 
-    public GenericArray(int N) throws ArithmeticException {
-        if (N < 1) {
+    public GenericArray(int n) throws ArithmeticException {
+        if (n < 1) {
             throw new ArithmeticException("N < 1");
         }
-        array = (Type[]) new Number[N];
+        array = (Type[]) new Number[n];
     }
 
     /**
@@ -66,12 +66,12 @@ public class GenericArray<Type extends Number> {
      *              This method set value of array on index position.
      */
 
-    public void setElement(int index, Number value) {
-        array[index] = (Type) value;
+    public void setElement(int index, Type value) {
+        array[index] = value;
     }
 
-    public void setArray(Number[] array) {
-        this.array = (Type[]) array;
+    public void setArray(Type[] array) {
+        this.array =  array;
     }
 
     /**
@@ -107,7 +107,7 @@ public class GenericArray<Type extends Number> {
         int result = 1;
 
         for (Number element : array) {
-            result = (int) (31 * result + element.doubleValue());
+            result = (31 * result + element.intValue());
         }
         return result;
     }
@@ -136,7 +136,7 @@ public class GenericArray<Type extends Number> {
         if (array.length != other.array.length) {
             return false;
         }
-
+//TODo через arrays
         for (int i = 0; i < array.length; ++i) {
             if (!Objects.equals(array[i], other.array[i])) {
                 return false;

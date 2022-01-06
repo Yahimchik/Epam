@@ -1,241 +1,119 @@
 [ {
-  "initials" : {
-    "firstName" : "Abramson",
-    "secondName" : "Oliver",
-    "lastName" : "Evans"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
+  "contract" : {
+    "insuranceType" : "Agricultural insurance (insurance of crops, crops, perennial plantations, animals)",
+    "insuranceObject" : "Technical risks",
+    "conclusionDate" : 5,
+    "damage" : 9960.0,
+    "insurancePremiumAmount" : 4776.0,
+    "insurer" : {
+      "initials" : {
+        "firstName" : "Abramson",
+        "secondName" : "Oliver",
+        "lastName" : "Bell"
+      },
+      "address" : {
+        "country" : "Germany",
+        "district" : "Bavaria",
+        "city" : "Munich",
+        "street" : "Bundesautobahn",
+        "houseNumber" : "12",
+        "caseNumber" : "3G",
+        "apartmentNumber" : "34",
+        "postcode" : 734537
+      },
+      "details" : {
+        "recipientIBAN" : "AZ96AZEJ00000000001234567890",
+        "appointment" : "Hello",
+        "recipientPAN" : "4012888888881881",
+        "payerPAN" : "5169147129584558",
+        "bankRecipientBIC" : "044525710"
+      },
+      "phoneNumber" : "+217533148"
+    },
+    "insured" : {
+      "initials" : {
+        "firstName" : "Derrick",
+        "secondName" : "Jacob",
+        "lastName" : "Mills"
+      },
+      "address" : {
+        "country" : "Albania",
+        "district" : "",
+        "city" : "Berat",
+        "street" : "Rrugica Mbrica",
+        "houseNumber" : "163",
+        "caseNumber" : "",
+        "apartmentNumber" : "43",
+        "postcode" : 348651
+      },
+      "details" : {
+        "recipientIBAN" : "BE71096123456769",
+        "appointment" : "Hello",
+        "recipientPAN" : "2201382000000013",
+        "payerPAN" : "4111110000000112",
+        "bankRecipientBIC" : "049205774"
+      },
+      "phoneNumber" : "+3762952734"
+    },
+    "insuranceNumber" : 159
+  }
 }, {
-  "initials" : {
-    "firstName" : "Blare",
-    "secondName" : "Jack",
-    "lastName" : "Stone"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Cook",
-    "secondName" : "Harry",
-    "lastName" : "Roberts"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Derrick",
-    "secondName" : "Jacob",
-    "lastName" : "Mills"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Erickson",
-    "secondName" : "Charley",
-    "lastName" : "Lewis"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Ford",
-    "secondName" : "Thomas",
-    "lastName" : "Morgan"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Gilbert",
-    "secondName" : "George",
-    "lastName" : "Florence"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Hailey",
-    "secondName" : "Oscar",
-    "lastName" : "Campbell"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Foster",
-    "secondName" : "James",
-    "lastName" : "Bronte"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
-}, {
-  "initials" : {
-    "firstName" : "Gilmore",
-    "secondName" : "William",
-    "lastName" : "Bell"
-  },
-  "address" : {
-    "country" : "Belarus",
-    "district" : "Minskiy",
-    "city" : "Vileyka",
-    "street" : "Nezaleshnosti",
-    "houseNumber" : "2",
-    "caseNumber" : "2",
-    "apartmentNumber" : "7",
-    "postcode" : 222417
-  },
-  "details" : {
-    "recipientIBAN" : "BY12312",
-    "appointment" : "Hello",
-    "bankRecipientBIC" : 54321234,
-    "recipientPAN" : 321,
-    "payerPAN" : 123
-  },
-  "phoneNumber" : "+375333139380"
+  "contract" : {
+    "insuranceType" : "Property insurance of legal entities, excluding vehicles and agricultural insurance",
+    "insuranceObject" : "Technical risks",
+    "conclusionDate" : 10,
+    "damage" : 9451.0,
+    "insurancePremiumAmount" : 4620.0,
+    "insurer" : {
+      "initials" : {
+        "firstName" : "Gilbert",
+        "secondName" : "Oscar",
+        "lastName" : "Mills"
+      },
+      "address" : {
+        "country" : "Ecuador",
+        "district" : "Guayas",
+        "city" : "Guayaquil",
+        "street" : "Via Perimetral",
+        "houseNumber" : "34F",
+        "caseNumber" : "",
+        "apartmentNumber" : "",
+        "postcode" : 657431
+      },
+      "details" : {
+        "recipientIBAN" : "BE71096123456769",
+        "appointment" : "Hello",
+        "recipientPAN" : "4222222222222220",
+        "payerPAN" : "5124990000000002",
+        "bankRecipientBIC" : "044525787"
+      },
+      "phoneNumber" : "+2446014906"
+    },
+    "insured" : {
+      "initials" : {
+        "firstName" : "Erickson",
+        "secondName" : "Thomas",
+        "lastName" : "Morgan"
+      },
+      "address" : {
+        "country" : "Albania",
+        "district" : "",
+        "city" : "Berat",
+        "street" : "Rrugica Mbrica",
+        "houseNumber" : "163",
+        "caseNumber" : "",
+        "apartmentNumber" : "43",
+        "postcode" : 348651
+      },
+      "details" : {
+        "recipientIBAN" : "AL35202111090000000001234567",
+        "appointment" : "Hello",
+        "recipientPAN" : "5100000000000412",
+        "payerPAN" : "5000000000000009",
+        "bankRecipientBIC" : "044525268"
+      },
+      "phoneNumber" : "+3554453375"
+    },
+    "insuranceNumber" : 867
+  }
 } ]

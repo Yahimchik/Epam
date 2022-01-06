@@ -13,6 +13,10 @@ public class Initials {
     private String secondName;
     private String lastName;
 
+    public Initials() {
+        super();
+    }
+
     /**
      * Constructor these parameters. The initials parameters allow you to initialize new person.
      *

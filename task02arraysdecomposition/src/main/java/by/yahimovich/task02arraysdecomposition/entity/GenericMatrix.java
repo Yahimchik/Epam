@@ -20,6 +20,8 @@ public class GenericMatrix<Type extends Number> {
         this.matrix = matrix;
     }
 
+    //TODO
+
     /**
      * Constructor these values.
      *
@@ -140,7 +142,7 @@ public class GenericMatrix<Type extends Number> {
 
         for (Number[] row : matrix) {
             for (Number value : row) {
-                result = (int) (31 * result + value.doubleValue());
+                result = (31 * result + value.intValue());
             }
         }
         return result;

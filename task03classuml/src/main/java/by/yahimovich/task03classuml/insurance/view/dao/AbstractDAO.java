@@ -1,4 +1,6 @@
-package by.yahimovich.task03classuml.insurance.service.dao;
+package by.yahimovich.task03classuml.insurance.view.dao;
+
+import by.yahimovich.task03classuml.insurance.view.dao.exception.DAOException;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -13,10 +15,9 @@ abstract public class AbstractDAO<T> implements DAOInterface {
     }
 
     public abstract List<T> read(String filename) throws IOException, ClassNotFoundException, NoSuchMethodException,
-            InvocationTargetException, InstantiationException, IllegalAccessException;
+            InvocationTargetException, InstantiationException, IllegalAccessException, DAOException;
 
     @Override
-    public void write(List data, String filename) throws IOException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException {
+    public void write(List data, String filename) throws IOException {
     }
 }

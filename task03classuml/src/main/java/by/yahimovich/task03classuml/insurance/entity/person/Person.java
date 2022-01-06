@@ -122,7 +122,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "INITIALS: " + getInitials() +
+        return "\nINITIALS: " + getInitials() +
                 "\n\nADDRESS: " + getAddress() +
                 "\n\nBANK DETAILS: " + getDetails() +
                 "\n\nPHONE NUMBER: " + getPhoneNumber() + "\n";

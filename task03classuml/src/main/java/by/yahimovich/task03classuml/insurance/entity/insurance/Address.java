@@ -21,6 +21,10 @@ public class Address {
 
     private int postcode;
 
+    public Address(){
+        super();
+    }
+
     /**
      * Constructor these parameters. The address parameters allow you to establish the exact location of the object.
      *

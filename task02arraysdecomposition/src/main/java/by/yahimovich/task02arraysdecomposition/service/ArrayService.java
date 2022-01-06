@@ -46,6 +46,7 @@ public class ArrayService {
      * @throws ServiceException throws new exception if try -> catch block takes ArithmeticException.
      */
 
+
     public GenericArray<Number> shakerSort(GenericArray<Number> genericArray) throws ServiceException {
         try {
             chek(genericArray);
@@ -59,6 +60,8 @@ public class ArrayService {
                         swap(genericArray, i - 1, i);
                     }
                 }
+
+                //TODO посмотреть реализацию shaker sort  в кнуте индекс последнего обмена
 
                 leftMark++;
 

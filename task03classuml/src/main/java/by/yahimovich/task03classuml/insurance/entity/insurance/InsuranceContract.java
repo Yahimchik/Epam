@@ -1,5 +1,8 @@
 package by.yahimovich.task03classuml.insurance.entity.insurance;
 
+import by.yahimovich.task03classuml.insurance.entity.person.Person;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.Date;
 
 /**
@@ -13,10 +16,19 @@ public class InsuranceContract {
 
     private String insuranceType;
     private String insuranceObject;
-    private final Date conclusionDate;
+    private Date conclusionDate;
 
     private double damage;
     private double insurancePremiumAmount;
+
+    private Person insurer;
+    private Person insured;
+
+    private int insuranceNumber;
+
+    public InsuranceContract() {
+        super();
+    }
 
     /**
      * Constructor these parameters. Establishes the type, object, date of conclusion, the amount
@@ -30,12 +42,16 @@ public class InsuranceContract {
      */
 
     public InsuranceContract(String insuranceType, String insuranceObject,
-                             Date conclusionDate, double damage, double insurancePremiumAmount) {
+                             Date conclusionDate, double damage, double insurancePremiumAmount,
+                             Person insurer, Person insured, int insuranceNumber) {
         this.insuranceType = insuranceType;
         this.insuranceObject = insuranceObject;
         this.conclusionDate = conclusionDate;
         this.damage = damage;
         this.insurancePremiumAmount = insurancePremiumAmount;
+        this.insurer = insurer;
+        this.insured = insured;
+        this.insuranceNumber = insuranceNumber;
     }
 
     /**
@@ -66,6 +82,10 @@ public class InsuranceContract {
 
     public String getInsuranceObject() {
         return insuranceObject;
+    }
+
+    public int getInsuranceNumber() {
+        return insuranceNumber;
     }
 
     /**
@@ -128,6 +148,22 @@ public class InsuranceContract {
         this.insurancePremiumAmount = insurancePremiumAmount;
     }
 
+    public Person getInsurer() {
+        return insurer;
+    }
+
+    public void setInsurer(Person insurer) {
+        this.insurer = insurer;
+    }
+
+    public Person getInsured() {
+        return insured;
+    }
+
+    public void setInsured(Person insured) {
+        this.insured = insured;
+    }
+
     /**
      * Overriding method toString.
      *
@@ -136,10 +172,13 @@ public class InsuranceContract {
 
     @Override
     public String toString() {
-        return "Insurance type: " + getInsuranceType()
+        return " № " + getInsuranceNumber()
+                + "\nInsurance type: " + getInsuranceType()
                 + "\nInsurance object: " + getInsuranceObject()
                 + "\nConclusion date: " + getConclusionDate()
-                + "\nDamage: " + getDamage()
-                + "\nInsurance premium amount: " + getInsurancePremiumAmount();
+                + "\nDamage: " + getDamage() + "$"
+                + "\nInsurance premium amount: " + getInsurancePremiumAmount() + "$"
+                + "\n\nINSURER " + getInsurer()
+                + "\nINSURED " + getInsured();
     }
 }
