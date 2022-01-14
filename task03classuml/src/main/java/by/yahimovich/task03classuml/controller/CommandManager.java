@@ -1,7 +1,6 @@
 package by.yahimovich.task03classuml.controller;
 
 import by.yahimovich.task03classuml.controller.exception.ControllerException;
-import by.yahimovich.task03classuml.insurance.service.exception.ServiceException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,16 +1,13 @@
 package by.yahimovich.task03classuml.insurance.view.dao;
 
 import by.yahimovich.task03classuml.insurance.entity.insurance.Derivatives;
-import by.yahimovich.task03classuml.insurance.entity.insurance.InsuranceContract;
 import by.yahimovich.task03classuml.insurance.view.dao.exception.DAOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JsonDAO<T> extends AbstractDAO {
@@ -37,14 +34,5 @@ public class JsonDAO<T> extends AbstractDAO {
         (new ObjectMapper())
                 .configure(SerializationFeature.INDENT_OUTPUT, true)
                 .writeValue(new File(fileName), data);
-    }
-
-    public List<T> jsonArrayToList(String fileName, Class<T> tClass) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        CollectionType listType = mapper
-                .getTypeFactory()
-                .constructCollectionType(ArrayList.class, tClass);
-        return mapper.readValue(fileName, listType);
-
     }
 }

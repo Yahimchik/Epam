@@ -1,40 +1,99 @@
 [ {
   "contract" : {
-    "insuranceType" : "Agricultural insurance (insurance of crops, crops, perennial plantations, animals)",
-    "insuranceObject" : "Technical risks",
-    "conclusionDate" : 5,
-    "damage" : 9960.0,
+    "insuranceType" : "Cargo insurance",
+    "insuranceObject" : "Cargo transportation",
+    "conclusionDate" : 7,
+    "damage" : 1403.0,
+    "insurancePremiumAmount" : 3995.0,
+    "insurer" : {
+      "initials" : {
+        "firstName" : "Foster",
+        "secondName" : "Jack",
+        "lastName" : "Bell"
+      },
+      "address" : {
+        "country" : "Finland",
+        "district" : "",
+        "city" : "Akaa",
+        "street" : "Nieuw Nickerie",
+        "houseNumber" : "56T",
+        "caseNumber" : "",
+        "apartmentNumber" : "94",
+        "postcode" : 957864
+      },
+      "details" : {
+        "recipientIBAN" : "BR1500000000000010932840814P2",
+        "appointment" : "Hello",
+        "recipientPAN" : "4000000000000002",
+        "payerPAN" : "5169147129584558",
+        "bankRecipientBIC" : "044525976"
+      },
+      "phoneNumber" : "+1-2689328160"
+    },
+    "insured" : {
+      "initials" : {
+        "firstName" : "Cook",
+        "secondName" : "Oscar",
+        "lastName" : "Lewis"
+      },
+      "address" : {
+        "country" : "Canada",
+        "district" : "",
+        "city" : "Ottawa",
+        "street" : "Wellington Street",
+        "houseNumber" : "A",
+        "caseNumber" : "B",
+        "apartmentNumber" : "12A",
+        "postcode" : 674524
+      },
+      "details" : {
+        "recipientIBAN" : "BH02CITI00001077181611",
+        "appointment" : "Hello",
+        "recipientPAN" : "4242424242424242",
+        "payerPAN" : "5124990000000002",
+        "bankRecipientBIC" : "044525976"
+      },
+      "phoneNumber" : "+1-2648941181"
+    },
+    "insuranceNumber" : 93
+  }
+}, {
+  "contract" : {
+    "insuranceType" : "Accident and illness insurance",
+    "insuranceObject" : "Insurance of term deposits and money in bank accounts",
+    "conclusionDate" : 9,
+    "damage" : 4659.0,
     "insurancePremiumAmount" : 4776.0,
     "insurer" : {
       "initials" : {
         "firstName" : "Abramson",
-        "secondName" : "Oliver",
-        "lastName" : "Bell"
+        "secondName" : "Harry",
+        "lastName" : "Roberts"
       },
       "address" : {
-        "country" : "Germany",
-        "district" : "Bavaria",
-        "city" : "Munich",
-        "street" : "Bundesautobahn",
-        "houseNumber" : "12",
-        "caseNumber" : "3G",
-        "apartmentNumber" : "34",
-        "postcode" : 734537
+        "country" : "Belarus",
+        "district" : "Minskiy",
+        "city" : "Vileyka",
+        "street" : "Nezaleshnosti",
+        "houseNumber" : "2",
+        "caseNumber" : "2",
+        "apartmentNumber" : "7",
+        "postcode" : 222417
       },
       "details" : {
-        "recipientIBAN" : "AZ96AZEJ00000000001234567890",
+        "recipientIBAN" : "BG18RZBB91550123456789",
         "appointment" : "Hello",
-        "recipientPAN" : "4012888888881881",
-        "payerPAN" : "5169147129584558",
-        "bankRecipientBIC" : "044525710"
+        "recipientPAN" : "5169147129584558",
+        "payerPAN" : "5496198584584769",
+        "bankRecipientBIC" : "044525976"
       },
-      "phoneNumber" : "+217533148"
+      "phoneNumber" : "+1-2689328160"
     },
     "insured" : {
       "initials" : {
-        "firstName" : "Derrick",
+        "firstName" : "Blare",
         "secondName" : "Jacob",
-        "lastName" : "Mills"
+        "lastName" : "Roberts"
       },
       "address" : {
         "country" : "Albania",
@@ -47,73 +106,14 @@
         "postcode" : 348651
       },
       "details" : {
-        "recipientIBAN" : "BE71096123456769",
+        "recipientIBAN" : "BA393385804800211234",
         "appointment" : "Hello",
         "recipientPAN" : "2201382000000013",
-        "payerPAN" : "4111110000000112",
-        "bankRecipientBIC" : "049205774"
+        "payerPAN" : "2222990905257051",
+        "bankRecipientBIC" : "044525710"
       },
-      "phoneNumber" : "+3762952734"
+      "phoneNumber" : "+3747932646"
     },
-    "insuranceNumber" : 159
-  }
-}, {
-  "contract" : {
-    "insuranceType" : "Property insurance of legal entities, excluding vehicles and agricultural insurance",
-    "insuranceObject" : "Technical risks",
-    "conclusionDate" : 10,
-    "damage" : 9451.0,
-    "insurancePremiumAmount" : 4620.0,
-    "insurer" : {
-      "initials" : {
-        "firstName" : "Gilbert",
-        "secondName" : "Oscar",
-        "lastName" : "Mills"
-      },
-      "address" : {
-        "country" : "Ecuador",
-        "district" : "Guayas",
-        "city" : "Guayaquil",
-        "street" : "Via Perimetral",
-        "houseNumber" : "34F",
-        "caseNumber" : "",
-        "apartmentNumber" : "",
-        "postcode" : 657431
-      },
-      "details" : {
-        "recipientIBAN" : "BE71096123456769",
-        "appointment" : "Hello",
-        "recipientPAN" : "4222222222222220",
-        "payerPAN" : "5124990000000002",
-        "bankRecipientBIC" : "044525787"
-      },
-      "phoneNumber" : "+2446014906"
-    },
-    "insured" : {
-      "initials" : {
-        "firstName" : "Erickson",
-        "secondName" : "Thomas",
-        "lastName" : "Morgan"
-      },
-      "address" : {
-        "country" : "Albania",
-        "district" : "",
-        "city" : "Berat",
-        "street" : "Rrugica Mbrica",
-        "houseNumber" : "163",
-        "caseNumber" : "",
-        "apartmentNumber" : "43",
-        "postcode" : 348651
-      },
-      "details" : {
-        "recipientIBAN" : "AL35202111090000000001234567",
-        "appointment" : "Hello",
-        "recipientPAN" : "5100000000000412",
-        "payerPAN" : "5000000000000009",
-        "bankRecipientBIC" : "044525268"
-      },
-      "phoneNumber" : "+3554453375"
-    },
-    "insuranceNumber" : 867
+    "insuranceNumber" : 589
   }
 } ]
