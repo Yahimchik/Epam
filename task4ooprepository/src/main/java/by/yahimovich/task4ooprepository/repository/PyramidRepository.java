@@ -6,7 +6,7 @@ import by.yahimovich.task4ooprepository.repository.exception.RepositoryException
 
 import java.util.List;
 
-public interface PyramidRepository<T> {
+public interface PyramidRepository {
 
     List<Pyramid> getPyramidList() throws RepositoryException;
 

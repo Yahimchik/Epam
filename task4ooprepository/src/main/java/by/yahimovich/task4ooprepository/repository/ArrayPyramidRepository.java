@@ -3,19 +3,13 @@ package by.yahimovich.task4ooprepository.repository;
 import by.yahimovich.task4ooprepository.entity.Pyramid;
 import by.yahimovich.task4ooprepository.entity.PyramidID;
 import by.yahimovich.task4ooprepository.repository.exception.RepositoryException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayPyramidRepository implements PyramidRepository<Pyramid> {
+public class ArrayPyramidRepository implements PyramidRepository {
 
-    public static final Logger LOGGER = LogManager.getLogger(ArrayPyramidRepository.class);
     private final List<Pyramid> pyramids = new ArrayList<>();
-
-    public ArrayPyramidRepository() {
-    }
 
     @Override
     public void save(Pyramid pyramid) {

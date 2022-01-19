@@ -5,6 +5,7 @@ import by.yahimovich.task4ooprepository.entity.exception.PyramidException;
 import by.yahimovich.task4ooprepository.entity.pyramidfactory.CreatePyramid;
 import by.yahimovich.task4ooprepository.repository.ArrayPyramidRepository;
 import by.yahimovich.task4ooprepository.repository.exception.RepositoryException;
+import by.yahimovich.task4ooprepository.service.PyramidService;
 
 import java.io.IOException;
 
@@ -21,7 +22,8 @@ public class Main {
 
         System.out.println(repository.findByID(new PyramidID(1)));
         repository.delete(new PyramidID(1));
-        System.out.println(repository.getPyramidList());
+//        System.out.println(repository.getPyramidList());
+        System.out.println(new PyramidService().pyramidVolume(pyramid));
 
     }
 }
