@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-@SuppressWarnings("ALL")
-abstract public class AbstractDAO<T> implements DAOInterface {
+abstract public class AbstractDAO<T> implements DAOInterface<T> {
 
     Class<T> type;
 
@@ -17,6 +16,6 @@ abstract public class AbstractDAO<T> implements DAOInterface {
             InvocationTargetException, InstantiationException, IllegalAccessException;
 
     @Override
-    public void write(List data, String filename) throws IOException {
+    public void write(List<T> data, String filename) throws IOException {
     }
 }

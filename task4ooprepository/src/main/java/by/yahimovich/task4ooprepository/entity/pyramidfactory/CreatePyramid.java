@@ -1,23 +1,28 @@
 package by.yahimovich.task4ooprepository.entity.pyramidfactory;
 
-import by.yahimovich.task4ooprepository.entity.Point;
+import by.yahimovich.task4ooprepository.entity.Point3DClass;
 import by.yahimovich.task4ooprepository.entity.Pyramid;
+import by.yahimovich.task4ooprepository.entity.PyramidID;
 import by.yahimovich.task4ooprepository.entity.exception.PyramidException;
 
 import java.util.List;
 
 public class CreatePyramid implements CreatePyramidInterface {
 
-    List<Point> points;
+    List<Point3DClass> point3DS;
 
     @Override
     public Pyramid create() throws PyramidException {
         return new Pyramid(
-                points = List.of(
-                        new Point(0, 0, 0),
-                        new Point(3, 3, -2),
-                        new Point(6, 3, -2),
-                        new Point(4, 10, 0)
+                new PyramidID(1),
+                point3DS = List.of(
+                        new Point3DClass(0, 0, 0),
+                        new Point3DClass(0, 3, 0),
+                        new Point3DClass(4, 0, 0),
+                        new Point3DClass(4, 3, 0),
+                        new Point3DClass(3, 6, 0),
+                        new Point3DClass(1, 6, 0),
+                        new Point3DClass(4, 10, 2)
                 )
         );
     }

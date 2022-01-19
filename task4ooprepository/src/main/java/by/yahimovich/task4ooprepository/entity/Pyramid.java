@@ -1,6 +1,7 @@
 package by.yahimovich.task4ooprepository.entity;
 
 import by.yahimovich.task4ooprepository.entity.exception.PyramidException;
+import by.yahimovich.task4ooprepository.service.PyramidService;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
@@ -9,34 +10,33 @@ import java.util.List;
 
 public class Pyramid {
 
-    private static int id = 1;
-    private int ID = id++;
-    private List<Point> pointsOfPyramid;
+    PyramidID ID;
+    private List<Point3DClass> pointsOfPyramid;
 
     public Pyramid() {
         super();
     }
 
-    public Pyramid(int ID, List<Point> pointsOfPyramid) {
+    public Pyramid(List<Point3DClass> pointsOfPyramid) {
+        this.pointsOfPyramid = pointsOfPyramid;
+    }
+
+    public Pyramid(PyramidID ID, List<Point3DClass> pointsOfPyramid) {
         this.ID = ID;
         this.pointsOfPyramid = pointsOfPyramid;
     }
 
-    public Pyramid(List<Point> points) {
-        this.pointsOfPyramid = points;
-    }
-
     public Pyramid(int countOfPeaks) throws PyramidException {
-        if (countOfPeaks < 4) { // TODO попробовать сделать для n точек
+        if (countOfPeaks < 4 && !(new PyramidService().isPyramid(new Pyramid()))) { // TODO попробовать сделать для n точек
             throw new PyramidException();
         }
     }
-    
+
     public int getID() {
-        return ID;
+        return ID.getID();
     }
 
-    public List<Point> getPointsOfPyramid() {
+    public List<Point3DClass> getPointsOfPyramid() {
         return pointsOfPyramid;
     }
 
@@ -44,14 +44,14 @@ public class Pyramid {
         return pointsOfPyramid.size();
     }
 
-    public Point getPeak(int i) {
+    public Point3DClass getPeak(int i) {
         return pointsOfPyramid.get(i);
     }
 
     @Override
     public String toString() {
         final String BLANK = " ";
-        StringBuilder str = new StringBuilder("\nPoints: " + pointsOfPyramid.size() + "\n");
+        StringBuilder str = new StringBuilder("\nPoints: " + getCountOfPeaks() + "\n");
         for (Object object : pointsOfPyramid) {
             str.append(object).append(BLANK);
             str.append("\n");

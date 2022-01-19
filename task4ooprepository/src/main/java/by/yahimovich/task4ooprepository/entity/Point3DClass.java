@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties
 
-public class Point {
+public class Point3DClass extends Point2DClass {
 
     /**
      * Point class parameters.
@@ -12,38 +12,15 @@ public class Point {
      * y - second value of point.
      */
 
-    private double x;
-    private double y;
     private double z;
 
-    public Point() {
+    public Point3DClass() {
         super();
     }
 
-    public Point(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
+    public Point3DClass(double x, double y, double z) {
+        super(x, y);
         this.z = z;
-    }
-
-    public Point(double coordinates) {
-
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
     }
 
     public double getZ() {
@@ -64,8 +41,8 @@ public class Point {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = (int) (71 * hash + this.x);
-        hash = (int) (71 * hash + this.y);
+        hash = (int) (71 * hash + this.getX());
+        hash = (int) (71 * hash + this.getX());
         hash = (int) (71 * hash + this.z);
         return hash;
     }
@@ -76,10 +53,10 @@ public class Point {
             return false;
         }
 
-        if (!(object instanceof Point other)) {
+        if (!(object instanceof Point3DClass other)) {
             return false;
         }
 
-        return (x == other.x && y == other.y && z == other.z);
+        return (this.getX() == other.getX() && this.getY() == other.getY() && z == other.z);
     }
 }
