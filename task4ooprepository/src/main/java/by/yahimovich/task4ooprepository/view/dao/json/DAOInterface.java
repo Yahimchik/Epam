@@ -1,4 +1,4 @@
-package by.yahimovich.task4ooprepository.view.dao;
+package by.yahimovich.task4ooprepository.view.dao.json;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

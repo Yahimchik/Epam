@@ -1,4 +1,4 @@
-package by.yahimovich.task4ooprepository.view.dao;
+package by.yahimovich.task4ooprepository.view.dao.json;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -12,6 +12,7 @@ abstract public class AbstractDAO<T> implements DAOInterface<T> {
         this.type = type;
     }
 
+    @Override
     public abstract List<T> read(String filename) throws IOException, ClassNotFoundException, NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException;
 

@@ -18,7 +18,7 @@ public class TestPyramidVolume {
     @ParameterizedTest
     @MethodSource("provideData")
     void test(Pyramid pyramid, double expected) {
-        Assertions.assertEquals(expected, service.pyramidHigh(pyramid));
+        Assertions.assertEquals(expected, service.pyramidVolume(pyramid));
     }
 
 

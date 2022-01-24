@@ -1,5 +1,6 @@
 package by.yahimovich.task4ooprepository.repository;
 
+import by.yahimovich.task4ooprepository.entity.Point3DClass;
 import by.yahimovich.task4ooprepository.entity.Pyramid;
 import by.yahimovich.task4ooprepository.entity.PyramidID;
 import by.yahimovich.task4ooprepository.repository.exception.RepositoryException;

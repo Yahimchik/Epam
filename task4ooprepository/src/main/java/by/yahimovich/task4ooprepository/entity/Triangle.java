@@ -46,4 +46,25 @@ public class Triangle {
                 + " Second peak: " + getPoint2()
                 + " Third peak: " + getPoint3();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Triangle triangle = (Triangle) o;
+        return point1 == (triangle.point1) && point2 == (triangle.point2) && point3 == (triangle.point3);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = (71 * hash + getPoint1().hashCode());
+        hash = (71 * hash + getPoint2().hashCode());
+        hash = (71 * hash + getPoint3().hashCode());
+        return hash;
+    }
 }

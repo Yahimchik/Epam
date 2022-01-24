@@ -1,4 +1,4 @@
-package by.yahimovich.task4ooprepository.view.dao;
+package by.yahimovich.task4ooprepository.view.dao.json;
 
 import by.yahimovich.task4ooprepository.entity.Pyramid;
 import com.fasterxml.jackson.databind.DeserializationFeature;

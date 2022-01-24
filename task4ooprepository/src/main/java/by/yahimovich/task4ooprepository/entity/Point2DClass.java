@@ -1,6 +1,8 @@
 package by.yahimovich.task4ooprepository.entity;
 
-public class Point2DClass {
+import java.io.Serializable;
+
+public class Point2DClass implements Serializable {
 
     private double x;
     private double y;

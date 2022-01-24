@@ -2,9 +2,11 @@ package by.yahimovich.task4ooprepository.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 @JsonIgnoreProperties
 
-public class Point3DClass extends Point2DClass {
+public class Point3DClass extends Point2DClass implements Serializable {
 
     /**
      * Point class parameters.
