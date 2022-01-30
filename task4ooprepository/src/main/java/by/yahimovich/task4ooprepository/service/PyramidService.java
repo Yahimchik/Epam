@@ -82,7 +82,7 @@ public class PyramidService extends PointService {
         return triangles;
     }
 
-    public double triangulationPyramid(Pyramid pyramid) {
+    private List<Triangle> triangulationPyramid(Pyramid pyramid) {
         List<Point3DClass> points = pointsOfPyramidBase(pyramid);
         sortPoints(points);
         List<Point3DClass> topPoint = pyramidTop(pyramid);
@@ -94,16 +94,21 @@ public class PyramidService extends PointService {
         }
         trianglesOfPyramid.add(new Triangle(pointTop, points.get(5), points.get(0)));
 
+        return trianglesOfPyramid;
+    }
+
+    public double squareOfAllPyramid(Pyramid pyramid) {
         double square = 0;
 
-        for (int i = 0; i < trianglesOfPyramid.size(); ++i) {
-            square += triangleService.triangleSquare(trianglesOfPyramid.get(i));
+        List<Triangle> triangles = triangulationPyramid(pyramid);
+
+        for (Triangle triangle : triangles) {
+            square += triangleService.triangleSquare(triangle);
         }
 
         double baseSquare = pyramidBaseSquare(pyramid);
 
         return square + baseSquare;
-
     }
 
     //Количество треугольников в основании пирамиды = n - 2, где n - количество вершин (точек)

@@ -1,15 +1,9 @@
 package by.yahimovich.task4ooprepository.entity;
 
 import by.yahimovich.task4ooprepository.entity.exception.PyramidException;
-import by.yahimovich.task4ooprepository.service.PlaneService;
-import by.yahimovich.task4ooprepository.service.PyramidService;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
-
-@JsonIgnoreProperties
 
 public class Pyramid implements Serializable {
 
@@ -48,8 +42,10 @@ public class Pyramid implements Serializable {
     }
 
 
-    public void setPointsOfPyramid() {
-        pointsOfPyramid.set(0, new Point3DClass(1, 1, 0));
+    public void setPointsOfPyramid(int index, double x, double y, double z) {
+        pointsOfPyramid.get(index).setX(x);
+        pointsOfPyramid.get(index).setY(y);
+        pointsOfPyramid.get(index).setZ(z);
     }
 
     public Point3DClass getPeak(int i) {

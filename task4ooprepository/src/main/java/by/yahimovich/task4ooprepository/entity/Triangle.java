@@ -1,6 +1,8 @@
 package by.yahimovich.task4ooprepository.entity;
 
-public class Triangle {
+import java.io.Serializable;
+
+public class Triangle implements Serializable {
 
     private Point3DClass point1;
     private Point3DClass point2;

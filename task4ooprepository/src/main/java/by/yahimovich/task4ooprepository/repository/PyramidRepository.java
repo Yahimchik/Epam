@@ -14,8 +14,6 @@ public interface PyramidRepository {
 
     void save(Pyramid pyramid);
 
-    void update(Pyramid pyramid);
-
     void delete(PyramidID pyramidID) throws RepositoryException;
 
 }

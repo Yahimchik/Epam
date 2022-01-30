@@ -6,6 +6,7 @@ import by.yahimovich.task4ooprepository.entity.pyramidfactory.CreatePyramid;
 import by.yahimovich.task4ooprepository.repository.ArrayPyramidRepository;
 import by.yahimovich.task4ooprepository.repository.exception.RepositoryException;
 import by.yahimovich.task4ooprepository.service.PyramidService;
+import by.yahimovich.task4ooprepository.singleton.SingletonRepository;
 import by.yahimovich.task4ooprepository.view.dao.txt.TxtDAO;
 
 import java.io.IOException;
@@ -18,9 +19,12 @@ public class Main {
         System.out.println(new Point3DClass(12, 3, 3).hashCode());
 
         ArrayPyramidRepository repository = new ArrayPyramidRepository();
+        ArrayPyramidRepository repository1 = new ArrayPyramidRepository();
 
         Pyramid pyramid = new CreatePyramid().create();
         repository.save(pyramid);
+        SingletonRepository singletonRepository = SingletonRepository.getInstance(repository);
+        SingletonRepository singletonRepository1 = SingletonRepository.getInstance(repository1);
 
 
         List<Point3DClass> points = new ArrayList<>();
@@ -36,12 +40,12 @@ public class Main {
         repository.delete(new PyramidID(1));
 //        System.out.println(repository.getPyramidList());
         System.out.println(new PyramidService().pyramidVolume(pyramid));
-        repository.update(pyramid);
         TxtDAO<Pyramid> txtDAO = new TxtDAO<>(Pyramid.class);
         Pyramid point3DClasses = txtDAO.read("example.txt");
         System.out.println(point3DClasses);
         repository.save(point3DClasses);
         System.out.println(new PyramidService().isPyramid(point3DClasses));
-        System.out.println(new PyramidService().triangulationPyramid(pyramid));
+        System.out.println(new PyramidService().squareOfAllPyramid(pyramid));
+        System.out.println(pyramid);
     }
 }

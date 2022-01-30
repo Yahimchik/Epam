@@ -25,7 +25,7 @@ public class TestPyramidVolume {
     private static Stream<Arguments> provideData() throws PyramidException {
         return Stream.of(
                 Arguments.of(
-                        new CreatePyramid().create(), Math.abs(2)
+                        new CreatePyramid().create(), 14
                 )
         );
     }

@@ -1,6 +1,8 @@
 package by.yahimovich.task4ooprepository.entity;
 
-public class Plane {
+import java.io.Serializable;
+
+public class Plane implements Serializable {
 
     double a;
     double b;

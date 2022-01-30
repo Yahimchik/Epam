@@ -18,22 +18,22 @@ public class TxtDAO<T> extends AbstractTxt<T> {
     }
 
     @Override
-    public Pyramid read(String fileName) throws FileNotFoundException, PyramidException {
-        List<T> points = new ArrayList<>();
-        List<T> pyramids = new ArrayList<>();
-        String str;
+    public Pyramid read(String fileName) throws FileNotFoundException {
+        List<Point3DClass> points = new ArrayList<>();
         Scanner scanner = new Scanner(new File(fileName));
         if (scanner.next().equals("Pyramid")) {
             while (scanner.hasNext()) {
                 if (scanner.hasNextDouble()) {
-                    points.add((T) new Point3DClass(scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble()));
-                } else if (!scanner.hasNextDouble()) {
-                    str = scanner.nextLine();
+                    points.add((
+                            new Point3DClass(
+                                    scanner.nextDouble(),
+                                    scanner.nextDouble(),
+                                    scanner.nextDouble()))
+                    );
                 }
             }
         }
-        return new Pyramid(new PyramidID(1), (List<Point3DClass>) points);
-
+        return new Pyramid(new PyramidID(1), points);
     }
 
     @Override
