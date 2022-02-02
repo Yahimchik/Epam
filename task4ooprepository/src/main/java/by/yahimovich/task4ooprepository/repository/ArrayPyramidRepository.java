@@ -2,14 +2,14 @@ package by.yahimovich.task4ooprepository.repository;
 
 import by.yahimovich.task4ooprepository.entity.Pyramid;
 import by.yahimovich.task4ooprepository.entity.PyramidID;
-import by.yahimovich.task4ooprepository.listener.Observable;
-import by.yahimovich.task4ooprepository.listener.Observer;
+import by.yahimovich.task4ooprepository.observer.Observable;
+import by.yahimovich.task4ooprepository.observer.Observer;
 import by.yahimovich.task4ooprepository.repository.exception.RepositoryException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayPyramidRepository implements PyramidRepository, Observable {
+public class ArrayPyramidRepository implements PyramidRepository{
 
     private final List<Pyramid> pyramids = new ArrayList<>();
     private final List<Observer> observers = new ArrayList<>();
@@ -49,23 +49,6 @@ public class ArrayPyramidRepository implements PyramidRepository, Observable {
             } else {
                 throw new RepositoryException();
             }
-        }
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (int i = 0; i < observers.size(); ++i) {
-            observers.get(i).update(pyramids.get(i));
         }
     }
 }

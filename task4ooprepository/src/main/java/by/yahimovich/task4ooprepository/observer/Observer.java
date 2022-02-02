@@ -1,4 +1,4 @@
-package by.yahimovich.task4ooprepository.listener;
+package by.yahimovich.task4ooprepository.observer;
 
 import by.yahimovich.task4ooprepository.entity.Pyramid;
 

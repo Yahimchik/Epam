@@ -26,49 +26,6 @@ public class Manager {
 
 
     public void show() throws IOException, ControllerException {
-//        System.out.println("1 — eng\n 2 — bel\n any — default");
-//        char i = 0;
-//        try {
-//            i = (char)System.in.read();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String country = "";
-//        String language = "";
-//        switch (i) {
-//            case '1' -> {
-//                country = "US";
-//                language = "en";
-//            }
-//            case '2' -> {
-//                country = "BY";
-//                language = "be";
-//            }
-//        }
-//        Locale current = new Locale(language, country);
-//        ResourceBundle rb = ResourceBundle.getBundle("ui.properties", current);
-//        String s1 = rb.getString("str1");
-//        System.out.println(s1);
-//        String s2 = rb.getString("str2");
-//        System.out.println(s2);
-//        String s3 = rb.getString("str3");
-//        System.out.println(s3);
-//        String s4 = rb.getString("str4");
-//        System.out.println(s4);
-//        String s5 = rb.getString("str5");
-//        System.out.println(s5);
-//        String s6 = rb.getString("str6");
-//        System.out.println(s6);
-//        String s7 = rb.getString("str7");
-//        System.out.println(s7);
-//        String s8 = rb.getString("str8");
-//        System.out.println(s8);
-//        String s9 = rb.getString("str9");
-//        System.out.println(s9);
-//        String s10 = rb.getString("str10");
-//        System.out.println(s10);
-//        String s11 = rb.getString("str11");
-//        System.out.println(s11);
         while (true) {
 
             info.output("""

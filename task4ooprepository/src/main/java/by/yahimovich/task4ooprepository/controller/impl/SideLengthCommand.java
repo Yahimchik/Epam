@@ -4,9 +4,6 @@ import by.yahimovich.task4ooprepository.controller.CommandInterface;
 import by.yahimovich.task4ooprepository.entity.Point3DClass;
 import by.yahimovich.task4ooprepository.service.PointService;
 
-/**
- *
- */
 public class SideLengthCommand implements CommandInterface {
 
     private final PointService service;

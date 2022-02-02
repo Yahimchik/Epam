@@ -1,4 +1,4 @@
-package by.yahimovich.task4ooprepository.listener;
+package by.yahimovich.task4ooprepository.observer;
 
 public interface Observable {
     void registerObserver(Observer observer);
