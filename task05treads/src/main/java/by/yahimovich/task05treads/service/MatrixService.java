@@ -57,13 +57,13 @@ public class MatrixService {
      * @throws ArithmeticException if rows and columns of matrix not equal -> throws ArithmeticException.
      */
 
-    public GenericMatrix<?> matrixSum(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
+    public GenericMatrix<Number> matrixSum(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
         try {
             if (first.getVerticalSize() != second.getVerticalSize() &&
                     first.getHorizontalSize() != second.getHorizontalSize()) {
                 throw new ArithmeticException();
             }
-            GenericMatrix<?> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
+            GenericMatrix<Number> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
             for (int i = 0; i < first.getVerticalSize(); ++i) {
                 for (int j = 0; j < second.getHorizontalSize(); ++j) {
                     result.setElement(i, j, first.getElement(i, j).doubleValue() +
@@ -87,13 +87,13 @@ public class MatrixService {
      * @throws ArithmeticException if count of roes != count of columns -> throws ArithmeticException.
      */
 
-    public GenericMatrix<?> matrixSub(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
+    public GenericMatrix<Number> matrixSub(GenericMatrix<?> first, GenericMatrix<?> second) throws ServiceException {
         try {
             if (first.getVerticalSize() != second.getVerticalSize() &&
                     first.getHorizontalSize() != second.getHorizontalSize()) {
                 throw new ArithmeticException();
             }
-            GenericMatrix<?> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
+            GenericMatrix<Number> result = new GenericMatrix<>(first.getVerticalSize(), second.getHorizontalSize());
 
             for (int i = 0; i < first.getVerticalSize(); ++i) {
                 for (int j = 0; j < second.getHorizontalSize(); ++j) {

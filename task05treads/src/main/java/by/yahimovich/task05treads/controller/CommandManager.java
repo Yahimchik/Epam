@@ -33,7 +33,7 @@ public class CommandManager {
         try {
             commands.add(command);
             command.execute();
-        } catch (ServiceException e) {
+        } catch (ServiceException | InterruptedException e) {
             throw new ControllerException();
         }
     }

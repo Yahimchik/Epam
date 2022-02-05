@@ -2,12 +2,19 @@ package by.yahimovich.task05treads.entity.user;
 
 import by.yahimovich.task05treads.view.manager.Manager;
 
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
+
 public class User implements Runnable {
 
     private String userName;
     private String password;
 
     public User() {
+    }
+
+    public User(String userName) {
+        this.userName = userName;
     }
 
     public String getUserName() {
@@ -28,7 +35,14 @@ public class User implements Runnable {
 
     @Override
     public void run() {
-        Thread thread = new Thread(new Manager());
-        thread.start();
+        Semaphore semaphore = new Semaphore(2);
+        System.out.println(Thread.currentThread().getName());
+        try {
+            semaphore.acquire();
+            new Thread(new Manager()).start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        semaphore.release();
     }
 }

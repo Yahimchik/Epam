@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class GenericArray<Type extends Number> {
 
-    private Type[] array;
+    private Number[] array;
 
     /**
      * Constructor this one parameter.
@@ -20,7 +20,7 @@ public class GenericArray<Type extends Number> {
      * @param array create class object this values of array.
      */
 
-    public GenericArray(Type[] array) {
+    public GenericArray(Number[] array) {
         this.array = array;
     }
 
@@ -35,7 +35,7 @@ public class GenericArray<Type extends Number> {
         if (n < 1) {
             throw new ArithmeticException("N < 1");
         }
-        array = (Type[]) new Number[n];
+        array = new Number[n];
     }
 
     /**
@@ -70,8 +70,8 @@ public class GenericArray<Type extends Number> {
         array[index] = value;
     }
 
-    public void setArray(Type[] array) {
-        this.array =  array;
+    public void setArray(Number[] array) {
+        this.array = array;
     }
 
     /**
@@ -131,12 +131,12 @@ public class GenericArray<Type extends Number> {
             return false;
         }
 
-        GenericArray<Number> other = (GenericArray<Number>) object;
+        GenericArray<?> other = (GenericArray<?>) object;
 
         if (array.length != other.array.length) {
             return false;
         }
-//TODo через arrays
+
         for (int i = 0; i < array.length; ++i) {
             if (!Objects.equals(array[i], other.array[i])) {
                 return false;

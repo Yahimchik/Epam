@@ -1,6 +1,8 @@
 package by.yahimovich.task05treads.view.manager;
 
 
+import by.yahimovich.task05treads.entity.GenericArray;
+import by.yahimovich.task05treads.entity.GenericMatrix;
 import by.yahimovich.task05treads.service.exception.ServiceException;
 import by.yahimovich.task05treads.view.inputinfo.IOInfo;
 import by.yahimovich.task05treads.view.inputinfo.InputArrayFromFile;
@@ -9,11 +11,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Manager implements Runnable {
     public static final Logger LOGGER = LogManager.getLogger(MatrixManager.class);
     public IOInfo in = new IOInfo();
+    ExecutorService pool = Executors.newSingleThreadExecutor();
+    ReentrantLock lock = new ReentrantLock();
 
     public final void startFromFile() throws FileNotFoundException {
 
@@ -32,20 +41,22 @@ public class Manager implements Runnable {
             if (choice == 3) {
                 break;
             }
-
+            lock.lock();
             try {
                 switch (choice) {
                     case 1 -> {
                         in.output("\nFill matrix from file.\n");
+                        Callable<GenericMatrix<Number>> callable = new InputMatrixFromFile("matrix.txt");
+                        Future<GenericMatrix<Number>> future = pool.submit(callable);
                         new MatrixManager()
-                                .matrixManager(new InputMatrixFromFile("matrix.txt")
-                                        .call());
+                                .matrixManager(future.get());
                     }
                     case 2 -> {
                         in.output("\nFill array from file.");
+                        Callable<GenericArray<Number>> callable = new InputArrayFromFile("array.txt");
+                        Future<GenericArray<Number>> future = pool.submit(callable);
                         new ArrayManager()
-                                .arrayManager(new InputArrayFromFile("array.txt")
-                                        .call());
+                                .arrayManager(future.get());
                     }
                     default -> {
                     }
@@ -55,17 +66,22 @@ public class Manager implements Runnable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            lock.unlock();
         }
+        pool.shutdown();
     }
 
 
     @Override
     public void run() {
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
         try {
             System.out.println("\n" + Thread.currentThread().getName());
             startFromFile();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        lock.unlock();
     }
 }

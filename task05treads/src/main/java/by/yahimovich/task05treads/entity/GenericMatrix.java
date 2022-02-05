@@ -1,5 +1,7 @@
 package by.yahimovich.task05treads.entity;
 
+import java.util.Objects;
+
 /**
  * Generic class matrix.
  *
@@ -8,7 +10,7 @@ package by.yahimovich.task05treads.entity;
 
 public class GenericMatrix<Type extends Number> {
 
-    private Type[][] matrix;
+    private Number[][] matrix;
 
     /**
      * Constructor this parameter.
@@ -36,7 +38,7 @@ public class GenericMatrix<Type extends Number> {
             throw new ArithmeticException("rows < 1 || columns < 1");
         }
 
-        this.matrix = (Type[][]) new Number[rows][columns];
+        this.matrix = new Number[rows][columns];
     }
 
     /**
@@ -88,17 +90,17 @@ public class GenericMatrix<Type extends Number> {
 
     public void setElement(int i, int j, Number object) throws ArithmeticException {
         if (checkRange(i, j)) {
-            matrix[i][j] = (Type) object;
+            matrix[i][j] = object;
         } else {
             throw new ArithmeticException();
         }
     }
 
-    public void setMatrix(Type[][] matrix) {
+    public void setMatrix(Number[][] matrix) {
         this.matrix = matrix;
     }
 
-    public Type[][] getMatrix() {
+    public Number[][] getMatrix() {
         return matrix;
     }
 
@@ -185,7 +187,7 @@ public class GenericMatrix<Type extends Number> {
 
         for (int i = 0; i < matrix.length; ++i) {
             for (int j = 0; j < matrix[0].length; ++j) {
-                if (matrix[i][j] != other.matrix[i][j]) {
+                if (!Objects.equals(matrix[i][j], other.matrix[i][j])) {
                     return false;
                 }
             }

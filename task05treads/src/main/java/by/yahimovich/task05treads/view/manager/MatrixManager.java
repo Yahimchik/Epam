@@ -36,16 +36,16 @@ public class MatrixManager extends Manager {
                         manager.executeOperation(new MatrixInverse(new MatrixService(), matrix));
                         break;
                     case 2:
-                        manager.executeOperation(new MatrixMultiplication(new MatrixService(), matrix, matrix));
+                        manager.executeOperation(new ParallelMatrixMultiplication(matrix, matrix));
                         break;
                     case 3:
-                        manager.executeOperation(new MatrixSub(new MatrixService(), matrix, matrix));
+                        manager.executeOperation(new ParallelMatrixSub(matrix, matrix));
                         break;
                     case 4:
-                        manager.executeOperation(new MatrixSum(new MatrixService(), matrix, matrix));
+                        manager.executeOperation(new ParallelMatrixSum(matrix, matrix));
                         break;
                     case 5:
-                        manager.executeOperation(new MatrixTransposes(new MatrixService(), matrix));
+                        manager.executeOperation(new ParallelMatrixTranspose(matrix));
                         break;
                     default:
                         break;

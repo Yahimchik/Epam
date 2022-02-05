@@ -19,5 +19,5 @@ public interface Command {
      * @throws ControllerException This exception throws at the moment when the passed array is not created correctly
      */
 
-    void execute() throws ControllerException;
+    void execute() throws ControllerException, InterruptedException;
 }
