@@ -3,7 +3,7 @@ package by.yahimovich.task05treads.controller.impl.matrix;
 import by.yahimovich.task05treads.controller.Command;
 import by.yahimovich.task05treads.controller.exception.ControllerException;
 import by.yahimovich.task05treads.entity.GenericMatrix;
-import by.yahimovich.task05treads.service.threadservice.ParallelMatrixProduct;
+import by.yahimovich.task05treads.service.threadservice.ParallelMatrixService;
 
 public class ParallelMatrixMultiplication implements Command {
 
@@ -19,9 +19,9 @@ public class ParallelMatrixMultiplication implements Command {
 
     @Override
     public void execute() throws ControllerException, InterruptedException {
-        ParallelMatrixProduct product = new ParallelMatrixProduct(
+        ParallelMatrixService product = new ParallelMatrixService(
                 Runtime.getRuntime().availableProcessors(),
                 first, second);
-        System.out.println(product.parallelProduct());
+        System.out.println(product.parallelMultiplication());
     }
 }

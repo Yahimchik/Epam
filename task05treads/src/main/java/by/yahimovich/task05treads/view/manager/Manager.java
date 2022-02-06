@@ -11,21 +11,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Manager implements Runnable {
     public static final Logger LOGGER = LogManager.getLogger(MatrixManager.class);
     public IOInfo in = new IOInfo();
-    ExecutorService pool = Executors.newSingleThreadExecutor();
-    ReentrantLock lock = new ReentrantLock();
+
 
     public final void startFromFile() throws FileNotFoundException {
-
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        ReentrantLock lock = new ReentrantLock();
         while (true) {
             in.output("""
                                         
@@ -74,14 +71,14 @@ public class Manager implements Runnable {
 
     @Override
     public void run() {
-        ReentrantLock lock = new ReentrantLock();
-        lock.lock();
+        CyclicBarrier barrier = new CyclicBarrier(1);
         try {
+            barrier.await();
             System.out.println("\n" + Thread.currentThread().getName());
             startFromFile();
-        } catch (FileNotFoundException e) {
+        } catch (InterruptedException | BrokenBarrierException | FileNotFoundException e) {
             e.printStackTrace();
         }
-        lock.unlock();
+        barrier.reset();
     }
 }

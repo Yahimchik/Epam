@@ -6,11 +6,13 @@ import java.util.Objects;
  * Generic class matrix.
  *
  * @author Egor Yahimovich
+ * @version 1.0
+ * @see Number
  */
 
 public class GenericMatrix<Type extends Number> {
 
-    private Number[][] matrix;
+    private final Number[][] matrix;
 
     /**
      * Constructor this parameter.
@@ -18,11 +20,9 @@ public class GenericMatrix<Type extends Number> {
      * @param matrix Create class object with values of matrix.
      */
 
-    public GenericMatrix(Type[][] matrix) {
+    public GenericMatrix(Number[][] matrix) {
         this.matrix = matrix;
     }
-
-    //TODO
 
     /**
      * Constructor these values.
@@ -96,14 +96,6 @@ public class GenericMatrix<Type extends Number> {
         }
     }
 
-    public void setMatrix(Number[][] matrix) {
-        this.matrix = matrix;
-    }
-
-    public Number[][] getMatrix() {
-        return matrix;
-    }
-
     /**
      * Method checkRange
      *
@@ -113,7 +105,7 @@ public class GenericMatrix<Type extends Number> {
      */
 
     private boolean checkRange(int i, int j) {
-        return i >= 0 && j <= matrix.length && j >= 0 && j <= matrix[0].length;
+        return i >= 0 && i <= matrix.length - 1 && j >= 0 && j <= matrix[0].length - 1;
     }
 
     /**
