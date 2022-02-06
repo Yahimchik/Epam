@@ -3,7 +3,6 @@ package by.yahimovich.task05treads.entity.user;
 import by.yahimovich.task05treads.view.manager.Manager;
 
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 public class User implements Runnable {
 

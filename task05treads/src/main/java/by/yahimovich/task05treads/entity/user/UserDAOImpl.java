@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserDAOImpl implements UserInterfaceDAO {
 
-    private static List<User> users = new ArrayList<>();
+    private static final List<User> users = new ArrayList<>();
 
     @Override
     public boolean isLogin(String userName, String password) {

@@ -2,7 +2,15 @@ package by.yahimovich.task05treads.controller;
 
 import by.yahimovich.task05treads.entity.user.User;
 
-public class Main {
+/**
+ * RunnerClass
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Thread
+ */
+
+public class RunnerClass {
     public static void main(String[] args) {
 
         Thread[] threads = new Thread[2];
