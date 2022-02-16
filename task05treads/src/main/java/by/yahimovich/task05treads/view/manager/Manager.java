@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 
-public class Manager implements Runnable {
+public class Manager {
     public static final Logger LOGGER = LogManager.getLogger(MatrixManager.class);
     public IOInfo in = new IOInfo();
 
@@ -66,19 +66,5 @@ public class Manager implements Runnable {
             lock.unlock();
         }
         pool.shutdown();
-    }
-
-
-    @Override
-    public void run() {
-        CyclicBarrier barrier = new CyclicBarrier(1);
-        try {
-            barrier.await();
-            System.out.println("\n" + Thread.currentThread().getName());
-            startFromFile();
-        } catch (InterruptedException | BrokenBarrierException | FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        barrier.reset();
     }
 }

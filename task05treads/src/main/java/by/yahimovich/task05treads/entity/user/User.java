@@ -2,7 +2,9 @@ package by.yahimovich.task05treads.entity.user;
 
 import by.yahimovich.task05treads.view.manager.Manager;
 
+import java.io.FileNotFoundException;
 import java.util.concurrent.Semaphore;
+import java.util.logging.SocketHandler;
 
 public class User implements Runnable {
 
@@ -34,12 +36,12 @@ public class User implements Runnable {
 
     @Override
     public void run() {
-        Semaphore semaphore = new Semaphore(2);
+        Semaphore semaphore = new Semaphore(Thread.activeCount());
         System.out.println(Thread.currentThread().getName());
         try {
             semaphore.acquire();
-            new Thread(new Manager()).start();
-        } catch (InterruptedException e) {
+            new Manager().startFromFile();
+        } catch (FileNotFoundException | InterruptedException e) {
             e.printStackTrace();
         }
         semaphore.release();
