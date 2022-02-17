@@ -23,6 +23,8 @@ public class ParallelMatrixService {
     private GenericMatrix<Number> second;
     private final GenericMatrix<Number> result;
 
+    private final ExecutorService pool;
+
     /**
      * Constructor - create new object these parameters.
      * Create resulting matrix with count of rows
@@ -42,6 +44,7 @@ public class ParallelMatrixService {
         this.first = first;
         this.second = second;
         this.result = new GenericMatrix<>(first.getHorizontalSize(), second.getVerticalSize());
+        pool = Executors.newFixedThreadPool(this.numberOfThreads);
     }
 
     /**
@@ -59,6 +62,7 @@ public class ParallelMatrixService {
         this.numberOfThreads = numberOfThreads;
         this.first = first;
         this.result = new GenericMatrix<>(first.getHorizontalSize(), first.getVerticalSize());
+        pool = Executors.newFixedThreadPool(this.numberOfThreads);
     }
 
     /**
@@ -217,14 +221,14 @@ public class ParallelMatrixService {
      */
 
     public GenericMatrix<Number> parallelMultiplication() throws InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(this.numberOfThreads);
         for (int i = 0; i < first.getHorizontalSize(); ++i) {
-            executorService.execute(new ParallelThreadMultiplication(i));
+            pool.execute(new ParallelThreadMultiplication(i));
         }
-        executorService.shutdown();
-        executorService.awaitTermination(1, TimeUnit.MINUTES);
+        pool.shutdown();
+        pool.awaitTermination(1, TimeUnit.MINUTES);
         return this.result;
     }
+    //TODO подстраховка на случай interrupted
 
     /**
      * Method of summarize matrix.
@@ -233,7 +237,6 @@ public class ParallelMatrixService {
      */
 
     public GenericMatrix<Number> parallelSum() throws InterruptedException {
-        ExecutorService pool = Executors.newFixedThreadPool(this.numberOfThreads);
         for (int i = 0; i < first.getHorizontalSize(); ++i) {
             pool.execute(new ParallelThreadSum(i));
         }
@@ -249,12 +252,11 @@ public class ParallelMatrixService {
      */
 
     public GenericMatrix<Number> parallelSub() throws InterruptedException {
-        ExecutorService service = Executors.newFixedThreadPool(this.numberOfThreads);
         for (int i = 0; i < first.getHorizontalSize(); ++i) {
-            service.execute(new ParallelThreadSub(i));
+            pool.execute(new ParallelThreadSub(i));
         }
-        service.shutdown();
-        service.awaitTermination(1, TimeUnit.MINUTES);
+        pool.shutdown();
+        pool.awaitTermination(1, TimeUnit.MINUTES);
         return this.result;
     }
 
@@ -265,7 +267,6 @@ public class ParallelMatrixService {
      */
 
     public GenericMatrix<Number> parallelTranspose() throws InterruptedException {
-        ExecutorService pool = Executors.newFixedThreadPool(this.numberOfThreads);
         for (int i = 0; i < first.getHorizontalSize(); ++i) {
             pool.execute(new ParallelThreadTranspose(i));
         }

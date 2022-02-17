@@ -62,8 +62,9 @@ public class Manager {
                 LOGGER.debug(e.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                lock.unlock();
             }
-            lock.unlock();
         }
         pool.shutdown();
     }

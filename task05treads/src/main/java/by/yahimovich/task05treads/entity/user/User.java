@@ -4,7 +4,6 @@ import by.yahimovich.task05treads.view.manager.Manager;
 
 import java.io.FileNotFoundException;
 import java.util.concurrent.Semaphore;
-import java.util.logging.SocketHandler;
 
 public class User implements Runnable {
 
@@ -36,7 +35,7 @@ public class User implements Runnable {
 
     @Override
     public void run() {
-        Semaphore semaphore = new Semaphore(Thread.activeCount());
+        Semaphore semaphore = new Semaphore(Thread.activeCount(), true);
         System.out.println(Thread.currentThread().getName());
         try {
             semaphore.acquire();
