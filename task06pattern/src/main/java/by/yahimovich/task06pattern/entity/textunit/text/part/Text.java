@@ -1,17 +1,18 @@
-package model.text_unit.text.part;
+package by.yahimovich.task06pattern.entity.textunit.text.part;
 
-import model.text_unit.code.CodeBlock;
-import model.text_unit.text.TextUnit;
-import model.text_unit.text.TextUnitTypeEnum;
+import by.yahimovich.task06pattern.entity.textunit.code.CodeBlock;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnitTypeEnum;
 
 import java.util.ArrayList;
 
 /**
  * word text splitter parser
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public class Text extends TextUnit {
 
     public static final String TEXT_NAME = "TEXT";
@@ -19,6 +20,7 @@ public class Text extends TextUnit {
     /**
      * text units
      */
+
     private ArrayList<TextUnit> text;
 
     public void setText(ArrayList<TextUnit> text) {
@@ -35,6 +37,7 @@ public class Text extends TextUnit {
      *
      * @param sentence sentence
      */
+
     public void addSentence(Sentence sentence) {
         text.add(sentence);
     }
@@ -44,6 +47,7 @@ public class Text extends TextUnit {
      *
      * @param paragraph paragraph
      */
+
     public void addParagraph(Paragraph paragraph) {
         text.add(paragraph);
     }
@@ -53,6 +57,7 @@ public class Text extends TextUnit {
      *
      * @param codeBlock code block
      */
+
     public void addCode(CodeBlock codeBlock) {
         text.add(codeBlock);
     }
@@ -62,6 +67,7 @@ public class Text extends TextUnit {
      *
      * @return sentences in text
      */
+
     public ArrayList<Sentence> getSentences() {
         ArrayList<Sentence> sentences = new ArrayList<>();
         for (TextUnit textUnit : text) {
@@ -76,6 +82,7 @@ public class Text extends TextUnit {
      *
      * @return words in text
      */
+
     public ArrayList<Word> getAllTextWords() {
         ArrayList<Sentence> sentences = getSentences();
         ArrayList<Word> words = new ArrayList<>();
@@ -90,6 +97,7 @@ public class Text extends TextUnit {
      *
      * @return paragraphs in text
      */
+
     public ArrayList<Paragraph> getParagraphs() {
         ArrayList<Paragraph> paragraphs = new ArrayList<>();
         for (TextUnit textUnit : text) {
@@ -104,6 +112,7 @@ public class Text extends TextUnit {
      *
      * @return code blocks in text
      */
+
     public ArrayList<CodeBlock> getCodeBlocks() {
         ArrayList<CodeBlock> codeBlocks = new ArrayList<>();
         for (TextUnit textUnit : text) {
@@ -118,9 +127,8 @@ public class Text extends TextUnit {
         StringBuilder textToString = new StringBuilder();
         for (TextUnit textUnit : text) {
             textToString.append(textUnit.toString());
-            if (textUnit.getClass() == Sentence.class) {
+            if (textUnit.getClass() == Sentence.class)
                 textToString.append(" ");
-            }
         }
         return textToString.toString();
     }

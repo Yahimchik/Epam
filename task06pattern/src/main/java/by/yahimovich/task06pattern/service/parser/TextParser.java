@@ -1,17 +1,18 @@
-package parser;
+package by.yahimovich.task06pattern.service.parser;
 
-import model.exception.InvalidParsingException;
-import model.text_unit.text.TextUnit;
-import model.text_unit.text.part.Text;
+import by.yahimovich.task06pattern.entity.exception.InvalidParsingException;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
+import by.yahimovich.task06pattern.entity.textunit.text.part.Text;
 
 import java.util.ArrayList;
 
 /**
  * paragraph text splitter parser
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public class TextParser {
 
     /**
@@ -30,6 +31,7 @@ public class TextParser {
      * @param textString text
      * @return return Text object
      */
+
     public Text splitText(String textString) throws InvalidParsingException {
         Text text = new Text();
         ArrayList<TextUnit> result;
@@ -46,8 +48,10 @@ public class TextParser {
      * @param text text
      * @return replaced text
      */
+
     protected String trim(String text) {
-        text = text.replaceAll("[\t ]", " ");
+        text = text.trim();
+        text = text.replaceAll("[\t ]+", " ");
         return text;
     }
 

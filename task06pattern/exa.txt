@@ -1,1 +1,0 @@
-by.yahimovich.task06pattern.entity.Sentence@3c73951

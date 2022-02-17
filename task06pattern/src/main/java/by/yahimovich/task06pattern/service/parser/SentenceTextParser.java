@@ -1,27 +1,29 @@
-package parser;
+package by.yahimovich.task06pattern.service.parser;
 
-import model.text_unit.code.CodeBlock;
-import model.text_unit.code.CodeLine;
-import model.text_unit.text.TextUnit;
-import model.text_unit.text.part.Paragraph;
-import model.text_unit.text.part.Sentence;
+import by.yahimovich.task06pattern.entity.exception.InvalidParsingException;
+import by.yahimovich.task06pattern.entity.textunit.code.CodeBlock;
+import by.yahimovich.task06pattern.entity.textunit.code.CodeLine;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
+import by.yahimovich.task06pattern.entity.textunit.text.part.Paragraph;
+import by.yahimovich.task06pattern.entity.textunit.text.part.Sentence;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import model.exception.InvalidParsingException;
 
 /**
  * sentence text parser
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public class SentenceTextParser {
 
     /**
      * next splitter
      */
+
     private final WordTextParser nextSplitter;
 
     public SentenceTextParser() {
@@ -44,7 +46,7 @@ public class SentenceTextParser {
                 }
                 result.add(codeBlock);
             } else if (textUnit.getClass() == Paragraph.class) {
-                Sentence sentence;
+                Sentence sentence = null;
                 Matcher matcher = Pattern.compile(Sentence.SPLITTING_REGEX).matcher(textUnit.getValue());
                 result.add(textUnit);
                 while (matcher.find()) {
@@ -53,10 +55,9 @@ public class SentenceTextParser {
                 }
             }
         }
-        
+
         ArrayList<TextUnit> splited;
 
-        
         splited = nextSplitter.split(result);
 
         return splited;
@@ -64,12 +65,14 @@ public class SentenceTextParser {
 
     /**
      * replace tabs
+     *
      * @param text text
      * @return replaced text
      */
+
     protected String trim(String text) {
         text = text.trim();
-        text = text.replaceAll("[\t]", "");
+        text = text.replaceAll("[\t ]+", " ");
         return text;
     }
 

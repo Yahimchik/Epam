@@ -1,12 +1,14 @@
-package model.text_unit.text.part;
+package by.yahimovich.task06pattern.entity.textunit.text.part;
 
 /**
  * types of punctuation marks
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public enum PunctuationMarkTypeEnum {
+
     DOT("."),
     COMMA(","),
     EXCLAMATION("!"),

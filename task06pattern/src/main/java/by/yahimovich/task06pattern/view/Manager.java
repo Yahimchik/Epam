@@ -1,8 +1,10 @@
-package controller;
+package by.yahimovich.task06pattern.view;
 
-import model.text_unit.text.part.Text;
-import model.text_unit.text.part.Word;
-import parser.TextParser;
+import by.yahimovich.task06pattern.entity.exception.FileException;
+import by.yahimovich.task06pattern.entity.exception.InvalidParsingException;
+import by.yahimovich.task06pattern.entity.textunit.text.part.Text;
+import by.yahimovich.task06pattern.entity.textunit.text.part.Word;
+import by.yahimovich.task06pattern.service.parser.TextParser;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,23 +12,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
-
-import model.exception.ControllerException;
-import model.exception.FileException;
-import model.exception.InvalidParsingException;
-import model.exception.SwapFirstAndLastWordsException;
 
 /**
  * word text splitter parser
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
-public class Controller {
 
+public class Manager {
 
     private String textString;
 
@@ -41,6 +37,7 @@ public class Controller {
      * @return text string
      * @throws FileException if no file
      */
+
     public String loadText(String path) throws FileException {
 
         try {
@@ -54,33 +51,16 @@ public class Controller {
     }
 
     /**
-     * load locale
-     *
-     * @param loc locale to program
-     * @return ResourceBundle
-     */
-    public ResourceBundle loadlocale(String loc) {
-        Locale locale = new Locale(loc);
-
-        String BUNDLE_PATH = "localization/locales/locale";
-        ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_PATH, locale);
-        return bundle;
-    }
-
-    /**
      * parse text string to text object
      *
      * @return text object
      */
+
     public Text parseTextStringToText() throws InvalidParsingException {
 
         TextParser textParser = new TextParser();
         Text parsedText;
-        try {
-            parsedText = textParser.splitText(textString);
-        } catch (Exception e) {
-            throw e;
-        }
+        parsedText = textParser.splitText(textString);
 
         return parsedText;
     }
@@ -91,18 +71,17 @@ public class Controller {
      * @param text text object
      * @return sorted words
      */
+
     public List<Word> sortWords(Text text) {
         ArrayList<Word> words = text.getAllTextWords();
 
-        List<Word> sortedWords = words.stream()
+        return words.stream()
                 .sorted((w1, w2) -> {
                     String w1OnlyConsonants = w1.getText().toLowerCase();
                     String w2OnlyConsonants = w2.getText().toLowerCase();
                     return w1OnlyConsonants.compareTo(w2OnlyConsonants);
                 })
                 .collect(Collectors.toList());
-
-        return sortedWords;
     }
 
     /**
@@ -111,6 +90,7 @@ public class Controller {
      * @param sorted sorted array of words
      * @param bundle ResourceBundle
      */
+
     public void printWords(List<Word> sorted, ResourceBundle bundle) {
         if (sorted.isEmpty()) {
             System.out.println(bundle.getString("SortWordsNotFound"));

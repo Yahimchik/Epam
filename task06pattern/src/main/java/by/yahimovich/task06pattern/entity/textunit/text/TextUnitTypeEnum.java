@@ -1,11 +1,12 @@
-package model.text_unit.text;
+package by.yahimovich.task06pattern.entity.textunit.text;
 
 /**
  * text unit type enum
  *
- * @author Dvoryakov Makism
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public enum TextUnitTypeEnum {
     WORD {
         @Override

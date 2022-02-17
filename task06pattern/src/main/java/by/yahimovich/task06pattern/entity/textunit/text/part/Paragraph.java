@@ -1,14 +1,16 @@
-package model.text_unit.text.part;
+package by.yahimovich.task06pattern.entity.textunit.text.part;
 
-import model.text_unit.text.TextUnit;
-import model.text_unit.text.TextUnitTypeEnum;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnitTypeEnum;
+
 
 /**
  * Paragraph
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public class Paragraph extends TextUnit {
 
     public static final String PARAGRAPH_NAME = "PARAGRAPH";
@@ -20,13 +22,14 @@ public class Paragraph extends TextUnit {
      *
      * @param text text value
      */
+
     public Paragraph(String text) {
         super(text, TextUnitTypeEnum.PARAGRAPH);
     }
 
     @Override
     public String toString() {
-        return " ";
+        return "\n";
     }
 
 }

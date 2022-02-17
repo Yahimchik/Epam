@@ -1,9 +1,9 @@
-package model.text_unit.text;
+package by.yahimovich.task06pattern.entity.textunit.text;
 
 /**
  * abstract text unit class
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
 

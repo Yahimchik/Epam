@@ -1,16 +1,17 @@
-package model.text_unit.code;
+package by.yahimovich.task06pattern.entity.textunit.code;
 
-import model.text_unit.text.TextUnit;
-import model.text_unit.text.TextUnitTypeEnum;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnitTypeEnum;
 
 import java.util.ArrayList;
 
 /**
  * CodeBlock
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public class CodeBlock extends TextUnit {
 
     public static final String DIVIDER = "<code>";
@@ -18,6 +19,7 @@ public class CodeBlock extends TextUnit {
     /**
      * all code lines
      */
+
     private final ArrayList<CodeLine> code;
 
     /**
@@ -25,6 +27,7 @@ public class CodeBlock extends TextUnit {
      *
      * @return code lines
      */
+
     public ArrayList<CodeLine> getCodeLines() {
         return code;
     }
@@ -34,6 +37,7 @@ public class CodeBlock extends TextUnit {
      *
      * @param value code line value
      */
+
     public CodeBlock(String value) {
         super(value, TextUnitTypeEnum.CODE_BLOCK);
         code = new ArrayList<>();
@@ -44,6 +48,7 @@ public class CodeBlock extends TextUnit {
      *
      * @param codeLine code line
      */
+
     public void addCodeLine(CodeLine codeLine) {
         code.add(codeLine);
     }

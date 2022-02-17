@@ -1,16 +1,15 @@
-package model.text_unit.code;
+package by.yahimovich.task06pattern.entity.textunit.code;
 
-import model.text_unit.text.TextUnit;
-import model.text_unit.text.TextUnitTypeEnum;
-
-import java.util.ArrayList;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
+import by.yahimovich.task06pattern.entity.textunit.text.TextUnitTypeEnum;
 
 /**
  * code line
  *
- * @author Grishkin Andrei
+ * @author Egor Yahimovich
  * @version 1.1
  */
+
 public class CodeLine extends TextUnit {
 
     public static final String DIVIDER = "\n";
@@ -18,12 +17,12 @@ public class CodeLine extends TextUnit {
 
     /**
      * code line
-     *
      */
-    private String codeLine;
+    private final String codeLine;
 
     /**
      * code line getter
+     *
      * @return code line
      */
     public String getCodeLine() {
@@ -31,12 +30,12 @@ public class CodeLine extends TextUnit {
     }
 
     /**
-     * cosntuctor
-     * @param value vlaue of code line
+     * constructor
      *
+     * @param value value of code line
      */
-    public CodeLine(String value ){
-        super(value, TextUnitTypeEnum.CODE_LINE );
+    public CodeLine(String value) {
+        super(value, TextUnitTypeEnum.CODE_LINE);
         codeLine = value;
     }
 
