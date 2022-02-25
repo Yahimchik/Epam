@@ -1,8 +1,21 @@
 package by.yahimovich.task4ooprepository.entity.pyramidfactory;
 
-import by.yahimovich.task4ooprepository.entity.Pyramid;
 import by.yahimovich.task4ooprepository.entity.exception.PyramidException;
 
+/**
+ * Create Pyramid Interface
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see PyramidException
+ */
+
 public interface CreatePyramidInterface {
-    Pyramid create() throws PyramidException;
+
+    /**
+     * Method create.
+     * Create new object.
+     * */
+
+    Object create() throws PyramidException;
 }

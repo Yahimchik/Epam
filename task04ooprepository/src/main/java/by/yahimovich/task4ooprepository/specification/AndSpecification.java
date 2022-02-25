@@ -3,9 +3,16 @@ package by.yahimovich.task4ooprepository.specification;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * AndSpecification.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ */
+
 public class AndSpecification<T> extends AbstractSpecification<T> {
 
-    private Set<Specification<T>> set = new HashSet<>();
+    private final Set<Specification<T>> set = new HashSet<>();
 
     public AndSpecification(Specification<T> a, Specification<T> b) {
         set.add(a);

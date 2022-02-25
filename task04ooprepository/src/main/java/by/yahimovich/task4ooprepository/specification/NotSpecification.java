@@ -1,8 +1,15 @@
 package by.yahimovich.task4ooprepository.specification;
 
+/**
+ * NotSpecification.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ */
+
 public class NotSpecification<T> extends AbstractSpecification<T> {
 
-    private Specification<T> specification;
+    private final Specification<T> specification;
 
     public NotSpecification(Specification<T> specification) {
         this.specification = specification;

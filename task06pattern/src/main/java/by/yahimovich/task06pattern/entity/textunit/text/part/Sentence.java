@@ -17,8 +17,8 @@ public class Sentence extends TextUnit {
     public static final String DIVIDER = "\\.!\\?";
     public static final String DELIM_FOR_COMBINING = " ";
     public static final String SPLITTING_REGEX = "[^" + DIVIDER + "]+([" + DIVIDER + "]+|\\z)";
-    private final ArrayList<TextUnit> sentence;
-    
+    public ArrayList<TextUnit> sentence;
+
     /**
      * constructor
      *
@@ -63,11 +63,12 @@ public class Sentence extends TextUnit {
     public String toString() {
         StringBuilder textToString = new StringBuilder();
         for (TextUnit textUnit : sentence) {
-            if (textUnit.getClass() != PunctuationMark.class && sentence.indexOf(textUnit) != 0)
+            if (textUnit.getClass() != PunctuationMark.class && sentence.indexOf(textUnit) != 0) {
                 textToString.append(DELIM_FOR_COMBINING);
-            textToString.append(textUnit.toString());
-
+            }
+            textToString.append(textUnit.getValue());
         }
+        textToString.append("\n");
         return textToString.toString();
     }
 }

@@ -1,7 +1,8 @@
 package by.yahimovich.task05treads.entity.exception;
 
 /**
- * Throws exception when something broke on GenericMatrix class or GenericArray class.
+ * Throws exception when something broke
+ * on GenericMatrix class or GenericArray class.
  *
  * @author Egor Yahimovich
  * @version 1.0

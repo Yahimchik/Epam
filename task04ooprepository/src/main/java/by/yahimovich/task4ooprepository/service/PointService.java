@@ -2,7 +2,22 @@ package by.yahimovich.task4ooprepository.service;
 
 import by.yahimovich.task4ooprepository.entity.Point3DClass;
 
+/**
+ * Point service class.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Point3DClass
+ */
+
 public class PointService {
+
+    /**
+     * Method sideLength.
+     *
+     * @return length of the figure side.
+     */
+
     public double sideLength(Point3DClass point1, Point3DClass point2) {
         return Math.sqrt(
                 Math.pow(Math.abs(point1.getX() - point2.getX()), 2)
@@ -10,25 +25,4 @@ public class PointService {
                         + Math.pow(Math.abs(point1.getZ() - point2.getZ()), 2)
         );
     }
-
-    public void straightLineEquation(Point3DClass point1, Point3DClass point2) {
-        double Xa = point1.getX();
-        double Ya = point1.getY();
-        double Za = point1.getZ();
-
-        double Xb = point2.getX();
-        double Yb = point2.getY();
-        double Zb = point2.getZ();
-
-        double X;
-        double Y;
-        double Z;
-
-        double t = 1;
-
-        X = (Xb - Xa) * t + Xa;
-        Y = (Yb - Ya) * t + Ya;
-        Z = (Zb - Za) * t + Za;
-    }
-
 }

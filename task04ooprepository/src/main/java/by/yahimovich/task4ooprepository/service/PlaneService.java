@@ -3,7 +3,22 @@ package by.yahimovich.task4ooprepository.service;
 import by.yahimovich.task4ooprepository.entity.Plane;
 import by.yahimovich.task4ooprepository.entity.Point3DClass;
 
+/**
+ * Plane Service class.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Point3DClass
+ * @see Plane
+ */
+
 public class PlaneService {
+
+    /**
+     * Method createPlane.
+     *
+     * @return plane equation.
+     */
 
     public Plane createPlane(Point3DClass point3D1, Point3DClass point3D2, Point3DClass point3D3) {
 

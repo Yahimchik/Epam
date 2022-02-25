@@ -3,6 +3,8 @@ package by.yahimovich.task06pattern.entity.textunit.text.part;
 import by.yahimovich.task06pattern.entity.textunit.text.TextUnit;
 import by.yahimovich.task06pattern.entity.textunit.text.TextUnitTypeEnum;
 
+import java.util.ArrayList;
+
 
 /**
  * Paragraph
@@ -29,7 +31,7 @@ public class Paragraph extends TextUnit {
 
     @Override
     public String toString() {
-        return "\n";
+        return getValue() + " " + "\n";
     }
 
 }

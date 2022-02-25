@@ -9,11 +9,28 @@ import by.yahimovich.task4ooprepository.service.comparator.PointComparator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Pyramid service class.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Triangle
+ * @see Point3DClass
+ * @see PointService
+ * @see PointComparator
+ */
+
 public class PyramidService extends PointService {
 
     PointService pointService = new PointService();
     TriangleService triangleService = new TriangleService();
     PlaneService planeService = new PlaneService();
+
+    /**
+     * Method isPyramid.
+     *
+     * @return true if object is pyramid and false if not.
+     */
 
     public boolean isPyramid(Pyramid pyramid) {
         Plane plane = plane(pyramid);
@@ -36,6 +53,12 @@ public class PyramidService extends PointService {
         return count == 1;
     }
 
+    /**
+     * Method pyramidPoints.
+     *
+     * @return list of pyramid points.
+     */
+
     private List<Point3DClass> pyramidPoints(Pyramid pyramid) {
         List<Point3DClass> point3DS = new ArrayList<>();
         for (int i = 0; i < pyramid.getCountOfPeaks(); ++i) {
@@ -43,6 +66,12 @@ public class PyramidService extends PointService {
         }
         return point3DS;
     }
+
+    /**
+     * Method points pyramid base.
+     *
+     * @return list of pyramid base points.
+     */
 
     private List<Point3DClass> pointsOfPyramidBase(Pyramid pyramid) {
         List<Point3DClass> point3DS = new ArrayList<>();
@@ -53,11 +82,23 @@ public class PyramidService extends PointService {
         return point3DS;
     }
 
+    /**
+     * Method pyramidTop.
+     *
+     * @return pyramid peek.
+     */
+
     private List<Point3DClass> pyramidTop(Pyramid pyramid) {
         List<Point3DClass> points = new ArrayList<>();
         points.add(pyramid.getPeak(6));
         return points;
     }
+
+    /**
+     * Method sides of pyramid base.
+     *
+     * @return list of pyramid base sides.
+     */
 
     private List<Double> sidesOfPyramidBase(List<Point3DClass> points) {
         List<Double> listOfSides = new ArrayList<>(); // Стороны основания пирамиды
@@ -68,10 +109,24 @@ public class PyramidService extends PointService {
         return listOfSides;
     }
 
+    /**
+     * Method sortPoints.
+     * Sort list of points.
+     */
+
     private void sortPoints(List<Point3DClass> pointsOfBase) {
         PointComparator comparator = new PointComparator();
         pointsOfBase.sort(comparator);
     }
+
+    /**
+     * Method triangulation pyramid base.
+     * To calculate the area of irregular polygon,
+     * you need to break it into (n - 2) triangles.
+     * n - count of polygon points.
+     *
+     * @return list of triangles.
+     */
 
     private List<Triangle> triangulationPyramidBase(List<Point3DClass> pointsOfBase) {
         List<Triangle> triangles = new ArrayList<>();
@@ -81,6 +136,13 @@ public class PyramidService extends PointService {
         }
         return triangles;
     }
+
+    /**
+     * Method triangulation pyramid.
+     * Break pyramid on triangles without base.
+     *
+     * @return list of triangles.
+     */
 
     private List<Triangle> triangulationPyramid(Pyramid pyramid) {
         List<Point3DClass> points = pointsOfPyramidBase(pyramid);
@@ -97,6 +159,14 @@ public class PyramidService extends PointService {
         return trianglesOfPyramid;
     }
 
+    /**
+     * Method square of all pyramid.
+     * To calculate square of pyramid use formula:
+     * S = S(base) + S(side_surface)
+     *
+     * @return square of all pyramid.
+     */
+
     public double squareOfAllPyramid(Pyramid pyramid) {
         double square = 0;
 
@@ -111,7 +181,12 @@ public class PyramidService extends PointService {
         return square + baseSquare;
     }
 
-    //Количество треугольников в основании пирамиды = n - 2, где n - количество вершин (точек)
+    /**
+     * Method pyramid base square.
+     * Square of polygon = The sum of the areas of all triangles.
+     *
+     * @return square of pyramid base.
+     */
 
     private double pyramidBaseSquare(Pyramid pyramid) {
         List<Point3DClass> pointsOfBase = pointsOfPyramidBase(pyramid); // Точки основания пирамиды
@@ -126,11 +201,26 @@ public class PyramidService extends PointService {
         return (float) squareOfPyramidBase;
     }
 
+    /**
+     * Method pyramid volume.
+     * V = 1/3 * S(base) * H.
+     *
+     * @return volume of pyramid.
+     */
+
     public double pyramidVolume(Pyramid pyramid) {
         double base = pyramidBaseSquare(pyramid);
         double high = pyramidHigh(pyramid);
         return (1.0 / 3.0) * base * high;
     }
+
+    /**
+     * Method pyramid high.
+     * Method use formula:
+     * High = point to plane distance.
+     *
+     * @return pyramid high.
+     */
 
     private double pyramidHigh(Pyramid pyramid) {
         Plane plane = plane(pyramid);
@@ -149,6 +239,13 @@ public class PyramidService extends PointService {
 
         return pointService.sideLength(new Point3DClass(x, y, z), points.get(0));
     }
+
+    /**
+     * Method plane.
+     * Creates plane equation.
+     *
+     * @return equation.
+     */
 
     private Plane plane(Pyramid pyramid) {
         return planeService.createPlane(

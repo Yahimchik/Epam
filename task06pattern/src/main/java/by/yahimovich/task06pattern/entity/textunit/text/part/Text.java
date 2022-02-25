@@ -126,9 +126,10 @@ public class Text extends TextUnit {
     public String toString() {
         StringBuilder textToString = new StringBuilder();
         for (TextUnit textUnit : text) {
-            textToString.append(textUnit.toString());
-            if (textUnit.getClass() == Sentence.class)
+            textToString.append(textUnit.getValue());
+            if (textUnit.getClass() == Sentence.class) {
                 textToString.append(" ");
+            }
         }
         return textToString.toString();
     }

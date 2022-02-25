@@ -10,11 +10,31 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Jsom DAO.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ */
+
+
 public class JsonDAO<T> extends AbstractDAO<T> {
+
+    /**
+     * Constructor - create new object.
+     *
+     * @param type Class type.
+     */
 
     public JsonDAO(Class<T> type) {
         super(type);
     }
+
+    /**
+     * Method read.
+     *
+     * @return list of objects from file.
+     */
 
     @Override
     public List read(String filename) throws IOException {
@@ -27,6 +47,11 @@ public class JsonDAO<T> extends AbstractDAO<T> {
         return data;
 
     }
+
+    /**
+     * Method write.
+     * Writes list of objects to file.
+     */
 
     @Override
     public void write(List<T> data, String fileName) throws IOException {

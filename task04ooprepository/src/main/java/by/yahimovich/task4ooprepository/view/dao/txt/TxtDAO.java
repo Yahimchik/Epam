@@ -11,11 +11,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Txt DAO.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ */
+
+
 public class TxtDAO<T> extends AbstractTxt<T> {
+
+    /**
+     * Constructor - create new object.
+     *
+     * @param type Class type.
+     */
 
     public TxtDAO(Class<T> type) {
         super(type);
     }
+
+    /**
+     * Method read.
+     *
+     * @return list of objects from file.
+     */
 
     @Override
     public Pyramid read(String fileName) throws FileNotFoundException {
@@ -35,6 +55,11 @@ public class TxtDAO<T> extends AbstractTxt<T> {
         }
         return new Pyramid(new PyramidID(1), points);
     }
+
+    /**
+     * Method write.
+     * Writes list of objects to file.
+     */
 
     @Override
     public void write(List<T> list, String fileName) {

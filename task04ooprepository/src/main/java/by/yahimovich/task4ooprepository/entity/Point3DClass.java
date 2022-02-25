@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 
+/**
+ * Point 3D class
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Serializable
+ * @see Point2DClass
+ */
+
 @JsonIgnoreProperties
-
 public class Point3DClass extends Point2DClass implements Serializable {
-
-    /**
-     * Point class parameters.
-     * x - first value of point.
-     * y - second value of point.
-     */
 
     private double z;
 
@@ -20,18 +22,44 @@ public class Point3DClass extends Point2DClass implements Serializable {
         super();
     }
 
+    /**
+     * Constructor - creates new object.
+     *
+     * @param x coordinate
+     * @param y coordinate
+     * @param z coordinate
+     */
+
+
     public Point3DClass(double x, double y, double z) {
         super(x, y);
         this.z = z;
     }
 
+    /**
+     * Method getZ.
+     *
+     * @return z coordinate of a point.
+     */
+
     public double getZ() {
         return z;
     }
 
+    /**
+     * Method setZ.
+     * Set new value for z coordinate of a point.
+     */
+
     public void setZ(double z) {
         this.z = z;
     }
+
+    /**
+     * Override method toString.
+     *
+     * @return object as string.
+     */
 
     @Override
     public String toString() {
@@ -39,6 +67,12 @@ public class Point3DClass extends Point2DClass implements Serializable {
                 + ", Y: " + getY()
                 + ", Z: " + getZ();
     }
+
+    /**
+     * Override method toString.
+     *
+     * @return hash value of the object.
+     */
 
     @Override
     public int hashCode() {
@@ -48,6 +82,12 @@ public class Point3DClass extends Point2DClass implements Serializable {
         hash = (int) (71 * hash + this.z);
         return hash;
     }
+
+    /**
+     * Override method equals.
+     *
+     * @return true of objects are equal of false if not.
+     */
 
     @Override
     public boolean equals(Object object) {

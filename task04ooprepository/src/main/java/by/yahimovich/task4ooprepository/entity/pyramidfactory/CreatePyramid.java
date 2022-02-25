@@ -7,9 +7,25 @@ import by.yahimovich.task4ooprepository.entity.exception.PyramidException;
 
 import java.util.List;
 
+/**
+ * Side length command
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see CreatePyramidInterface
+ * @see Point3DClass
+ */
+
 public class CreatePyramid implements CreatePyramidInterface {
 
     List<Point3DClass> point3DS;
+
+    /**
+     * Override method create.
+     * Create new Pyramid.
+     *
+     * @return Pyramid object
+     */
 
     @Override
     public Pyramid create() throws PyramidException {

@@ -1,5 +1,15 @@
 package by.yahimovich.task4ooprepository.entity.exception;
 
+/**
+ * Throws exception when something broke
+ * with Pyramid object.
+ *
+ * @author Egor Yahimovich
+ * @version 1.0
+ * @see Throwable
+ * @see Exception
+ */
+
 public class PyramidException extends Exception {
     public PyramidException() {
     }

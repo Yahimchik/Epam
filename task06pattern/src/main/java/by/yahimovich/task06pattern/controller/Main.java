@@ -29,13 +29,14 @@ public class Main {
             System.out.println(result);
             System.out.println();
 
-            System.out.println();
 
 
             Text text = manager.parseTextStringToText();
 
+            new Service().sortParagraphs(text);
+            System.out.println();
             new Service().sortWordsInSentence(text);
-            System.out.println(text);
+//            System.out.println(text.getSentences());
             System.out.println();
 
 
