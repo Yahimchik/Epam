@@ -35,7 +35,9 @@ public class Main {
 
             new Service().sortParagraphs(text);
             System.out.println();
-            new Service().sortWordsInSentence(text);
+            System.out.println(new Service().sortWordsInSentence(text));
+            System.out.println();
+            System.out.print(new Service().sortParagraphs(text));
 //            System.out.println(text.getSentences());
             System.out.println();
 
