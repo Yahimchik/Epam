@@ -3,7 +3,7 @@ package by.yahimovich.task4ooprepository.singleton;
 import by.yahimovich.task4ooprepository.repository.ArrayPyramidRepository;
 
 /**
- * Comparator ID class.
+ * Singleton class.
  *
  * @author Egor Yahimovich
  * @version 1.0

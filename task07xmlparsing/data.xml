@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sales>
+    <subscription_sale>
+        <card_number>123</card_number>
+        <user_id>1</user_id>
+        <start_date>12.02.2022 11:00</start_date>
+        <end_date>12.03.2022 11:00</end_date>
+        <service_id>2</service_id>
+        <client>
+            <id>1</id>
+            <f_name>Yahimovich</f_name>
+            <s_name>Egor</s_name>
+            <l_name>Aleksandrovich</l_name>
+            <address>Vileyka</address>
+            <phone>+375333139380</phone>
+        </client>
+        <subscription>
+            <id>1</id>
+            <name>Premium</name>
+            <price>50</price>
+            <visits>15</visits>
+            <days>30</days>
+        </subscription>
+        <specialization>
+            <id>1</id>
+            <note>Master of Sport</note>
+            <service>
+                <id>2</id>
+                <name>powerlifting</name>
+            </service>
+            <employee>
+                <id>2</id>
+                <f_name>Scridlevskiy</f_name>
+                <s_name>Aleksey</s_name>
+                <l_name>Aleksandrovich</l_name>
+                <address>Slyck</address>
+                <phone>+375294859261</phone>
+            </employee>
+        </specialization>
+    </subscription_sale>
+</sales>

@@ -32,7 +32,7 @@ public class DataClass {
     }
 
     @DataProvider(name = "sortWordsInSentence")
-    public Object[][] createText() throws FileException, InvalidParsingException {
+    public Object[][] createTextForWordsSort() throws FileException, InvalidParsingException {
         String str = manager.loadText("input.txt");
         Text text = manager.parseTextStringToText();
         Text text1 = manager.parseTextStringToText();
@@ -47,7 +47,7 @@ public class DataClass {
     }
 
     @DataProvider(name = "sortParagraphs")
-    public Object[][] createData() throws FileException, InvalidParsingException {
+    public Object[][] createTextForParagraphSort() throws FileException, InvalidParsingException {
         String str = manager.loadText("input.txt");
         Text text = manager.parseTextStringToText();
         Text text1 = manager.parseTextStringToText();
