@@ -1,4 +1,4 @@
-package by.yahimovich.task07.parser;
+package by.yahimovich.task07.parser.sax;
 
 import by.yahimovich.task07.entity.*;
 import org.xml.sax.Attributes;
@@ -42,7 +42,6 @@ public class SAXParserHandler extends DefaultHandler {
             case "subscription_sale" -> isSale = true;
             case "subscription" -> isSubscription = true;
             case "specialization" -> isSpecialization = true;
-            default -> System.out.println();
         }
     }
 
@@ -56,7 +55,6 @@ public class SAXParserHandler extends DefaultHandler {
             case "subscription_sale" -> isSale = false;
             case "subscription" -> isSubscription = false;
             case "specialization" -> isSpecialization = false;
-            default -> System.out.println();
         }
         currentTagName = null;
     }
@@ -90,7 +88,6 @@ public class SAXParserHandler extends DefaultHandler {
                 }
                 case "service_id" -> sale
                         .setEmployeeServiceID(Integer.parseInt(data));
-                default -> System.out.println();
             }
             if (isSale && isClient) {
                 createUser(client, data);
@@ -106,7 +103,6 @@ public class SAXParserHandler extends DefaultHandler {
                             .setNumberOfVisit(Integer.parseInt(data));
                     case "days" -> subscription
                             .setNumberOfDays(Integer.parseInt(data));
-                    default -> System.out.println();
                 }
                 sale.setSubscription(subscription);
             }
@@ -141,7 +137,6 @@ public class SAXParserHandler extends DefaultHandler {
             case "l_name" -> user.setLastName(data);
             case "address" -> user.setAddress(data);
             case "phone" -> user.setPhoneNumber(data);
-            default -> System.out.println();
         }
     }
 

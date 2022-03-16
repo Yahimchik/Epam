@@ -1,4 +1,4 @@
-package by.yahimovich.task07.parser;
+package by.yahimovich.task07.parser.sax;
 
 import by.yahimovich.task07.entity.SubscriptionSale;
 import org.xml.sax.SAXException;
