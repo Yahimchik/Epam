@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="sales">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="subscription_sale">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:byte" name="card_number"/>
+                            <xs:element type="xs:byte" name="user_id"/>
+                            <xs:element type="xs:string" name="start_date"/>
+                            <xs:element type="xs:string" name="end_date"/>
+                            <xs:element type="xs:byte" name="service_id"/>
+                            <xs:element name="client">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:byte" name="id"/>
+                                        <xs:element type="xs:string" name="f_name"/>
+                                        <xs:element type="xs:string" name="s_name"/>
+                                        <xs:element type="xs:string" name="l_name"/>
+                                        <xs:element type="xs:string" name="address"/>
+                                        <xs:element type="xs:long" name="phone"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="subscription">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:byte" name="id"/>
+                                        <xs:element type="xs:string" name="name"/>
+                                        <xs:element type="xs:byte" name="price"/>
+                                        <xs:element type="xs:byte" name="visits"/>
+                                        <xs:element type="xs:byte" name="days"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="specialization">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:byte" name="id"/>
+                                        <xs:element type="xs:string" name="note"/>
+                                        <xs:element name="service">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:byte" name="id"/>
+                                                    <xs:element type="xs:string" name="name"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="employee">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:byte" name="id"/>
+                                                    <xs:element type="xs:string" name="f_name"/>
+                                                    <xs:element type="xs:string" name="s_name"/>
+                                                    <xs:element type="xs:string" name="l_name"/>
+                                                    <xs:element type="xs:string" name="address"/>
+                                                    <xs:element type="xs:long" name="phone"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
