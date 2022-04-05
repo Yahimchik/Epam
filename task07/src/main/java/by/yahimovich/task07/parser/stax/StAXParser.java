@@ -1,5 +1,6 @@
 package by.yahimovich.task07.parser.stax;
 
+import by.yahimovich.task07.builder.BaseBuilder;
 import by.yahimovich.task07.entity.*;
 import by.yahimovich.task07.parser.ParserInterface;
 import by.yahimovich.task07.parser.TagEnum;
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StAXParser implements ParserInterface {
+public class StAXParser extends BaseBuilder implements ParserInterface {
 
     private final SimpleDateFormat format =
             new SimpleDateFormat("dd.MM.yyyy HH:mm");

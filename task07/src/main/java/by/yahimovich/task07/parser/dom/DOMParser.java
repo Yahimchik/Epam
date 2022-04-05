@@ -1,5 +1,6 @@
 package by.yahimovich.task07.parser.dom;
 
+import by.yahimovich.task07.builder.DOMBuilder;
 import by.yahimovich.task07.entity.*;
 import by.yahimovich.task07.parser.ParserInterface;
 import org.w3c.dom.Document;
@@ -18,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DOMParser implements ParserInterface {
+public class DOMParser extends DOMBuilder implements ParserInterface {
 
     private final Set<SubscriptionSale> sales;
     private DocumentBuilder builder;

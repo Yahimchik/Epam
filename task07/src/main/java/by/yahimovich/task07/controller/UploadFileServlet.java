@@ -1,13 +1,12 @@
 package by.yahimovich.task07.controller;
 
+import by.yahimovich.task07.builder.Parser;
 import by.yahimovich.task07.entity.SubscriptionSale;
 import by.yahimovich.task07.parser.dom.DOMParser;
 import by.yahimovich.task07.parser.sax.SAXParserClass;
 import by.yahimovich.task07.parser.stax.StAXParser;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,66 +14,77 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @WebServlet(urlPatterns = "/file-servlet")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 5,
         maxRequestSize = 1024 * 1024 * 5 * 5)
 public class UploadFileServlet extends HttpServlet {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UploadFileServlet.class);
     private static final String UPLOAD_DIRECTORY = "upload";
-
-    private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 40;
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-        Set<SubscriptionSale> sales = new HashSet<>();
-        String file_name = "";
-        if (ServletFileUpload.isMultipartContent(request)) {
+        String uploadPath = getServletContext()
+                .getRealPath("") + File.separator
+                + UPLOAD_DIRECTORY;
+        System.out.println(uploadPath);
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
 
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            factory.setSizeThreshold(MEMORY_THRESHOLD);
-            factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+        String fileName = "";
 
-            ServletFileUpload upload = new ServletFileUpload(factory);
-            upload.setFileSizeMax(MAX_FILE_SIZE);
-            upload.setSizeMax(MAX_REQUEST_SIZE);
-            String uploadPath = getServletContext().getRealPath("")
-                    + File.separator + UPLOAD_DIRECTORY;
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-            List<FileItem> formItems = null;
-            try {
-                formItems = upload.parseRequest(request);
-            } catch (FileUploadException e) {
-                e.printStackTrace();
-            }
-
-            if (formItems != null && formItems.size() > 0) {
-                for (FileItem item : formItems) {
-                    if (!item.isFormField()) {
-                        String fileName = new File(item.getName()).getName();
-                        String filePath = uploadPath + File.separator + fileName;
-                        File storeFile = new File(filePath);
-                        try {
-                            item.write(storeFile);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        request.setAttribute("fileName", fileName);
-                    }
-                }
+        for (Part part : request.getParts()) {
+            if (!"default.file".equals(getFileName(part))) {
+                fileName = getFileName(part);
+                part.write(uploadPath + File.separator + fileName);
+                request.setAttribute("sales", processRequest(request, fileName));
             }
         }
-        getServletContext().getRequestDispatcher("/parser.jsp").forward(request,resp);
+
+        getServletContext().getRequestDispatcher("/sales.jsp").forward(request, resp);
+    }
+
+    private Set<SubscriptionSale> processRequest(HttpServletRequest request, String fileName) {
+        String operation = request.getParameter("parser");
+        Set<SubscriptionSale> sales = new HashSet<>();
+
+        switch (operation) {
+            case "dom" -> {
+                LOGGER.info("DOMParser selected");
+                sales = Parser.createSubscriptionSale(new DOMParser(), fileName);
+            }
+            case "sax" -> {
+                LOGGER.info("SAXParser selected");
+                sales = Parser.createSubscriptionSale(new SAXParserClass(), fileName);
+            }
+            case "stax" -> {
+                LOGGER.info("StAXParser selected");
+                sales = Parser.createSubscriptionSale(new StAXParser(), fileName);
+            }
+        }
+        return sales;
+    }
+
+    private String getFileName(final Part part) {
+        for (String content : part
+                .getHeader("content-disposition")
+                .split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content
+                        .substring(content.indexOf("=") + 2,
+                                content.length() - 1);
+            }
+        }
+        return "default.file";
     }
 }

@@ -1,5 +1,6 @@
 package by.yahimovich.task07.parser.sax;
 
+import by.yahimovich.task07.builder.BaseBuilder;
 import by.yahimovich.task07.entity.SubscriptionSale;
 import by.yahimovich.task07.parser.ParserInterface;
 import org.xml.sax.SAXException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Set;
 
-public class SAXParserClass implements ParserInterface {
+public class SAXParserClass extends BaseBuilder implements ParserInterface {
     private Set<SubscriptionSale> sales;
     private final SAXParserHandler handler = new SAXParserHandler();
     private XMLReader reader;

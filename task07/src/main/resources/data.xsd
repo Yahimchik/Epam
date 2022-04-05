@@ -1,71 +1,84 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://by.yahimovich/task07/src/main/resources"
+           xmlns:tns="http://by.yahimovich/task07/src/main/resources"
+           elementFormDefault="qualified"
+>
     <xs:element name="sales">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="subscription_sale">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element type="xs:byte" name="card_number"/>
-                            <xs:element type="xs:byte" name="user_id"/>
-                            <xs:element type="xs:string" name="start_date"/>
-                            <xs:element type="xs:string" name="end_date"/>
-                            <xs:element type="xs:byte" name="service_id"/>
-                            <xs:element name="client">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:byte" name="id"/>
-                                        <xs:element type="xs:string" name="f_name"/>
-                                        <xs:element type="xs:string" name="s_name"/>
-                                        <xs:element type="xs:string" name="l_name"/>
-                                        <xs:element type="xs:string" name="address"/>
-                                        <xs:element type="xs:long" name="phone"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="subscription">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:byte" name="id"/>
-                                        <xs:element type="xs:string" name="name"/>
-                                        <xs:element type="xs:byte" name="price"/>
-                                        <xs:element type="xs:byte" name="visits"/>
-                                        <xs:element type="xs:byte" name="days"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="specialization">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:byte" name="id"/>
-                                        <xs:element type="xs:string" name="note"/>
-                                        <xs:element name="service">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element type="xs:byte" name="id"/>
-                                                    <xs:element type="xs:string" name="name"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="employee">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element type="xs:byte" name="id"/>
-                                                    <xs:element type="xs:string" name="f_name"/>
-                                                    <xs:element type="xs:string" name="s_name"/>
-                                                    <xs:element type="xs:string" name="l_name"/>
-                                                    <xs:element type="xs:string" name="address"/>
-                                                    <xs:element type="xs:long" name="phone"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element ref="tns:subscription_sale" minOccurs="16" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="subscription_sale" type="tns:Sale" abstract="true"/>
+
+    <xs:complexType name="Sale">
+        <xs:sequence>
+            <xs:element name="card_number" type="xs:integer"/>
+            <xs:element name="user_id" type="xs:integer"/>
+            <xs:element name="start_date" type="xs:dateTime"/>
+            <xs:element name="end_date" type="xs:dateTime"/>
+            <xs:element name="service_id" type="xs:integer"/>
+            <xs:element name="client" type="tns:Client"/>
+            <xs:element name="subscription" type="tns:Subscription"/>
+            <xs:element name="specialization" type="tns:Specialization"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="UserProfile" mixed="true">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="client" type="tns:Client"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Client">
+        <xs:sequence>
+            <xs:element name="id_client" default="client"/>
+            <xs:element name="f_name_client" default="client"/>
+            <xs:element name="s_name_client" default="client"/>
+            <xs:element name="l_name_client" default="client"/>
+            <xs:element name="address_client" default="client"/>
+            <xs:element name="phone_client" default="client"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Subscription">
+        <xs:sequence>
+            <xs:element name="id_sub" default="subscription"/>
+            <xs:element name="name_sub" default="subscription"/>
+            <xs:element name="price" default="subscription"/>
+            <xs:element name="visits" default="subscription"/>
+            <xs:element name="days" default="subscription"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Specialization">
+        <xs:sequence>
+            <xs:element name="id_spec" default="specialization"/>
+            <xs:element name="note" default="specialization"/>
+            <xs:element name="service" type="tns:Service"/>
+            <xs:element name="employee" type="tns:Employee"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Service">
+        <xs:sequence>
+            <xs:element name="id_serv" default="service"/>
+            <xs:element name="name_serv" default="service"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Employee">
+        <xs:sequence>
+            <xs:element name="id_employee" default="employee"/>
+            <xs:element name="f_name_employee" default="employee"/>
+            <xs:element name="s_name_employee" default="employee"/>
+            <xs:element name="l_name_employee" default="employee"/>
+            <xs:element name="address_employee" default="employee"/>
+            <xs:element name="phone_employee" default="employee"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

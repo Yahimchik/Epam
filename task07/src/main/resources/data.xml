@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<sales>
-    <subscription_sale>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sales xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://http://by.yahimovich/task07/src/main/resources"
+       xsi:schemaLocation="http://http://by.yahimovich/task07/src/main/resources data.xsd
+">
+    <subscription_sale id="1">
         <card_number>1</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -38,7 +41,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="2">
         <card_number>2</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -76,7 +79,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="3">
         <card_number>3</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -114,7 +117,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="4">
         <card_number>4</card_number>
         <user_id>1</user_id>
         <start_date>11.02.2022 11:00</start_date>
@@ -152,7 +155,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="5">
         <card_number>5</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -190,7 +193,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="6">
         <card_number>6</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -228,7 +231,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="7">
         <card_number>7</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -266,7 +269,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="8">
         <card_number>8</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -304,7 +307,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="9">
         <card_number>9</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -342,7 +345,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="10">
         <card_number>10</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 12:00</start_date>
@@ -380,7 +383,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="11">
         <card_number>11</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -418,7 +421,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="12">
         <card_number>12</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -456,7 +459,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="13">
         <card_number>13</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -494,7 +497,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="14">
         <card_number>14</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -532,7 +535,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="15">
         <card_number>15</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -570,7 +573,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="16">
         <card_number>16</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -608,7 +611,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="17">
         <card_number>17</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -646,7 +649,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="18">
         <card_number>18</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2021 11:00</start_date>
@@ -684,7 +687,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="19">
         <card_number>19</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -722,7 +725,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="20">
         <card_number>20</card_number>
         <user_id>3</user_id>
         <start_date>12.02.2022 11:00</start_date>
@@ -760,7 +763,7 @@
             </employee>
         </specialization>
     </subscription_sale>
-    <subscription_sale>
+    <subscription_sale id="21">
         <card_number>21</card_number>
         <user_id>1</user_id>
         <start_date>12.02.2022 11:00</start_date>

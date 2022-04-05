@@ -9,8 +9,6 @@ public interface ParserInterface {
 
     SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
-    void buildSales(String fileName);
-
     default URI getFileFromResource(final String fileName) throws URISyntaxException {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
