@@ -10,7 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-public class Service {
+public class Validator {
 
     public static void verifyValidatesInternalXsd(String filename) throws Exception {
         InputStream xmlStream = new FileInputStream(filename);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://by.yahimovich/task07/resources"
-           xmlns:tns="http://by.yahimovich/task07/resources"
-           elementFormDefault="qualified"
->
+           targetNamespace="http://training.by/xmlparser/entity/devices"
+           xmlns:tns="http://training.by/xmlparser/entity/devices"
+           elementFormDefault="qualified">
+
     <xs:element name="sales">
         <xs:complexType>
             <xs:sequence>
@@ -12,15 +12,11 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="subscription_sale" type="tns:Sale" abstract="true"/>
+    <xs:element name="sale" type="tns:Sale" abstract="true"/>
+    <xs:element name="subscription_sale" type="tns:SubSale" substitutionGroup="tns:sale"/>
 
-    <xs:complexType name="Sale">
+    <xs:complexType name="Sale" mixed="true">
         <xs:sequence>
-            <xs:element name="card_number" type="xs:integer"/>
-            <xs:element name="user_id" type="xs:integer"/>
-            <xs:element name="start_date" type="xs:dateTime"/>
-            <xs:element name="end_date" type="xs:dateTime"/>
-            <xs:element name="service_id" type="xs:integer"/>
             <xs:element name="client" type="tns:Client"/>
             <xs:element name="subscription" type="tns:Subscription"/>
             <xs:element name="specialization" type="tns:Specialization"/>
@@ -28,37 +24,99 @@
         <xs:attribute name="id" type="xs:integer" use="required"/>
     </xs:complexType>
 
-    <xs:complexType name="UserProfile" mixed="true">
-        <xs:sequence maxOccurs="unbounded">
-            <xs:element name="client" type="tns:Client"/>
-        </xs:sequence>
+    <xs:complexType name="SubSale" mixed="true">
+        <xs:complexContent>
+            <xs:extension base="tns:Sale">
+                <xs:sequence>
+                    <xs:element name="card_number">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="user_id">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="start_date" type="xs:dateTime"/>
+                    <xs:element name="end_date" type="xs:dateTime"/>
+                    <xs:element name="service_id">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
-    <xs:complexType name="Client">
+    <xs:complexType name="Client" mixed="true">
         <xs:sequence>
-            <xs:element name="id_client" default="client"/>
-            <xs:element name="f_name_client" default="client"/>
-            <xs:element name="s_name_client" default="client"/>
-            <xs:element name="l_name_client" default="client"/>
-            <xs:element name="address_client" default="client"/>
-            <xs:element name="phone_client" default="client"/>
+            <xs:element name="id_client" default="client">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="f_name_client" type="xs:string" default="client"/>
+            <xs:element name="s_name_client" type="xs:string" default="client"/>
+            <xs:element name="l_name_client" type="xs:string" default="client"/>
+            <xs:element name="address_client" type="xs:string" default="client"/>
+            <xs:element name="phone_client" type="xs:string" default="client"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="Subscription">
         <xs:sequence>
-            <xs:element name="id_sub" default="subscription"/>
-            <xs:element name="name_sub" default="subscription"/>
-            <xs:element name="price" default="subscription"/>
-            <xs:element name="visits" default="subscription"/>
-            <xs:element name="days" default="subscription"/>
+            <xs:element name="id_sub" default="subscription">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="name_sub" type="xs:string" default="subscription"/>
+            <xs:element name="price" default="subscription">
+                <xs:simpleType>
+                    <xs:restriction base="xs:double">
+                        <xs:pattern value="(\d{1,2}|100)$"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="visits" default="subscription">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="^([1-2]?[\d]|3[0-1])$"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="days" default="subscription">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="^([1-2]?[\d]|3[0-2])$"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="Specialization">
         <xs:sequence>
-            <xs:element name="id_spec" default="specialization"/>
-            <xs:element name="note" default="specialization"/>
+            <xs:element name="id_spec" default="specialization">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="note" type="xs:string" default="specialization"/>
             <xs:element name="service" type="tns:Service"/>
             <xs:element name="employee" type="tns:Employee"/>
         </xs:sequence>
@@ -66,19 +124,31 @@
 
     <xs:complexType name="Service">
         <xs:sequence>
-            <xs:element name="id_serv" default="service"/>
-            <xs:element name="name_serv" default="service"/>
+            <xs:element name="id_serv" default="service">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="name_serv" type="xs:string" default="service"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="Employee">
         <xs:sequence>
-            <xs:element name="id_employee" default="employee"/>
-            <xs:element name="f_name_employee" default="employee"/>
-            <xs:element name="s_name_employee" default="employee"/>
-            <xs:element name="l_name_employee" default="employee"/>
-            <xs:element name="address_employee" default="employee"/>
-            <xs:element name="phone_employee" default="employee"/>
+            <xs:element name="id_employee" default="employee">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:pattern value="\b(?:[1-9]|\d{2,})\b"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="f_name_employee" type="xs:string" default="employee"/>
+            <xs:element name="s_name_employee" type="xs:string" default="employee"/>
+            <xs:element name="l_name_employee" type="xs:string" default="employee"/>
+            <xs:element name="address_employee" type="xs:string" default="employee"/>
+            <xs:element name="phone_employee" type="xs:string" default="employee"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

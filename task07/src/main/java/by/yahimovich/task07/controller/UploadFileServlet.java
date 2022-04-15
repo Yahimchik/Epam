@@ -41,7 +41,7 @@ public class UploadFileServlet extends HttpServlet {
             uploadDir.mkdir();
         }
 
-        String fileName = "";
+        String fileName;
 
         for (Part part : request.getParts()) {
             if (!"default.file".equals(getFileName(part))) {
@@ -50,7 +50,6 @@ public class UploadFileServlet extends HttpServlet {
                 request.setAttribute("sales", processRequest(request, fileName));
             }
         }
-
         getServletContext().getRequestDispatcher("/sales.jsp").forward(request, resp);
     }
 
